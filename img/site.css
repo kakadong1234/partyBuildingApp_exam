@@ -1,0 +1,69 @@
+﻿.txt-center {
+    text-align: center;
+}
+
+.bg-color-fafafa {
+    background-color: #fafafa;
+}
+
+.hide {
+    display: none;
+}
+
+.page-footer {
+    height: 53px;
+}
+
+.pt-fixed {
+    position: fixed;
+}
+
+
+
+.weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon > i, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label, .weui-form-preview__btn_primary {
+    color: #38adff;
+}
+
+body {
+    background-color: #fafafa;
+}
+
+.page.button {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: #fafafa;
+    width: 100%;
+}
+
+    .page.button .button-sp-area {
+        margin: 0 auto;
+        padding: 15px 0;
+        width: 60%;
+    }
+
+.weui-form-preview__hd .weui-form-preview__value {
+    font-size: 1em;
+}
+.weui-search-bar{
+    position:fixed;top:0; z-index:99999;
+    left:0;right:0;
+}
+.weui-uploader__file{
+    height:49px;
+    width:49px;
+}
+.weui-uploader__input-box{
+ height:47px;
+    width:47px;
+}
+.btn-bottom-fixed{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:#fff;
+    z-index:9999;
+}

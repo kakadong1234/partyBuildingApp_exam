@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>党建考试题</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- head 中 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <!-- <link href="../css/swiper.min.css" rel="stylesheet" /> -->
+    <link href="../css/main.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.6&key=614bae5e03f5e3b25e64612a681b01d6"></script>
+</head>
+
+<body>
+    <div class="nav">
+        <span onclick="history.go(-1)">
+            <img src="../img/arrow-left.png" />
+        </span>
+        <span>党建考试题</span>
+        <span id="btn-nav">导航</span>
+    </div>
+
+    <div class="weui-skin_android" id="androidActionsheet" style="display:none">
+        <div class="weui-mask" style="visibility:visible; opacity:0.5"></div>
+        <div class="weui-actionsheet">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell" onclick="location.href='index.html'">网上讲习所</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
+                <div class="weui-actionsheet__cell" onclick="location.href = 'http://39.104.67.0:8443/ehome/ehome.html'">党群E家</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='center.html'">云学习中心</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">驻村云监管</div>
+                <div class="weui-actionsheet__cell" onclick="location.href = 'http://39.104.67.0:8443/ehome/personnel.html'">人才直通车</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
+            </div>
+        </div>
+    </div>
+        <div id="list_header"></div>
+        <div id="list_body"></div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div id="btn-submit" class="weui-btn weui-btn_primary btn-bottom-fixed" onclick="finishExam()"></div>
+    <!-- body 最后 -->
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/js/swiper.min.js" type='text/javascript' charset='utf-8'></script> -->
+    <!-- mustache.js -->
+    <script src="https://cdn.bootcss.com/mustache.js/2.3.0/mustache.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="../scripts/main.js"></script>
+    <!-- Initialize Swiper -->
+    <!-- <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            paginationClickable: true,
+            speed: 500,
+            loop: true,
+            observer: true,
+            observeParents: true,
+            autoplayDisableOnInteraction: false,
+            autoplay: true,
+
+        });
+    </script> -->
+    <script src="../scripts/exam.js"></script>
+</body>
+
+</html>
