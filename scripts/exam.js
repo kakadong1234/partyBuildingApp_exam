@@ -37,6 +37,10 @@ function getExamData() {
             })
             return item
         })
+        if(!exam.uScore && exam.remainingSecond <= 0){ //0分 --> 未答 或 未提交
+            console.log('已过答题时间 将 status 设置为已考完')
+            exam.status = '已考完'
+        }
         initListHeader(exam);
         initListBody(exam);
         initListFooter(exam);

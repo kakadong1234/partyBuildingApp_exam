@@ -182,37 +182,14 @@
         <div class="panel-title">
             <span>考试中心</span>
         </div>
-        <div class="panel-body">
-            <div class="card-alert">
-                <div class="alert-title">2018年最新党员规则测评</div>
-                <div class="alert-body">
-                    <div class="item">
-                        <div class="weui-progress">
-                            <div class="weui-progress__bar">
-                                <div class="weui-progress__inner-bar js_progress" style="width: 60%;"></div>
-                            </div>                          
-                        </div>                       
-                    </div>
-                    <div class="item">                       
-                        <span>完成度：60%</span>
-                    </div>
-                    <div class="item">                     
-                        <span>考试总人数：200人</span>
-                    </div>
-                    <div class="item btn">                       
-                        <span>考试已完成：20人</span>   
-                        <a href="test.html">继续考试</a>                    
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
+        <div id="exam_list"></div>
     </div>
     <!-- body 最后 -->
     <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
     <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>
     <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
+    <!-- mustache.js -->
+    <script src="https://cdn.bootcss.com/mustache.js/2.3.0/mustache.min.js" type='text/javascript' charset='utf-8'></script>
   
     <script src="../scripts/main.js"></script>
     <!-- Initialize Swiper -->
@@ -259,5 +236,6 @@
         });
 
     </script>
+     <script src="../scripts/examList.js"></script>
 </body>
 </html>
