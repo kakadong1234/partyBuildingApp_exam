@@ -13,9 +13,9 @@ function getExamList() {
         data = data.rows.filter(function(examPlan){
             return examPlan.status === 5
         }).map(function(examPlan){
-            const startTimeStamp = new Date(examPlan.eps_time).getTime()
-            const endTimeStamp = new Date(examPlan.epe_time).getTime()
-            const now = new Date().getTime() // TODO: 这样做有问题 
+            const startTimeStamp = newDate(examPlan.eps_time).getTime()
+            const endTimeStamp = newDate(examPlan.epe_time).getTime()
+            const now = Date.now() // TODO: 这样做有问题 
             examPlan.show_status = now < startTimeStamp ? '未开考' :  now > endTimeStamp ? '已考完' : '考试中'
             examPlan.is_show_exam_btn = examPlan.show_status === '未开考' ? false : true
             examPlan.exam_btn_txt = examPlan.show_status === '考试中' ? '去考试' : '查看考试结果' 
@@ -56,3 +56,10 @@ function getQueryString(name) {
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]); return null;
 }
+
+function newDate(strdate) {  
+    var arr = strdate.split(/[- : \/]/);  
+    console.log(arr);
+    date = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);  
+    return date;  
+} 

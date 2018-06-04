@@ -80,8 +80,8 @@ function getStatus(status){
 }
 
 function getRemainingSecond(endTime){ 
-    const endTimeStamp = new Date(endTime).getTime()
-    const currentTimeStamp = new Date().getTime()
+    const endTimeStamp = newDate(endTime).getTime()
+    const currentTimeStamp = Date.now()
     return parseInt((endTimeStamp - currentTimeStamp) / 1000); //剩余秒数 -- status === '考试中' 才有意义
 }
 
@@ -430,3 +430,10 @@ function getQueryString(name) {
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]); return null;
 }
+
+function newDate(strdate) {  
+    var arr = strdate.split(/[- : \/]/);  
+    console.log(arr);
+    date = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);  
+    return date;  
+} 
