@@ -8,17 +8,18 @@ function initExamList() {
 
 function getExamList() {
     //TODO
-    $.get('https://dangjain.ishoubei.com/exam/plan', function(data){
+    $.get('https://dangjain.ishoubei.com/exam/plan?status=5', function(data){
         console.log(data);
-        data = data.rows.filter(function(examPlan){
-            return examPlan.status === 5
-        }).map(function(examPlan){
+        data = data.rows.map(function(examPlan){
             const startTimeStamp = newDate(examPlan.eps_time).getTime()
             const endTimeStamp = newDate(examPlan.epe_time).getTime()
             const now = Date.now() // TODO: 这样做有问题 
-            examPlan.show_status = now < startTimeStamp ? '未开考' :  now > endTimeStamp ? '已考完' : '考试中'
-            examPlan.is_show_exam_btn = examPlan.show_status === '未开考' ? false : true
-            examPlan.exam_btn_txt = examPlan.show_status === '考试中' ? '去考试' : '查看考试结果' 
+            // examPlan.show_status = now < startTimeStamp ? '未开考' :  now > endTimeStamp ? '已考完' : '考试中'
+            // examPlan.is_show_exam_btn = examPlan.show_status === '未开考' ? false : true
+            // // examPlan.exam_btn_txt = examPlan.show_status === '考试中' ? '去考试' : '查看考试结果' 
+            examPlan.show_status = '可考'
+            examPlan.is_show_exam_btn = true
+            examPlan.exam_btn_txt = '去考试'
             return examPlan
         })
         console.log(data);

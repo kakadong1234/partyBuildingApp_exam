@@ -6,7 +6,21 @@ const user_id = getQueryString('user_id')
 let er_id;
 let eq1_ids;
 let eq2_ids;
+
+
+var userInfo = {};
+var url = location.href;
+
+//  alert(location.href);
+function initConst(info) {
+    userInfo = info;
+    user_id = userInfo.emplId
+}
+
+
+
 $(function () {
+    //getUserInfo(url, initConst); //TODO
     console.log('ep_id is ' + ep_id + ', user_id is ' + user_id)
     initExamList();
 })
