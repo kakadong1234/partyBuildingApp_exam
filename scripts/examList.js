@@ -8,7 +8,7 @@ function initExamList() {
 
 function getExamList() {
     //TODO
-    $.get('https://dangjain.ishoubei.com:8443/exam/plan', function(data){
+    $.get('https://dangjain.ishoubei.com/exam/plan', function(data){
         console.log(data);
         data = data.rows.filter(function(examPlan){
             return examPlan.status === 5

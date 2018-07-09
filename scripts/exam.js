@@ -17,7 +17,7 @@ function initExamList() {
 
 function getExamData() {
     //TODO
-    $.get('https://dangjain.ishoubei.com:8443/exam/test?ep_id=' + ep_id + '&user_id=' + user_id, function(data){
+    $.get('https://dangjain.ishoubei.com/exam/test?ep_id=' + ep_id + '&user_id=' + user_id, function(data){
         console.log(data);
         er_id = data.er_id;
         eq1_ids = data.eq1_ids ;
@@ -332,7 +332,7 @@ function finishExam(){
         console.log(submitStatus)
         $.ajax({  
             type: "post",  
-            url: "https://dangjain.ishoubei.com:8443/exam/test",  
+            url: "https://dangjain.ishoubei.com/exam/test",  
             contentType : "application/x-www-form-urlencoded; charset=UTF-8",  
             data: $.param(postData),  
             success: function (res) {  
@@ -369,7 +369,7 @@ function loopUserAnswer(){
      }
      $.ajax({  
         type: "post",  
-        url: "https://dangjain.ishoubei.com:8443/exam/test",  
+        url: "https://dangjain.ishoubei.com/exam/test",  
         contentType : "application/x-www-form-urlencoded; charset=UTF-8",  
         data: $.param(postData),  
         success: function (res) {  
@@ -404,7 +404,7 @@ function sendUserAnswer(data) {
     console.log('---sendUserAnswer')
     $.ajax({  
         type: "post",  
-        url: "https://dangjain.ishoubei.com:8443/exam/plan",  
+        url: "https://dangjain.ishoubei.com/exam/plan",  
         contentType : "application/x-www-form-urlencoded; charset=UTF-8",  
         data: $.param({
             user_id: "xuehaifeng",

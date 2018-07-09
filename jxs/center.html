@@ -24,16 +24,40 @@
             <div class="weui-actionsheet__menu">
                 <div class="weui-actionsheet__cell" onclick="location.href='index.html'">网上讲习所</div>
                 <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
-                <div class="weui-actionsheet__cell" onclick="location.href = 'http://39.104.67.0:8443/ehome/ehome.html'">党群E家</div>
+
                 <div class="weui-actionsheet__cell" onclick="location.href='center.html'">云学习中心</div>
                 <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">驻村云监管</div>
-                <div class="weui-actionsheet__cell" onclick="location.href = 'http://39.104.67.0:8443/ehome/personnel.html'">人才直通车</div>
+
                 <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
 
             </div>
         </div>
     </div>
-    <!-- Swiper -->    
+    <!-- Swiper -->
+    <!-- Swiper -->
+    <div class="swiper-container map">
+
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" onclick="location.href='detail4.html'">
+                <p>
+                    1杨景连又学习了《参考消息》
+                </p>
+
+            </div>
+            <div class="swiper-slide" onclick="location.href='detail4.html'">
+                <p>
+                    2王玉新学了如何保持先进行
+                </p>
+            </div>
+            <div class="swiper-slide" onclick="location.href='detail4.html'">
+                <p>
+                    3杨景连又学习了《参考消息》
+                </p>
+            </div>
+        </div>
+        <img src="../img/map/喇叭001_hover.png" />
+    </div>
+
 
 
     <div class="panel study">
@@ -41,35 +65,26 @@
             <span>我的课程</span>
             <a href="centerMore.html" class="more">查看更多</a>
         </div>
-        <div class="panel-body">
-          <div class="item" onclick="location.href='detail.html'">
-              <div class="cover">
-                  <img src="../img/kecheng1.png" />                 
-              </div>
-              <div class="memo">
-                  上次播放：12分30秒
-              </div>
-          </div>
-            <div class="item" onclick="location.href='detail.html'">
-                <div class="cover">
-                    <img src="../img/kecheng2.png" />
-                </div>
-                <div class="memo">
-                    上次播放：12分30秒
-                </div>
-            </div>
+        <div id="articleList" class="weui-cells" style="margin-top:0">
+
+            <!--<div class="weui-cell">
+                <div class="weui-cell__hd"><img class="item-cover" src="https://dangjain.ishoubei.com/static/files/20180606141513_屏幕快照 2018-06-06 13.55.21.png"></div>
+                <div class="weui-cell__bd"><a href="detail.html?id=4">视频测试02</a></div>
+            </div>-->
+           
         </div>
     </div>
-    <div class="panel ">
+
+    <!--<div class="panel ">
         <div class="panel-title">
-            <span>上课提醒</span>          
+            <span>上课提醒</span>
         </div>
         <div class="panel-body">
            <div class="card-alert">
                <div class="alert-title">5.22（周一）<span>13:00-14:30</span></div>
                <div class="alert-body">
                    <div class="item">
-                       <img src="../img/kecheng3.png" />                   
+                       <img src="../img/kecheng3.png" />
                        <span>课程：党员学习</span>
                    </div>
                    <div class="item">
@@ -87,100 +102,103 @@
                </div>
            </div>
         </div>
-     
-        
-    </div>
 
-    <div class="recommed">
-      <div>课程推荐</div>
-      <div>
-          <img src="../img/search.png" /></div>
+
+    </div>-->
+
+    <a href="studyList.html" class="recommed">
+
+        <div>教学资源</div>
+        <div>
+            <img src="../img/search.png" />
+        </div>
+    </a>
+
+    <div class="weui-grids" id="navs">
+
+        <!--<a href="studyList.html?type_id=31" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#F1514B">
+
+                <img src="../img/center/政策法规.png" />
+            </div>
+            <p class="weui-grid__label">
+                政策法规
+            </p>
+        </a>
+        <a href="studyList.html?type_id=32" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#71AAFA">
+
+                <img src="../img/center/工作动态.png" />
+            </div>
+            <p class="weui-grid__label">
+                工作动态
+            </p>
+        </a>
+        <a href="studyList.html?type_id=33" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#54CED4">
+
+                <img src="../img/center/从严治党.png" />
+            </div>
+            <p class="weui-grid__label">
+                从严治党
+            </p>
+        </a>
+        <a href="studyList.html?type_id=34" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#3BA3F8">
+
+                <img src="../img/center/时事要闻.png" />
+            </div>
+            <p class="weui-grid__label">
+                时事要闻
+            </p>
+        </a>
+        <a href="studyList.html?type_id=35" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#9FCB87">
+
+                <img src="../img/center/媒体关注.png" />
+            </div>
+            <p class="weui-grid__label">
+                媒体关注
+            </p>
+        </a>
+        <a href="studyList.html?type_id=36" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#F2A04B">
+                <img src="../img/center/史海沉钩.png" />
+
+            </div>
+            <p class="weui-grid__label">
+                史海沉钩
+            </p>
+        </a>
+        <a href="studyList.html?type_id=37" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#F2A04B">
+                <img src="../img/center/先进典型.png" />
+
+            </div>
+            <p class="weui-grid__label">
+                先进典型
+            </p>
+        </a>
+        <a href="studyList.html?type_id=38" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#F2A04B">
+
+                <img src="../img/other.png" />
+            </div>
+            <p class="weui-grid__label">
+                其他资源
+            </p>
+        </a>-->
     </div>
 
     <div id="articleList">
 
     </div>
-    <!--<div class="weui-flex list study">
-        <div class="weui-flex__item">
-            <div class="item"  >
-                <a class="cover" href="classDetail.html">
-                    <img src="../img/item1.png" />
-                </a>
-                <a class="title" href="detail.html">六枝特区倡导党员快乐</a>
-                <div class="comments weui-flex">
-                    <div class="star weui-flex__item">
-                       鲁宾
-                    </div>
-                    <div class="users weui-flex__item">
-                     
-                        <span>57165参加过</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="weui-flex__item">
-            <div class="item" >
-                <a class="cover" href="detail.html">
-                    <img src="../img/item2.png" />
-                </a>
-                <a class="title" href="detail.html">水城县社区群众的守望者</a>
-                <div class="comments weui-flex">
-                    <div class="star weui-flex__item">
-                      杨洋
-                    </div>
-                    <div class="users weui-flex__item">
-                     
-                        <span>57165参加过</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="weui-flex list study">
-        <div class="weui-flex__item">
-            <div class="item"  >
-                <a class="cover" href="classDetail.html">
-                    <img src="../img/item1.png" />
-                </a>
-                <a class="title" href="detail.html">六枝特区倡导党员快</a>
-                <div class="comments weui-flex">
-                    <div class="star weui-flex__item">
-                        鲁宾
-                    </div>
-                    <div class="users weui-flex__item">
-
-                        <span>57165参加过</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="weui-flex__item">
-            <div class="item" >
-                <a class="cover" href="detail.html">
-                    <img src="../img/item2.png" />
-                </a>
-                <a class="title" href="detail.html">水城县社区群众的守望者</a>
-                <div class="comments weui-flex">
-                    <div class="star weui-flex__item">
-                        杨洋
-                    </div>
-                    <div class="users weui-flex__item">
-
-                        <span>57165参加过</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>-->
+    
 
     <div class="panel testing ">
         <div class="panel-title">
             <span>考试中心</span>
+            <a href="testMore.html" class="more">我的考试</a>
         </div>
         <div id="exam_list"></div>
     </div>
@@ -188,13 +206,23 @@
     <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
     <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>
     <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
+    <script src="../scripts/swiper.min.js"></script>
+
     <!-- mustache.js -->
     <script src="https://cdn.bootcss.com/mustache.js/2.3.0/mustache.min.js" type='text/javascript' charset='utf-8'></script>
-  
+
     <script src="../scripts/main.js"></script>
     <!-- Initialize Swiper -->
     <script>
-
+        var bgColor = ["#F1514B", "#71AAFA", "#54CED4", "#3BA3F8", "#9FCB87", "#F2A04B", "#54CED4", "#71AAFA", "#F1514B", "#3BA3F8"];
+        var navItemHtml = '<a href="studyList.html?type_id={{type_id}}&type_name={{type_name}}" class="weui-grid js_grid">' +
+                                  '<div class="weui-grid__icon" style="background:{{bgcolor}}">' +
+                                     ' <img src="{{type_icon}}" />' +
+                                 ' </div>' +
+                                 ' <p class="weui-grid__label">' +
+                                 '     {{type_name}}' +
+                               '   </p>' +
+                            '  </a>';
         var html = '<div class="weui-flex list">{{inner}}</div>';
         var innerHtml = '<div class="weui-flex__item">' +
            ' <div class="item">' +
@@ -203,7 +231,7 @@
                 '</a>' +
                 '<a class="title" href="detail2.html?id={{id}}">{{title}}</a>' +
                 '<div class="comments weui-flex">' +
-                   ' <div class="star weui-flex__item">' +                      
+                   ' <div class="star weui-flex__item">' +
                        ' {{teacher}}' +
                    ' </div>' +
                     '<div class="users weui-flex__item">' +
@@ -214,28 +242,77 @@
            ' </div>' +
       '  </div>';
 
-        $(function () {
+        var innerHtml = ' <div class="weui-cell"><div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>'
+          + '<div class="weui-cell__bd">'
+             + '<a href="detail{{page}}.html?id={{id}}">{{title}}</a>'
+        + '</div> </div>';
 
-            var typeId = 1;
+        var mySwiper = new Swiper('.swiper-container', {
+            autoplay: true,//可选选项，自动滑动
+        })
 
-            $.get("https://dangjain.ishoubei.com:8443/article?type_id=" + typeId, function (rel) {
+        var userInfo = {};
+        var userId = "manager1603";
+        var url = window.location.href;
 
-                var strHtml = [];
+
+        function setUserInfo(info) {
+            userInfo = info;
+            show
+            $.get("https://dangjain.ishoubei.com/study?user_id=" + userInfo.emplId + "&limit=3", function (rel) {
+                $.showLoading();
+
                 var strInner = [];
 
                 for (var i = 0; i < rel.rows.length; i++) {
-                    strInner.push(innerHtml.replace("{{id}}", rel.rows[i].article_id).replace("{{teacher}}", rel.rows[i].teacher).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
-                    if (i % 2 == 1 || i == rel.rows.length - 1) {
-                        strHtml.push(html.replace("{{inner}}", strInner.join("")));
-                        strInner = [];
-                    }
+                    var page = "2";
+
+                    //if (rel.rows[i].article.urls.length > 0) {
+                    //    page = "";
+                    //} else {
+                    //    page = "2";
+                    //}
+
+                    strInner.push(innerHtml.replace("{{page}}", page).replace("{{id}}", rel.rows[i].article.article_id).replace("{{id}}", rel.rows[i].article.article_id).replace("{{cover}}", rel.rows[i].article.cover).replace("{{title}}", rel.rows[i].article.title));
+
                 }
 
-                $("#articleList").html(strHtml.join(""));
+                $("#articleList").html(strInner.join(""));
+                $.hideLoading();
             });
+        }
+
+
+
+        $(function () {
+         
+            getUserInfo(url, setUserInfo);
+
+
+            //目录
+            $.get("https://dangjain.ishoubei.com/type?type_id=30&status=0&type_state=2", function (rel) {
+
+
+                var strInner = [];
+
+                for (var i = 0; i < rel.data.length; i++) {
+
+                    strInner.push(navItemHtml
+                        .replace("{{type_id}}", rel.data[i].type_id)
+                        .myReplace("{{type_name}}", rel.data[i].type_name)
+                        .replace("{{type_icon}}", rel.data[i].type_icon)
+                        .replace("{{bgcolor}}", bgColor[i])
+                        );
+
+                }
+
+                $("#navs").html(strInner.join(""));
+            });
+
+          
         });
 
     </script>
-     <script src="../scripts/examList.js"></script>
+    <script src="../scripts/examList.js"></script>
 </body>
 </html>
