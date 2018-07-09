@@ -56,7 +56,6 @@ function getExamData() {
             exam.status = '已考完'
         }
         console.log(exam.status)
-        exam.isHaveExamed = 
         initListHeader(exam);
         if(exam.status === '已考完'){
             initListBodyForExamed(exam);
@@ -68,7 +67,7 @@ function getExamData() {
         if(exam.status !== '已考完'){
             const rTime  = Number(exam.remainingSecond);
             startCountDown(rTime);
-            startLoopUserAnswer(rTime)
+            // startLoopUserAnswer(rTime)
         }
     });
 };
@@ -356,22 +355,22 @@ function startCountDown(remainingTime){
 }
 
 
-function startLoopUserAnswer(remainingTime){
-    var timer = function () {
-        setTimeout(function () {
-            console.log('-------------loopAnswer')
-            if(submitStatus === "未交卷") {
-                const rTime = remainingTime - counter;
-                console.log(rTime);
-                if(rTime > 0){
-                    loopUserAnswer()
-                    timer();
-                }
-            }
-        }, 10000);
-    }
-    timer();
-}
+// function startLoopUserAnswer(remainingTime){
+//     var timer = function () {
+//         setTimeout(function () {
+//             console.log('-------------loopAnswer')
+//             if(submitStatus === "未交卷") {
+//                 const rTime = remainingTime - counter;
+//                 console.log(rTime);
+//                 if(rTime > 0){
+//                     loopUserAnswer()
+//                     timer();
+//                 }
+//             }
+//         }, 10000);
+//     }
+//     timer();
+// }
 function finishExam(){
     //交卷
     if(submitStatus === "未交卷" || submitStatus === "交卷失败"){
@@ -458,6 +457,7 @@ function setUserAnswer(id, key) {
     })
     answer.push({id, userAnswerKey: key})
     console.log(answer)
+    loopUserAnswer()
 };
 
 function sendUserAnswer(data) {
