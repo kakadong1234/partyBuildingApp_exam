@@ -65,9 +65,9 @@ function getExamData() {
         }
         initListFooter(exam);
         if(exam.status !== '已考完'){
-            const rTime  = Number(exam.remainingSecond);
+            const rTime  = Number(exam.remainingSecond); //TODO: 剩余时间
             startCountDown(rTime);
-            // startLoopUserAnswer(rTime)
+            // startLoopUserAnswer(rTime)  //TODO: 时间轮训
         }
     });
 };

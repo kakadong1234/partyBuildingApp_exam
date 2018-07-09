@@ -69,31 +69,75 @@ function GetQueryString(name) {
     var r = decodeURI(window.location.search).substr(1).match(reg);
     if (r != null) return unescape(r[2]); return null;
 }
-var qingjiaurl = "https://aflow.dingtalk.com/dingtalk/mobile/homepage.htm?showmenu=true&dd_progress=false&dd_share=false&corpid=ding377ef05619dd758735c2f4657eb6378f";
-function openLink(link) {
-   // alert(link);
-    dd.ready(function () {
-        dd.biz.util.openLink({
-            url: link,//要打开链接的地址
-            onSuccess: function (result) {
-                /**/
-               // alert(JSON.stringify(result));
-            },
-            onFail: function (err) {
 
-              //  alert(JSON.stringify(err));
-            }
-        })
-
-    });
-
-
+function openLink(name) {
+    getAppLinkList(function(appList){
+        const link = appList.find(function(app){
+            return app.name === name
+        }).link
+        console.log(link)
+        dd.ready(function () {
+            dd.biz.util.openLink({
+                url: link,//要打开链接的地址
+                onSuccess: function (result) {
+                    /**/
+                   // alert(JSON.stringify(result));
+                },
+                onFail: function (err) {
+    
+                  //  alert(JSON.stringify(err));
+                }
+            })
+    
+        });
+    })
 };
 
+const appLinkList = []
+function getAppLinkList(cb) {
+    console.log(appLinkList.length)
+    if(appLinkList.length > 0) {
+        return cb(appLinkList)
+    }
+    getDDAppList(function(list){
+        const constLink = 'dingtalk://dingtalkclient/action/switchtab?index=2&name=work&scene=1&corpid=ding377ef05619dd758735c2f4657eb6378f'
+        //签到
+        let agentId = list.find(function(app){
+            return app.name === '签到'
+        }).agentId
+        let link = constLink  + '&agentid=' + agentId
+        appLinkList.push({name: 'singIn', link: link})
+        
+        //信息上报 - 日志
+        agentId = list.find(function(app){
+            return app.name === '日志'
+        }).agentId
+        link = constLink  + '&agentid=' + agentId
+        appLinkList.push({name: 'log', link: link})
+
+        //工作调度 or 协作指导
+        appLinkList.push({name: 'work', link: 'dingtalk://dingtalkclient/action/switchtab?index=3'})
+        
+        //请假申请 工作审批 上报审批 - 审批
+        agentId = list.find(function(app){
+            return app.name === '审批'
+        }).agentId
+        link = constLink  + '&agentid=' + agentId
+        appLinkList.push({name: 'shenpi', link: link})
+        console.log(appLinkList)
+        return cb(appLinkList)
+    });
+
+} 
+
+function getDDAppList(cb){
+    $.get("https://dangjain.ishoubei.com/dding?key=get_microapp_list ", function (rel) {
+        const list = rel.appList
+        return cb(list)
+    })
+}
 
 var showMenu = false;
-
-
 
 $(function () {
 
@@ -205,10 +249,6 @@ $(function () {
 
 
 function getUserInfo(url, callback, callbackGps) {
-
-
-
-
     $.get("https://dangjain.ishoubei.com/jsapi-oauth?pwd=sddkhhyy&url=" + url, function (e) {
         var _config = {};
         _config = e;
@@ -235,16 +275,11 @@ function getUserInfo(url, callback, callbackGps) {
         //    alert(JSON.stringify(_config));
 
         dd.ready(function () {
-
-
-
-
             dd.biz.user.get({
                 corpId: 'ding377ef05619dd758735c2f4657eb6378f', // 可选参数，如果不传则使用用户当前企业的corpId。 
                 onSuccess: function (info) {
                     //  alert('userGet success: ' + JSON.stringify(info));
                     typeof callback == "function" && callback(info);
-
                 },
                 onFail: function (err) {
                     alert('userGet fail: ' + JSON.stringify(err));
@@ -327,3 +362,4 @@ function getUserInfo(url, callback, callbackGps) {
     });
 
 }
+

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>个人信息</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- head 中 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <link href="../css/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="nav">
+        <span onclick="history.go(-1)">
+            <img src="../img/arrow-left.png" />
+        </span>
+        <span>个人信息</span>
+        <span id="btn-nav">导航</span>
+    </div>
+
+    <div class="weui-skin_android" id="androidActionsheet" style="display:none">
+        <div class="weui-mask" style="visibility:visible; opacity:0.5"></div>
+        <div class="weui-actionsheet">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell" onclick="location.href='index.html'">网上讲习所</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
+                 
+                <div class="weui-actionsheet__cell" onclick="location.href='center.html'">云学习中心</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">驻村云监管</div>
+                
+                <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
+
+            </div>
+        </div>
+    </div>
+   
+    <div class="user-cover">
+
+        <img class="blur" src="../img/p103.jpg" id="avatarbg"/>
+        <div class="user-name">
+            <img src="../img/p103.png" id="avatar" />
+            <div id="nickname">用户名</div>
+        </div>
+    </div>
+
+    <div class="weui-cells user-menus">
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <img src="../img/user/Shape3.png" />
+
+            </div>
+            <div class="weui-cell__bd">
+                <p><a id="qingjia" href="javascript:openLink('shenpi')">请假申请</a></p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <img src="../img/user/意见反馈.png" />
+            </div>
+            <div class="weui-cell__bd">
+                <p>
+                    <a href="feedback.html">意见反馈 </a>
+                
+                </p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <img src="../img/user/Shape1.png" />
+
+            </div>
+            <div class="weui-cell__bd">
+                <p>考评打分</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <img src="../img/user/招聘计划审批.png" />
+            </div>
+            <div class="weui-cell__bd">
+                <p><a href="javascript:openLink('shenpi')">工作审批</a></p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <img src="../img/user/审批管理.png" />
+
+            </div>
+            <div class="weui-cell__bd">
+                <p><a href="javascript:openLink('shenpi')">上报审批</a></p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </div>
+        <!--<div class="weui-cell">
+            <div class="weui-cell__hd">
+                <img src="../img/user/Combined Shape.png" />
+            </div>
+            <div class="weui-cell__bd">
+                <p>信息提醒</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <img src="../img/user/Combined Shape1.png" />
+
+            </div>
+            <div class="weui-cell__bd">
+                <p>工作调度</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <img src="../img/user/Shape.png" />
+
+            </div>
+            <div class="weui-cell__bd">
+                <p>在线会议</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </div>
+ 
+  
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <img src="../img/user/Shape2.png" />
+
+            </div>
+            <div class="weui-cell__bd">
+                <p>直播申请</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </div>
+       
+   
+    
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <img src="../img/user/设置.png" />
+
+            </div>
+            <div class="weui-cell__bd">
+                <p>设置</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </div>-->
+    </div>
+
+
+
+
+    <!-- body 最后 -->
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
+    <script src="../scripts/main.js"></script>
+
+    <script>
+        var userInfo = {};
+        var url = "https://91fanka.cn/lpst/jxs/user.html";
+
+       
+
+       
+
+      //  alert(location.href);
+        function setUserInfo(info) {
+            userInfo = info;
+         //   alert(JSON.stringify(info));
+            if (info.avatar != "") {
+                $("#avatar").attr("src", info.avatar);
+                $("#avatarbg").attr("src", info.avatar);
+                
+            }
+            $("#nickname").text(info.nickName);
+
+        }
+
+
+       
+
+
+        $(function () {
+
+            getUserInfo(url, setUserInfo);
+           
+
+           
+        });
+
+    </script>
+</body>
+</html>

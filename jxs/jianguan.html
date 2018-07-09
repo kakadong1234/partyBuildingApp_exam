@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>驻村云监管</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- head 中 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <link href="../css/swiper.min.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="nav">
+        <span onclick="history.go(-1)">
+            <img src="../img/arrow-left.png" />
+        </span>
+        <span>驻村云监管</span>
+        <span id="btn-nav">导航</span>
+    </div>
+    <div class="weui-skin_android" id="androidActionsheet" style="display:none">
+        <div class="weui-mask" style="visibility:visible; opacity:0.5"></div>
+        <div class="weui-actionsheet">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell" onclick="location.href='index.html'">网上讲习所</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
+                 
+                <div class="weui-actionsheet__cell" onclick="location.href='center.html'">云学习中心</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">驻村云监管</div>
+                
+                <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="banners">
+            <div class="swiper-slide">
+                <img src="../img/banner2.png" />
+            </div>
+        
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+
+
+
+    <div class="weui-flex ">
+        <div class="weui-flex__item menu">
+            <div class="weui-flex menus">
+                <div class="weui-flex__item">
+                    <a class="waiqin_item" href="javascript:openLink('singIn')">
+                        <img src="../img/waiqin.png" />
+                        <span>外勤打卡</span>
+                    </a>
+                </div>
+                <!--https://landray.dingtalkapps.com/alid/app/report/home.html?showmenu=false&dd_progress=false&dd_share=false&corpid=ding377ef05619dd758735c2f4657eb6378f-->
+                <div class="weui-flex__item">
+                    <a class="info_item" href="javascript:openLink('log')" style="background:#87BBED">
+                        <img src="../img/上报信息.png" />
+                        <span>信息上报</span>
+                    </a>
+                </div>
+            </div>
+            <div class="weui-flex menus">
+                <div class="weui-flex__item">
+                    <a class="work_item" href="javascript:openLink('work')" style="background:#F2784B">
+                        <img src="../img/diaodu.png" />
+                        <span>工作调度</span>
+                    </a>
+                </div>
+                <div class="weui-flex__item">
+                    <a class="xiezuo_item" href="javascript:openLink('work')" style="background:#54CED4">
+                        <img src="../img/协作性.png" />
+                        <span>协作指导</span>
+                    </a>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <div class="weui-flex  order" >
+        <div class="weui-flex__item  " >
+            <div style="margin:15px auto">
+                <img src="../img/star.png" /><img src="../img/star.png" /><img src="../img/star.png" /> 信息上报排行榜<img src="../img/star.png" /><img src="../img/star.png" /><img src="../img/star.png" />
+            </div>
+        </div>
+    </div>
+
+    <div class="order-list" id="order_list">
+        <!-- <div class="order-item">
+            <div class="no">1</div>
+            <div class="desc">
+                <img src="../img/p116.jpg" />
+                <div class="name">
+                    <span>武青春</span>
+                    <span class="memo">六盘水一部</span>
+                </div>
+                <div class="score">3分</div>
+                <div class="like">
+                    <span>123</span>
+                    <img src="../img/赞.png" />
+                </div>
+            </div>
+        </div>
+        <div class="order-item">
+            <div class="no">2</div>
+            <div class="desc">
+                <img src="../img/p116.jpg" />
+              
+                <div class="name">
+                    <span>武青春</span>
+                    <span class="memo">六盘水一部</span>
+                </div>
+                <div class="score">3分</div>
+                <div class="like">
+                    <span>123</span>
+                    <img src="../img/赞.png" />
+                </div>
+            </div>
+        </div>
+        <div class="order-item">
+            <div class="no">3</div>
+            <div class="desc">
+                <img src="../img/p111.jpg" />
+               
+                <div class="name">
+                    <span>武青春</span>
+                    <span class="memo">六盘水一部</span>
+                </div>
+                <div class="score">3分</div>
+                <div class="like">
+                    <span>123</span>
+                    <img src="../img/赞.png" />
+                </div>
+            </div>
+        </div>
+        <div class="order-item">
+            <div class="no">4</div>
+            <div class="desc">
+                <img src="../img/p116.jpg" />
+                <div class="name">
+                    <span>武青春</span>
+                    <span class="memo">六盘水一部</span>
+                </div>
+                <div class="score">3分</div>
+                <div class="like">
+                    <span>123</span>
+                    <img src="../img/赞.png" />
+                </div>
+            </div>
+        </div>
+        <div class="order-item">
+            <div class="no">4</div>
+            <div class="desc">
+                <img src="../img/p116.jpg" />
+                <div class="name">
+                    <span>武青春</span>
+                    <span class="memo">六盘水一部</span>
+                </div>
+                <div class="score">3分</div>
+                <div class="like">
+                    <span>123</span>
+                    <img src="../img/赞.png" />
+                </div>
+            </div>
+        </div>
+        <div class="order-item">
+            <div class="no">4</div>
+            <div class="desc">
+                <img src="../img/p116.jpg" />
+                <div class="name">
+                    <span>武青春</span>
+                    <span class="memo">六盘水一部</span>
+                </div>
+                <div class="score">3分</div>
+                <div class="like">
+                    <span>123</span>
+                    <img src="../img/赞.png" />
+                </div>
+            </div>
+        </div>
+        <div class="order-item">
+            <div class="no">4</div>
+            <div class="desc">
+                <img src="../img/p116.jpg" />
+                <div class="name">
+                    <span>武青春</span>
+                    <span class="memo">六盘水一部</span>
+                </div>
+                <div class="score">3分</div>
+                <div class="like">
+                    <span>123</span>
+                    <img src="../img/赞.png" />
+                </div>
+            </div> -->
+        <!-- </div> -->
+    </div>
+
+    <!-- body 最后 -->
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
+     <script src="../scripts/swiper.min.js"></script>
+    <script src="../scripts/main.js"></script>
+      <!-- mustache.js -->
+      <script src="https://cdn.bootcss.com/mustache.js/2.3.0/mustache.min.js" type='text/javascript' charset='utf-8'></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var bannerHtml = '<div class="swiper-slide" onclick="location.href=\'detail{{page}}.html?id={{id}}\'">' +
+                          '  <img src="{{cover}}"  />' +
+                          '  <span class="title">{{title}}</span>' +
+                          '</div>';
+
+        $(function () {
+            $.get("https://dangjain.ishoubei.com/article?type_id=54&limit=3", function (rel) {
+
+
+                var banners = [];
+
+                for (var i = 0; i < rel.rows.length; i++) {
+                    var page = "";
+
+                    if (rel.rows[i].urls.length > 0) {
+                        page = "";
+                    } else {
+                        page = "2";
+                    }
+
+                    banners.push(bannerHtml.replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
+
+                }
+
+                $("#banners").html(banners.join(""));
+
+
+                var swiper = new Swiper('.swiper-container', {
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                    paginationClickable: true,
+                    speed: 500,
+                    loop: true,
+                    observer: true,
+                    observeParents: true,
+                    autoplayDisableOnInteraction: false,
+                    autoplay: true,
+
+                });
+            });
+        });
+
+        $.get('https://dangjain.ishoubei.com/report/dding', function(data){
+            console.log(data);
+            data = data.map(function(item, index){
+                console.log(index)
+                item.number = index + 1
+                if(item.avatar === '') {
+                    item.avatar = 'http://7xrsfo.com1.z0.glb.clouddn.com/tx123.png'
+                }
+                return item
+            })
+            initList(data)
+        })
+
+        function initList(data) {
+            const list_template = [
+            '{{#data}}<div class="order-item">', 
+            '<div class="no">{{number}}</div>',
+            '<div class="desc">',
+                '<img src={{avatar}} />',
+                '<div class="name">',
+                    '<span>{{creator_name}}</span>',
+                    // '<span class="memo">六盘水一部</span>',
+                '</div>',
+                '<div class="score">{{count}}条</div>',
+            '</div>',
+        '</div>{{/data}}',
+            ].join('')
+        //初始化这个模板
+        Mustache.parse(list_template);
+        $("#order_list").html(Mustache.render(list_template, { data: data }))
+};
+    </script>
+</body>
+</html>
