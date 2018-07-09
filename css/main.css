@@ -815,6 +815,20 @@ video {
 .weui-label i,.weui-uploader__title i{
     color:red;
 }
+
+.rel_img{
+    position:absolute;
+    z-index:999;
+    right:20px;
+    height:80px;
+}
+.item_answer_div{
+    font-size: 10px;
+    color: green;
+}
+.item_div{
+    font-size: 10px;
+}
 .exam_div{
-    margin-top: 20px
+    margin-top: 20px;
 }

@@ -55,8 +55,15 @@ function getExamData() {
             console.log('已过答题时间 将 status 设置为已考完')
             exam.status = '已考完'
         }
+        console.log(exam.status)
+        exam.isHaveExamed = 
         initListHeader(exam);
-        initListBody(exam);
+        if(exam.status === '已考完'){
+            initListBodyForExamed(exam);
+        }
+        else {
+            initListBody(exam);
+        }
         initListFooter(exam);
         if(exam.status !== '已考完'){
             const rTime  = Number(exam.remainingSecond);
@@ -133,8 +140,8 @@ function getDetailQList(data, res, sortIds, type){
             title: q.question,
             uAnswer: getUAnswer(q.eq_id, rIdList, rResList), //用户的答案
             answer: q.answer, //题目的 answer
-            items: getSelectItems(q, type)
         };
+        item.items = getSelectItems(q, type, item.answer)
         item.isRight = item.uAnswer === item.answer //是否答题正确
         qList.push(item);
         return q;
@@ -144,7 +151,7 @@ function getDetailQList(data, res, sortIds, type){
     });
 }
 
-function getSelectItems(data, type){
+function getSelectItems(data, type, answer){
     let items = []
     if(type === '判断题'){
         items = [
@@ -178,7 +185,10 @@ function getSelectItems(data, type){
         }]
         
     }
-   return items
+   return items.map(function(item){
+    item.isRightAnswer = item.key === answer
+    return item
+})
 }
 
 function getShowIndex(id, rIdList){
@@ -252,7 +262,7 @@ function initListBody(exam) {
         '<div class="weui-cells weui-cells_radio">',
         '{{#items}}<label class="weui-cell weui-check__label" for="radio{{id}}{{key}}">',
         '<div class="weui-cell__bd">',
-        '<p>{{key}}. {{value}} </p>',
+        '<div class="item_div">{{key}}. {{value}} </div>',
         '</div>',
         '<div class="weui-cell__ft">',
         '{{^selected}}<input type="radio" class="weui-check" name="radio{{id}}" id="radio{{id}}{{key}}" value="{{key}}" onclick="setUserAnswer({{id}}, this.value)">{{/selected}}',
@@ -272,10 +282,45 @@ function initListBody(exam) {
     $("#list_body").html(Mustache.render(list_body_template, { data: data }))
 };
 
+
+function initListBodyForExamed(exam) {
+    const list_body_template = [
+        '{{#data}}<div class="weui-panel weui-panel_access test">',
+        '<div class="weui-panel__hd">{{indexTxt}}、{{key}} (每题{{averageScore}}分, 总共{{typeScore}}分)</div>',
+        '<div class="weui-panel__bd">',
+        '{{#qList}}<span href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">',
+        '<div class="weui-media-box__bd">',
+        '{{^isRight}}<img class="rel_img" src="../img/wrong.png"/>{{/isRight}}',
+        '{{#isRight}}<img class="rel_img" src="../img/right.png"/>{{/isRight}}',
+        '<p class="weui-media-box__desc">{{showIndex}}. {{title}}</p>',
+        '<div class="weui-cells weui-cells_radio">',
+        '{{#items}}<label class="weui-cell weui-check__label" for="radio{{id}}{{key}}">',
+        '<div class="weui-cell__bd">',
+        '{{#isRightAnswer}}<div class="item_answer_div">{{key}}. {{value}} </div>{{/isRightAnswer}}',
+        '{{^isRightAnswer}}<div class="item_div">{{key}}. {{value}} </div>{{/isRightAnswer}}',
+        '</div>',
+        '<div class="weui-cell__ft">',
+        '{{^selected}}<input type="radio" class="weui-check" name="radio{{id}}" id="radio{{id}}{{key}}" value="{{key}}" onclick="setUserAnswer({{id}}, this.value)">{{/selected}}',
+        '{{#selected}}<input type="radio" class="weui-check" name="radio{{id}}" checked="checked" id="radio{{id}}{{key}}" value="{{key}}" onclick="setUserAnswer({{id}}, this.value)">{{/selected}}',
+        '<span class="weui-icon-checked"></span>',
+        '</div>',
+        '</label>{{/items}}',
+        '</div>',
+        '</div>',
+        '</span>',
+        '</div>{{/qList}}',
+        '</div>{{/data}}',
+    ].join('');
+    //初始化这个模板
+    Mustache.parse(list_body_template);
+    const data = exam.question;
+    $("#list_body").html(Mustache.render(list_body_template, { data: data }))
+}
+
 function initListFooter(exam) {
     let text = '';
     if(exam.status === '已考完'){
-        text = "得分: " + exam.uScore + "分";
+        text = "得分: " + exam.uScore + "分" +  "&nbsp; &nbsp; &nbsp 点击重考";
         submitStatus = "已交卷"
     }
     else {
@@ -366,6 +411,8 @@ function finishExam(){
     }
     else{
         console.log(submitStatus)
+        console.log('重新考试')
+        //TODO: 重新考试
     }
 }
 
