@@ -118,12 +118,19 @@ function getAppLinkList(cb) {
         //工作调度 or 协作指导
         appLinkList.push({name: 'work', link: 'dingtalk://dingtalkclient/action/switchtab?index=3'})
         
-        //请假申请 工作审批 上报审批 - 审批
+        //工作审批 - 审批
         agentId = list.find(function(app){
             return app.name === '审批'
         }).agentId
         link = constLink  + '&agentid=' + agentId
         appLinkList.push({name: 'shenpi', link: link})
+
+
+        //请假申请 - 审批下请假 - 直接拼接 url
+        link = 'http://aflow.dingtalk.com/dingtalk/mobile/homepage.htm#custom?corpid=' +
+        'ding377ef05619dd758735c2f4657eb6378f' + 
+        '&showmenu=true&dd_progress=false&dd_share=false&swfrom=chat&TemplateManager=activate&processCode=PROC-0266829C-E296-4FA1-9436-86D68FED388C&formUuid=FORM-1412C89A-224A-4CE8-A4A9-1F6E4DCCF502'
+        appLinkList.push({name: 'leave', link: link})
         console.log(appLinkList)
         return cb(appLinkList)
     });
