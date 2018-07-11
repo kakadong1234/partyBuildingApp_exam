@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>教学资源</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- head 中 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <link href="../css/swiper.min.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="nav">
+        <span onclick="history.go(-1)">
+            <img src="../img/arrow-left.png" />
+        </span>
+        <span id="winTitle">教学资源</span>
+        <span id="btn-nav">导航</span>
+    </div>
+    <div class="weui-skin_android" id="androidActionsheet" style="display:none">
+        <div class="weui-mask" style="visibility:visible; opacity:0.5"></div>
+        <div class="weui-actionsheet">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell" onclick="location.href='index.html'">网上讲习所</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
+                 
+                <div class="weui-actionsheet__cell" onclick="location.href='center.html'">云学习中心</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">驻村云监管</div>
+                
+                <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form" id="searhForm" action="#">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+            </div>
+            <label class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>搜索需要的资源</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+    </div>
+    <div id="articleList"></div>
+    
+   
+    <!-- body 最后 -->
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
+     <script src="../scripts/swiper.min.js"></script>
+    <script src="../scripts/main.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+
+        var html = '<div class="weui-flex list">{{inner}}</div>';
+        var innerHtml = '<div class="weui-flex__item">' +
+           ' <div class="item">' +
+               '<a class="cover" href="detail{{page}}.html?id={{id}}">' +
+                    '<img src="{{cover}}" />' +
+                '</a>' +
+                '<a class="title" href="detail{{page}}.html?id={{id}}">{{title}}</a>' +
+                '<div class="comments weui-flex">' +
+                   ' <div class="star weui-flex__item">' +
+                        '<img src="../img/star.png" />' +
+                        '<img src="../img/star.png" />' +
+                       ' <img src="../img/star.png" />' +
+                       ' <img src="../img/star.png" />' +
+                       ' <img src="../img/star0.png" />' +
+                   ' </div>' +
+                    '<div class="users weui-flex__item">' +
+                        '<img src="../img/users.png" />' +
+                       ' <span>57165</span>' +
+                   ' </div>' +
+               ' </div>' +
+           ' </div>' +
+      '  </div>';
+
+
+        var innerHtml = ' <div class="weui-cell"><div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>'
+            + '<div class="weui-cell__bd">'
+               + '<a href="detail{{page}}.html?id={{id}}">{{title}}</a>'
+          + '</div>  </div>';
+
+        var typeId = GetQueryString("type_id");
+        var typeName = GetQueryString("type_name");
+
+        if (typeId == "" || typeId == null) {
+            typeId = 33;
+        }
+
+        $(function () {
+
+            $(".weui-search-bar__form#searhForm").on("submit", function () {
+
+                search();
+                // alert();
+                return false;
+            });
+
+
+            search();
+            if (typeName != "") {
+                $("#winTitle").html(decodeURIComponent(typeName));
+            }
+
+        });
+
+
+        function search() {
+            $.showLoading();
+
+            var key = $("#searchInput").val();
+
+            var url = "https://dangjain.ishoubei.com/article?limit=50&type_id=" + typeId;
+
+            if (key != "") {
+                url += "&title=" + key;
+            }
+            $.get(url, function (rel) {
+
+
+                //var strHtml = [];
+                //var strInner = [];
+
+                //for (var i = 0; i < rel.rows.length; i++) {
+
+                //    var page = "";
+
+                //    if (rel.rows[i].urls.length > 0) {
+                //        page = "";
+                //    } else {
+                //        page = "2";
+                //    }
+
+                //    strInner.push(innerHtml.replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
+                //    if (i % 2 == 1 || i == rel.rows.length - 1) {
+                //        strHtml.push(html.replace("{{inner}}", strInner.join("")));
+                //        strInner = [];
+                //    }
+                //}
+
+                //$("#articleList").html(strHtml.join(""));
+
+                var strHtml = [];
+                var strInner = [];
+
+                for (var i = 0; i < rel.rows.length; i++) {
+                    var page = "";
+
+                    if (rel.rows[i].urls.length > 0) {
+                        page = "";
+                    } else {
+                        page = "2";
+                    }
+
+                    strInner.push(innerHtml.replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
+
+                }
+
+                $("#articleList").html(strInner.join(""));
+                $.hideLoading();
+            });
+        }
+
+       
+    </script>
+</body>
+</html>
