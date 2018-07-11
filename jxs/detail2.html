@@ -71,197 +71,18 @@
     </div>
 
     <div class="panel detail comments">
-
-        <div class="panel-body">
-            <div class="card-alert">
-                <div class="alert-title">课后练习题</div>
-
-            </div>
-        </div>
-
-        <div class="weui-panel weui-panel_access test">
-            
-         
-            <div class="weui-panel__hd">一、单选题</div>
-            <div id="choseList">
-                <div class="weui-panel__bd">
-                    <span href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-                        <div class="weui-media-box__bd">
-                          
-                            <p class="weui-media-box__desc">{{no}}. {{question}}:   </p>
-
-                            <div class="weui-cells weui-cells_radio">
-                                <label class="weui-cell weui-check__label" for="x1{{id}}">
-                                    <div class="weui-cell__bd">
-                                        <p>A. {{answerA}}</p>
-                                    </div>
-                                    <div class="weui-cell__ft">
-                                        <input type="radio" name="radio_{{id}}" class="weui-check" value="a" id="x1{{id}}">
-                                        <span class="weui-icon-checked"></span>
-                                    </div>
-                                </label>
-                                <label class="weui-cell weui-check__label" for="x12{{id}}">
-
-                                    <div class="weui-cell__bd">
-                                        <p>B. {{answerB}}</p>
-                                    </div>
-                                    <div class="weui-cell__ft">
-                                        <input type="radio" name="radio_{{id}}" class="weui-check" value="b" id="x12{{id}}">
-                                        <span class="weui-icon-checked"></span>
-                                    </div>
-                                </label>
-                                <label class="weui-cell weui-check__label" for="x13{{id}}">
-
-                                    <div class="weui-cell__bd">
-                                        <p>C. {{answerC}}</p>
-                                    </div>
-                                    <div class="weui-cell__ft">
-                                        <input type="radio" name="radio_{{id}}" class="weui-check" value="c" id="x13{{id}}">
-                                        <span class="weui-icon-checked"></span>
-                                    </div>
-                                </label>
-                                <label class="weui-cell weui-check__label" for="x14{{id}}">
-
-                                    <div class="weui-cell__bd">
-                                        <p>D. {{answerD}}</p>
-                                    </div>
-                                    <div class="weui-cell__ft">
-                                        <input type="radio" name="radio_{{id}}" class="weui-check" value="d" id="x14{{id}}">
-                                        <span class="weui-icon-checked"></span>
-                                    </div>
-                                </label>
-
-                            </div>
-
-                        </div>
-                    </span>
-
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-        <!--<div class="weui-panel weui-panel_access test">
-            <div class="weui-panel__hd">二、多选题</div>
-
-            <div class="weui-panel__bd">
-                <span href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-                    <div class="weui-media-box__bd">
-
-                        <p class="weui-media-box__desc">1. 受到留党察看处分的党员，恢复党员权利后_____内，不得在党内担任和向党外组织推荐担任与其原任职务相当或者高于其原任职务的职务。</p>
-
-                        <div class="weui-cells weui-cells_checkbox">
-                            <label class="weui-cell weui-check__label" for="s111">
-                                <div class="weui-cell__hd">
-                                    <input type="checkbox" class="weui-check" name="checkbox1" id="s111">
-                                    <i class="weui-icon-checked"></i>
-                                </div>
-                                <div class="weui-cell__bd">
-                                    <p>A. 半年·· </p>
-                                </div>
-                            </label>
-                            <label class="weui-cell weui-check__label" for="s121">
-                                <div class="weui-cell__hd">
-                                    <input type="checkbox" name="checkbox1" class="weui-check" checked="checked" id="s121">
-                                    <i class="weui-icon-checked"></i>
-                                </div>
-                                <div class="weui-cell__bd">
-                                    <p>B. 一年·· </p>
-                                </div>
-                            </label>
-                            <label class="weui-cell weui-check__label" for="s122">
-                                <div class="weui-cell__hd">
-                                    <input type="checkbox" name="checkbox1" class="weui-check" checked="checked" id="s122">
-                                    <i class="weui-icon-checked"></i>
-                                </div>
-                                <div class="weui-cell__bd">
-                                    <p>C. 两年·      </p>
-                                </div>
-                            </label>
-                            <label class="weui-cell weui-check__label" for="s123">
-                                <div class="weui-cell__hd">
-                                    <input type="checkbox" name="checkbox1" class="weui-check" id="s123">
-                                    <i class="weui-icon-checked"></i>
-                                </div>
-                                <div class="weui-cell__bd">
-                                    <p>D. 三年</p>
-                                </div>
-                            </label>
-                        </div>
-
-                    </div>
-                </span>
-            </div>
-
-
-        </div>-->
-
-        <div class="weui-panel weui-panel_access test">
-            <div class="weui-panel__hd">二、判断题</div>
-            <div id="judgeList">
-                <div class="weui-panel__bd">
-                    <span href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-                        <div class="weui-media-box__bd">
-                            <p class="weui-media-box__desc">1. 下列___项是最根本的党内法规，是管党治党的总规矩:</p>
-                            <div class="weui-cells weui-cells_radio">
-                                <label class="weui-cell weui-check__label" for="y{{id}}">
-                                    <div class="weui-cell__bd">
-                                        <p>A. 对</p>
-                                    </div>
-                                    <div class="weui-cell__ft">
-                                        <input type="radio" class="weui-check" name="radio_{{id}}" value="v" id="y{{id}}">
-                                        <span class="weui-icon-checked"></span>
-                                    </div>
-                                </label>
-                                <label class="weui-cell weui-check__label" for="y2{{id}}">
-
-                                    <div class="weui-cell__bd">
-                                        <p>B. 错</p>
-                                    </div>
-                                    <div class="weui-cell__ft">
-                                        <input type="radio" name="radio_{{id}}" class="weui-check" value="x" id="y2{{id}}">
-                                        <span class="weui-icon-checked"></span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </span>
-                </div>
-            </div>
-        </div>
-
-        <div class="weui-panel__bd" style="padding:20px;">
-            <button id="btn-test" class="weui-btn weui-btn_default">提交练习</button>
-        </div>
-
-
-        <br /><br />
+            <div id="questions_title_div"></div>
+            <div id="choseList"></div>
+            <div id="judgeList"></div>
+            <div id="btn_test_div"></div>
+        <!-- <br /><br /> -->
     </div>
 
 
     <div class="panel detail comments">
-
-        <div class="panel-body">
-            <div class="card-alert">
-                <div class="alert-title">学习心得</div>
-                <div class="alert-body">
-                    <div class="item">
-                        <div class="user"><div><img src="../img/p111.jpg" id="avatar" />&nbsp; <span id="nickname">王小李</span></div>   <span id="time"></span></div>
-                        <p>
-                            <textarea id="xd-content" maxlength="200" rows="5" placeholder="请输入学习心得"></textarea>
-                            <button id="btn-comment" class="weui-btn weui-btn_default">提交学习心得</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="aqList">
-
-        </div>
+        <div id="addCommentList"></div>
+        <div id="aqList"></div>
+    </div>
 
         <!--<div class="panel-body">
             <div class="card-alert">
@@ -314,8 +135,19 @@
             });
 
         }
+        
+        var  questions_title_html = '<div class="panel-body">' +
+                                        '<div class="card-alert">' +
+                                            '<div class="alert-title" id="questions_title" >课后练习题</div>'+
+                                        '</div>' +
+                                    '</div>';
 
-        var cHtml = '<div class="weui-panel__bd">' +
+        var btn_test_html = '<div class="weui-panel__bd" style="padding:20px;">' +
+                                '<button id="btn-test" class="weui-btn weui-btn_default">提交练习</button>' +
+                            '</div>';                                         
+        var cHtml = '<div class="weui-panel weui-panel_access test">' + 
+                    '<div class="weui-panel__hd">一、单选题</div>' + 
+                    '<div class="weui-panel__bd">' +
                     '<span href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">' +
                      '   <div class="weui-media-box__bd"><img id="img_{{id}}" src="../img/right.png" class="right" style="display:none" />' +
                       '      <p class="weui-media-box__desc" answer="{{answer}}">{{no}}. {{question}}:   </p>' +
@@ -359,9 +191,12 @@
                            ' </div>' +
                   '      </div>' +
                    ' </span>' +
+               ' </div>' +
                ' </div>';
 
-        var jHtml = '<div class="weui-panel__bd">' +
+        var jHtml = '<div class="weui-panel weui-panel_access test">' + 
+                    '<div class="weui-panel__hd">二、判断题</div>' + 
+                    '<div class="weui-panel__bd">' +
                      '<span href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">' +
                          '<div class="weui-media-box__bd" ><img id="img_{{id}}" src="../img/wrong.png" class="right" style="display:none" />' +
                           '   <p class="weui-media-box__desc" answer="{{answer}}">{{no}}. {{question}}:</p>' +
@@ -387,7 +222,8 @@
              '                </div>' +
               '           </div>' +
                '      </span>' +
-                ' </div>'
+               ' </div>' + 
+                ' </div>';
 
         var questions = [];
 
@@ -425,6 +261,20 @@
                 location.href = 'test.html?ep_id=22&user_id=' + userInfo.emplId;
             });
 
+            var addCommentHtml = '<div class="panel-body">' +
+                '<div class="card-alert">' +
+                    '<div class="alert-title">学习心得</div>' +
+                    '<div class="alert-body">' +
+                        '<div class="item">' +
+                            '<div class="user"><div><img src="../img/p111.jpg" id="avatar" />&nbsp; <span id="nickname">王小李</span></div>   <span id="time"></span></div>' +
+                            '<p>' +
+                                '<textarea id="xd-content" maxlength="200" rows="5" placeholder="请输入学习心得"></textarea>' +
+                                '<button id="btn-comment" class="weui-btn weui-btn_default">提交学习心得</button>' +
+                            '</p>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
             var aqHtml = ' <div class="panel-body">' +
                             '<div class="card-alert">' +
                                 '<div class="alert-body">' +
@@ -447,12 +297,15 @@
                 $("#encode-content").html(rel.content);
                 $(".content").html($("#encode-content").text());
 
-
-
-                $.get("https://dangjain.ishoubei.com/article/" + id + "/aq", function (rel) {
-
+                const isShowComment = rel.comment === 0 ? false : true
+                if(isShowComment){
+                    var arr = []
+                    arr.push(addCommentHtml)
+                    $("#addCommentList").html(arr.join(""));
+                    $.get("https://dangjain.ishoubei.com/article/" + id + "/aq?status=-1", function (rel) {
                     var html = [];
-
+                    console.log(id)
+                    console.log(rel.aq) 
                     for (var i = 0; i < rel.aq.length; i++) {
 
                         html.push(
@@ -464,16 +317,25 @@
                                );
 
                     }
-
+                    console.log(html)
                     $("#aqList").html(html.join(""));
-
                 });
-
+                        
+                }
 
                 $.get("https://dangjain.ishoubei.com/article/" + id + "/question", function (rel) {
 
                     questions = rel.rows;
-
+                    console.log('------------------')
+                    console.log(questions)
+                    if(questions.length !== 0){
+                        var qArr = []
+                        qArr.push(questions_title_html)
+                        var btnArr = []
+                        btnArr.push(btn_test_html)
+                        $("#questions_title_div").html(qArr.join(""));
+                        $("#btn_test_div").html(btnArr.join(""));
+                    }
                     var chosehtml = [];
                     var html = [];
                     var jcount = 0;
