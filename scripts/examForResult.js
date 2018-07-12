@@ -64,6 +64,7 @@ function convertAPIDataToExam(data) {
     const exam = {
         examId: data.er_id,
         title: data.plan.ep_name,
+        limit: data.plan.ep_limit,
         status: getStatus(data.er_state),
         remainingSecond: getRemainingSecond(data.plan.epe_time), 
         uScore: data.er_mark,
@@ -227,7 +228,7 @@ function initListHeader(exam) {
         '<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">',
         '<div class="weui-media-box__bd">',
         '<h4 class="weui-media-box__title">{{title}}</h4>',
-        '<p class="weui-media-box__desc">（总分：{{totalScore}}分）</p>',
+        '<p class="weui-media-box__desc">（总分：{{totalScore}}分, 考试时长: {{limit}}分）</p>',
         '</div>',
         '</a>',
         '</div>',

@@ -7,6 +7,7 @@ const isFrom = getQueryString('isFrom')
 let er_id;
 let eq1_ids;
 let eq2_ids;
+const LOOP_TIME_INTERVAL_MINUTE = 1
 
 
 var userInfo = {};
@@ -67,7 +68,7 @@ function getExamData() {
         if(exam.status !== '已考完'){
             const rTime  = Number(exam.remainingSecond); //TODO: 剩余时间
             startCountDown(rTime);
-            // startLoopUserAnswer(rTime)  //TODO: 时间轮训
+            startLoopExamTime()  
         }
     });
 };
@@ -76,8 +77,9 @@ function convertAPIDataToExam(data) {
     const exam = {
         examId: data.er_id,
         title: data.plan.ep_name,
+        limit: data.plan.ep_limit,
         status: getStatus(data.er_state),
-        remainingSecond: getRemainingSecond(data.plan.epe_time), 
+        remainingSecond: getRemainingSecond(data.er_surp * 60),
         uScore: data.er_mark,
         question: getQuestions(data)
     };
@@ -99,10 +101,12 @@ function getStatus(status){
     return status === 5 ? "已考完" : "考试中" //考试中, 已考完
 }
 
-function getRemainingSecond(endTime){ 
-    const endTimeStamp = newDate(endTime).getTime()
-    const currentTimeStamp = Date.now()
-    return parseInt((endTimeStamp - currentTimeStamp) / 1000); //剩余秒数 -- status === '考试中' 才有意义
+function getRemainingSecond(surpSecond){ 
+    // const endTimeStamp = newDate(endTime).getTime()
+    // const currentTimeStamp = Date.now()
+    // return parseInt((endTimeStamp - currentTimeStamp) / 1000); //剩余秒数 -- status === '考试中' 才有意义
+    const localSurpSecondTime = getSurpTime()
+    return localSurpSecondTime ? localSurpSecondTime : surpSecond //有本地缓存就用本地, 不然使用服务器
 }
 
 function getQuestions(data){
@@ -239,7 +243,7 @@ function initListHeader(exam) {
         '<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">',
         '<div class="weui-media-box__bd">',
         '<h4 class="weui-media-box__title">{{title}}</h4>',
-        '<p class="weui-media-box__desc">（总分：{{totalScore}}分）</p>',
+        '<p class="weui-media-box__desc">（总分：{{totalScore}}分, 考试时长: {{limit}}分）</p>',
         '</div>',
         '</a>',
         '</div>',
@@ -304,6 +308,7 @@ function startCountDown(remainingTime){
                 counter++;
                 const rTime = remainingTime - counter;
                 console.log(rTime);
+                setSurpTime(rTime);
                 if(rTime <= 0){
                     $("#btn-submit").html(getTimeText(rTime) + "交卷中"); 
                     finishExam()
@@ -320,22 +325,19 @@ function startCountDown(remainingTime){
 }
 
 
-// function startLoopUserAnswer(remainingTime){
-//     var timer = function () {
-//         setTimeout(function () {
-//             console.log('-------------loopAnswer')
-//             if(submitStatus === "未交卷") {
-//                 const rTime = remainingTime - counter;
-//                 console.log(rTime);
-//                 if(rTime > 0){
-//                     loopUserAnswer()
-//                     timer();
-//                 }
-//             }
-//         }, 10000);
-//     }
-//     timer();
-// }
+function startLoopExamTime(){
+    var timer = function () {
+        setTimeout(function () {
+            console.log('-------------LoopExamTime')
+            if(submitStatus === "未交卷") {
+                loopExamTime()
+                timer()
+            }
+        }, LOOP_TIME_INTERVAL_MINUTE * 60 * 1000);
+    }
+    timer();
+}
+
 function finishExam(){
     //交卷
     if(submitStatus === "未交卷" || submitStatus === "交卷失败"){
@@ -378,9 +380,27 @@ function finishExam(){
     }
 }
 
+function loopExamTime(){
+    //轮训用户答题情况
+    console.log('同步考试时间')
+    const postData = {
+        er_id,
+        er_surp: LOOP_TIME_INTERVAL_MINUTE,
+    }
+    $.ajax({  
+       type: "put",  
+       url: "https://dangjain.ishoubei.com/exam/test",  
+       contentType : "application/x-www-form-urlencoded; charset=UTF-8",  
+       data: $.param(postData),  
+       success: function (res) {  
+           console.log(res)
+       } 
+   }); 
+}
+
 function loopUserAnswer(){
      //轮训用户答题情况
-     console.log('轮训用户答题情况')
+     console.log('上传用户答题情况')
      console.log('-----用户的答案是')
      console.log(answer)
      const eq1_res = getLastEqRes(answer, eq1_ids)
@@ -461,3 +481,26 @@ function newDate(strdate) {
     date = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);  
     return date;  
 } 
+
+function setSurpTime(surpSecond) {
+    if(!window.localStorage){
+        // alert("浏览器需要支持localstorage");
+        return false;
+    }else{
+        const storage=window.localStorage;
+        const key = 'er_id_' + er_id
+        storage.setItem(key, surpSecond)
+        return true
+    }
+}
+
+function getSurpTime() {
+    if(!window.localStorage){
+        // alert("浏览器需要支持localstorage");
+        return false;
+    }else{
+        const storage=window.localStorage;
+        const key = 'er_id_' + er_id
+        return Number(storage.getItem(key))
+    }
+}
