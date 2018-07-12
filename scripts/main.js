@@ -256,6 +256,13 @@ $(function () {
 
 
 function getUserInfo(url, callback, callbackGps) {
+    if(!isMobile()) { //pc上调试
+        return typeof callback == "function" && callback({
+            emplId: 'xiaowei',
+            avatar: 'http://7xrsfo.com1.z0.glb.clouddn.com/tx123.png',
+            nickname: '晓伟'
+        });
+    }
     $.get("https://dangjain.ishoubei.com/jsapi-oauth?pwd=sddkhhyy&url=" + url, function (e) {
         var _config = {};
         _config = e;
@@ -268,7 +275,6 @@ function getUserInfo(url, callback, callbackGps) {
             signature: _config.signature,
             jsApiList: ['runtime.info', 'biz.contact.choose', 'device.notification.confirm', 'device.notification.prompt', 'biz.ding.post', 'biz.util.openLink', 'biz.util.uploadImage', 'biz.user.get', 'device.geolocation.get', 'biz.map.locate']
         });
-        //alert(JSON.stringify(_config));
         dd.error(function (error) {
             /**
              {
@@ -276,9 +282,10 @@ function getUserInfo(url, callback, callbackGps) {
                 errorCode:"错误码"
              }
             **/
+            console.log('1')
             alert('dd error: ' + JSON.stringify(error));
         });
-
+        console.log('2')
         //    alert(JSON.stringify(_config));
 
         dd.ready(function () {
@@ -365,8 +372,24 @@ function getUserInfo(url, callback, callbackGps) {
             });
 
         });
-
+        console.log('3')
     });
 
 }
 
+function isMobile() {
+    var userAgentInfo = navigator.userAgent;
+    console.log('userAgentInfo' + userAgentInfo)
+    var mobileAgents = [ "Android", "iPhone", "SymbianOS", "Windows Phone", "iPad","iPod"];
+
+    var mobile_flag = false;
+
+    //根据userAgent判断是否是手机
+    for (var v = 0; v < mobileAgents.length; v++) {
+        if (userAgentInfo.indexOf(mobileAgents[v]) > 0) {
+            mobile_flag = true;
+            break;
+        }
+    }
+     return mobile_flag;
+}
