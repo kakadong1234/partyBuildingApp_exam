@@ -1,6 +1,7 @@
 ﻿let counter = 0; //定时运行次数 == 消耗时间秒数
 let submitStatus = "未交卷"; //未交卷, 交卷中, 已交卷, 交卷失败
 let answer = [];
+const isForm = getQueryString('isFrom')
 const er_id = getQueryString('er_id')
 const user_id = getQueryString('user_id')
 let ep_id;
@@ -277,7 +278,7 @@ function initListBodyForExamed(exam) {
 function initListFooter(exam) {
     let text = '';
     // if(exam.status === '已考完'){
-        text = "得分: " + exam.uScore + "分" +  "&nbsp; &nbsp; &nbsp 点击重考";
+        text = "得分: " + exam.uScore + "分";
         submitStatus = "已交卷"
     // }
     // else {
@@ -290,10 +291,10 @@ function initListFooter(exam) {
 };
 
 function finishExam(){
-    //重考
+    //
     console.log(submitStatus)
-    console.log('重新考试')
-    window.location = 'test.html?ep_id=' + ep_id + '&user_id=' + user_id;
+    // console.log('重新考试')
+    // window.location = 'test.html?ep_id=' + ep_id + '&user_id=' + user_id;
 }
 
 function setUserAnswer(id, key) {
@@ -307,6 +308,16 @@ function setUserAnswer(id, key) {
     // console.log(answer)
     // loopUserAnswer()
 };
+
+function backToList() {
+    if(isForm === 'myList') {
+        window.location = 'myTestList.html'
+    }
+
+    if(isForm === 'center') {
+        window.location = 'center.html'
+    }
+}
 
 function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");

@@ -3,6 +3,7 @@ let submitStatus = "未交卷"; //未交卷, 交卷中, 已交卷, 交卷失败
 let answer = [];
 const ep_id = getQueryString('ep_id')
 const user_id = getQueryString('user_id')
+const isFrom = getQueryString('isFrom')
 let er_id;
 let eq1_ids;
 let eq2_ids;
@@ -54,7 +55,7 @@ function getExamData() {
         if(!exam.uScore && exam.remainingSecond <= 0){ //0分 --> 未答 或 未提交
             console.log('已过答题时间 将 status 设置为已考完')
             exam.status = '已考完'
-            window.location = 'examForResult.html?er_id=' + er_id + '&user_id=' + user_id;
+            window.location = 'examForResult.html?er_id=' + er_id + '&user_id=' + user_id + '&isFrom=' + isFrom;
         }
         console.log(exam.status)
         initListHeader(exam);
@@ -359,7 +360,7 @@ function finishExam(){
                 submitStatus = "已交卷"
                 $("#btn-submit").html(submitStatus); 
                 console.log(submitStatus)
-                window.location = 'examForResult.html?er_id=' + er_id + '&user_id=' + user_id;
+                window.location = 'examForResult.html?er_id=' + er_id + '&user_id=' + user_id + '&isFrom=' + isFrom;
             },
             error: function () {
                 /*错误信息处理*/
