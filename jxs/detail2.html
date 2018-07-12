@@ -143,7 +143,7 @@
                                     '</div>';
 
         var btn_test_html = '<div class="weui-panel__bd" style="padding:20px;">' +
-                                '<button id="btn-test" class="weui-btn weui-btn_default">提交练习</button>' +
+                                '<button id="btn-test" class="weui-btn weui-btn_default" onClick="uploadTest()">提交练习</button>' +
                             '</div>';                                         
         var cHtml = '<div class="weui-panel weui-panel_access test">' + 
                     '<div class="weui-panel__hd">一、单选题</div>' + 
@@ -227,6 +227,49 @@
 
         var questions = [];
 
+        function addComment() {
+            var user = userInfo || {};
+            var content = $("#xd-content").val();
+            if (content == "") {
+                alert("请输入心得体会！");
+                return false;
+            }
+            const postData = {
+                "title": articleTitle,
+                "content": content,
+                "user_id": user.emplId,
+                "cover": user.avatar,
+                "author": user.nickName
+            }
+            $.ajax({  
+                type: "post",  
+                url: "https://dangjain.ishoubei.com/article/" + aritcleId + "/aq", 
+                contentType : "application/x-www-form-urlencoded; charset=UTF-8",  
+                data: $.param(postData),  
+                success: function (res) {  
+                    alert("提交成功，等待审核");
+                } 
+            }); 
+        }
+
+         function uploadTest() {
+            for (var i = 0; i < questions.length; i++) {
+
+                console.log($("input[type=radio][name=radio_" + questions[i].eq_id + "]:checked").val());
+                var answer = $("input[type=radio][name=radio_" + questions[i].eq_id + "]:checked").val();
+                if (answer !== undefined) {
+                    console.log(answer)
+                    console.log(questions[i].answer)
+                    if (answer == questions[i].answer) {
+                        $("img#img_" + questions[i].eq_id).attr("src", "../img/right.png").show();
+                    } else {
+                        $("img#img_" + questions[i].eq_id).attr("src", "../img/wrong.png").show();
+                    }
+                }
+
+            }
+        }
+
         $(function () {
 
             getUserInfo(url, setUserInfo);
@@ -269,7 +312,7 @@
                             '<div class="user"><div><img src="../img/p111.jpg" id="avatar" />&nbsp; <span id="nickname">王小李</span></div>   <span id="time"></span></div>' +
                             '<p>' +
                                 '<textarea id="xd-content" maxlength="200" rows="5" placeholder="请输入学习心得"></textarea>' +
-                                '<button id="btn-comment" class="weui-btn weui-btn_default">提交学习心得</button>' +
+                                '<button id="btn-comment" class="weui-btn weui-btn_default" onClick="addComment()">提交学习心得</button>' +
                             '</p>' +
                         '</div>' +
                     '</div>' +
@@ -302,7 +345,7 @@
                     var arr = []
                     arr.push(addCommentHtml)
                     $("#addCommentList").html(arr.join(""));
-                    $.get("https://dangjain.ishoubei.com/article/" + id + "/aq?status=-1", function (rel) {
+                    $.get("https://dangjain.ishoubei.com/article/" + id + "/aq?status=0", function (rel) {
                     var html = [];
                     console.log(id)
                     console.log(rel.aq) 
