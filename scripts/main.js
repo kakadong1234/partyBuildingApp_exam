@@ -260,7 +260,7 @@ function getUserInfo(url, callback, callbackGps) {
         return typeof callback == "function" && callback({
             emplId: 'xiaowei',
             avatar: 'http://7xrsfo.com1.z0.glb.clouddn.com/tx123.png',
-            nickname: '晓伟'
+            nickName: '晓伟'
         });
     }
     $.get("https://dangjain.ishoubei.com/jsapi-oauth?pwd=sddkhhyy&url=" + url, function (e) {
