@@ -13,15 +13,12 @@ var userInfo = {};
 var url = location.href;
 
 //  alert(location.href);
-function initConst(info) {
-    userInfo = info;
-    user_id = userInfo.emplId
-}
-
-
+// function initConst(info) {
+//     userInfo = info;
+//     user_id = userInfo.emplId
+// }
 
 $(function () {
-    //getUserInfo(url, initConst); //TODO
     console.log('er_id is ' + er_id + ', user_id is ' + user_id)
     initExamList();
 })

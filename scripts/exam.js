@@ -2,7 +2,7 @@
 let submitStatus = "未交卷"; //未交卷, 交卷中, 已交卷, 交卷失败
 let answer = [];
 const ep_id = getQueryString('ep_id')
-const user_id = getQueryString('user_id')
+let user_id = getQueryString('user_id')
 const isFrom = getQueryString('isFrom')
 let er_id;
 let eq1_ids;
@@ -16,14 +16,17 @@ var url = location.href;
 function initConst(info) {
     userInfo = info;
     user_id = userInfo.emplId
-}
-
-
-
-$(function () {
-    //getUserInfo(url, initConst); //TODO
     console.log('ep_id is ' + ep_id + ', user_id is ' + user_id)
     initExamList();
+}
+
+$(function () {
+    if(user_id) {
+        initExamList();
+    }
+    else {
+        getUserInfo(url, initConst); 
+    }
 })
 
 function initExamList() {
@@ -428,7 +431,7 @@ function sendUserAnswer(data) {
         url: "https://dangjain.ishoubei.com/exam/plan",  
         contentType : "application/x-www-form-urlencoded; charset=UTF-8",  
         data: $.param({
-            user_id: "xuehaifeng",
+            user_id: user_id,
             ep_name: "六盘水钟山区学习习近平智慧党建考试",
             ep_type: "一试一卷",
             eps_time: "2018-06-01 08:00:00",

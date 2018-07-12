@@ -1,6 +1,16 @@
+let user_id = ''
+
+
 $(function () {
-    initExamList();
+    getUserInfo(url, initConst);
 })
+
+function initConst(info) {
+    userInfo = info;
+    user_id = userInfo.emplId
+    console.log('user_id is ' + user_id)
+    initExamList();
+}
 
 function initExamList() {
     getExamList();
@@ -22,6 +32,7 @@ function getExamList() {
             examPlan.is_show_exam_btn = examPlan.show_status === '未开考' ? false : true
             // // examPlan.exam_btn_txt = examPlan.show_status === '考试中' ? '去考试' : '查看考试结果' 
             examPlan.exam_btn_txt = '去考试'
+            examPlan.user_id = user_id
             return examPlan
         })
         console.log(data);

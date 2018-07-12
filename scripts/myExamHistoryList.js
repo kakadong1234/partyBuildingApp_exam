@@ -1,17 +1,17 @@
-let user_id = 'xuehaifeng'
+let user_id = '';
 var userInfo = {};
 var url = location.href;
 function initConst(info) {
     userInfo = info;
     user_id = userInfo.emplId
+    console.log('user_id is ' + user_id)
+    initExamList();
 }
 
 
 
 $(function () {
-    //getUserInfo(url, initConst); //TODO
-    console.log('user_id is ' + user_id)
-    initExamList();
+    getUserInfo(url, initConst);
 })
 
 function initExamList() {
