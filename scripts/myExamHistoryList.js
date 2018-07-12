@@ -39,6 +39,7 @@ function getExamList() {
             examPlan.isExamed = !examPlan.isInExaming
             examPlan.show_status = examPlan.isInExaming ? '考试中' : '已考完'
             examPlan.exam_btn_txt = examPlan.show_status === '考试中' ? '继续考试' : '重新考试' 
+            examPlan.user_id = user_id
             return examPlan
         })
         console.log(data);
