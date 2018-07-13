@@ -29,34 +29,58 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     -webkit-align-items: center;
-    align-items: center;
-    min-height: 180px;
+    align-items: center;   
+    position:relative;
+    max-height:198px;
+    overflow:hidden;
 }
 
     .swiper-slide img {
         width: 100%;
     }
+    .swiper-slide .title{
+        position:absolute;
+        bottom:0px;
+        right:0;
+        left:0;
+        text-align:left;
+        padding:5px 20px;
+        font-size:16px;
+        display:block;
+        background:rgba(0, 0, 0,0.5);
+        color:#fff;
+         text-overflow:    ellipsis; 
+        white-space:nowrap;
+        overflow:hidden;
+        display:block;
+        max-height:25px;
+        padding-bottom:10px;
+    }
+    #banners{
+         height: 198px;
+    }
 
 
-.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+/*.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
     margin: 0;
-}
+}*/
 
 .swiper-pagination-bullet {
-    width: 48px;
+    /*width: 48px;
     height: 3px;
-    border-radius: 0;
+    border-radius: 0;*/
     background: #fff;
-    opacity: 0.5;
+    opacity: 0.8;
+   
 }
 
 .swiper-pagination-bullet-active {
     background: #D0021B;
-    width: 28px;
+   /**width: 28px;*/
 }
 
 .swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
-    bottom: 2px;
+    bottom: -4px;
 }
 
 .weui-grid__icon {
@@ -76,11 +100,12 @@ body {
     }
 
 .info.weui-cells__title {
-    font-size: 14px;
+    font-size: 16px;
     background: #f1f1f1;
     float: left;
     width: 100%;
     padding: 10px 0;
+   
     margin: 0;
 }
 
@@ -90,14 +115,21 @@ body {
 
     .info.weui-cells__title .title {
         float: left;
+        color:#777;
+        font-weight:bold;
     }
 
     .info.weui-cells__title .alert {
-        font-size: 10px;
+        font-size: 12px;
         float: right;
         margin-top: 2px;
         position: relative;
         top: 3px;
+    }
+
+    .item-cover{
+        height:50px;
+        width:80px;
     }
 
 .alert i {
@@ -146,7 +178,7 @@ body {
 
         .list .item .comments, a {
             color: #5E6977;
-            font-size: 12px;
+            font-size: 16px;
         }
 
         .list .item a.title, .comments {
@@ -172,21 +204,32 @@ body {
             color: #c1c1c1;
         }
 
+        .comments textarea{
+            width:95%;
+            
+            padding:6px;
+        }
+
 /*云监督*/
-.menus {
-    margin: 15px 25px;
+.weui-flex__item.menu{
+   padding:20px 0;
 }
 
+.menus{
+   
+
+}
     .menus a {
         display: block;
         border-radius: 5px;
         background-color: #F26565;
         color: #f1f1f1;
-        padding: 15px;
-        float: right;
+        padding: 15px;      
         font-size: 16px;
-        min-width: 125px;
-        margin-right: 5px;
+        width: 120px;
+        height:30px;
+        margin:10px auto;
+
     }
 
         .menus a img {
@@ -370,10 +413,24 @@ body {
         z-index: 999;
     }
 
+    #map-box{
+        position:relative;
+    }
+    #setCenter{
+        position:absolute;
+        bottom:10px;
+        right:10px;
+
+    }
+    #setCenter img{
+        height:24px;
+
+    }
+
 #map-container {
     width: 100%;
-    height: 360px;
-    margin-top: 5px;
+    height: 260px;
+   
 }
 
 .amap-copyright {
@@ -393,7 +450,7 @@ body {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        padding: 5px 25px;
+        padding: 5px 10px;
     }
 
 .panel-title span {
@@ -403,6 +460,11 @@ body {
     color: #D0021B;
     border-left: 3px solid #D0021B;
     padding: 0 5px;
+   
+}
+
+.panel-title.index span{
+     font-size:16px;
 }
 
 .panel-title a {
@@ -411,6 +473,11 @@ body {
     margin-right: 1px;
     color: #3BA3F8;
     padding: 5px;
+   
+}
+.panel-title.index a{
+     padding-top:20px;
+    font-size:12px;
 }
 
 .panel-body {
@@ -523,7 +590,7 @@ body {
 .weui-skin_android .weui-actionsheet {
     left: 75%;
     width: 200px;
-    top: 223px;
+    top: 173px;
 }
 
 .weui-actionsheet__menu {
@@ -731,7 +798,7 @@ video {
 }
 .detail .content{
     padding:20px;
-    font-size:12px;   
+    font-size:16px;   
 
 }
 .detail .content > p,.detail .content > div{
@@ -809,34 +876,12 @@ video {
     position:absolute;
     z-index:999;
     right:20px;
-    height:80px;
+    height:60px;
 }
 
 .weui-label i,.weui-uploader__title i{
     color:red;
 }
-
-
-
-
-/* 新增 */
-.rel_img{
-    position:absolute;
-    z-index:999;
-    right:20px;
-    height: 80px;
-}
-.item_answer_div{
-    font-size: 10px;
-    color: blue;
-}
-.item_div{
-    font-size: 10px;
-}
-.exam_div{
-    margin-top: 20px;
-}
-
 
 /* 新增 */
 .rel_img{

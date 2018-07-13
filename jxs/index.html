@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>网上讲习所</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- head 中 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <link href="../css/swiper.min.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+    <div class="nav">
+        <span onclick="history.go(-1)">
+            <img src="../img/arrow-left.png" />
+        </span>
+        <span>网上讲习所</span>
+        <span id="btn-nav">导航</span>
+    </div>
+
+    <!--http://39.104.67.0:8443/ehome/ehome.html 党群E家
+    http://39.104.67.0:8443/ehome/personnel.html 人才直通车-->
+    <div class="weui-skin_android" id="androidActionsheet" style="display:none">
+        <div class="weui-mask" style="visibility:visible; opacity:0.5"></div>
+        <div class="weui-actionsheet">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell" onclick="location.href='index.html'">网上讲习所</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
+
+                <div class="weui-actionsheet__cell" onclick="location.href='center.html'">云学习中心</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">驻村云监管</div>
+
+                <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
+            </div>
+        </div>
+    </div>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="banners">
+            <div class="swiper-slide">
+                <img src="../img/banner2.png" />
+                <div class="title"></div>
+            </div>
+            <div class="swiper-slide">
+                <img src="../img/banner1.png" />
+                <div class="title"></div>
+            </div>
+            <div class="swiper-slide">
+                <img src="../img/banner2.png" />
+                <div class="title"></div>
+            </div>
+
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="weui-grids" id="navs">
+        <a href="indexList.html?type_id=22" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#F1514B">
+                <img src="../img/dhfff.png" />
+            </div>
+            <p class="weui-grid__label">
+                党建
+            </p>
+        </a>
+        <a href="indexList.html?type_id=23" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#71AAFA">
+                <img src="../img/农技.png" />
+
+            </div>
+            <p class="weui-grid__label">
+                农技
+            </p>
+        </a>
+        <a href="indexList.html?type_id=27" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#54CED4">
+                <img src="../img/jiaoyu.png" />
+
+            </div>
+            <p class="weui-grid__label">
+                教育
+            </p>
+        </a>
+        <a href="indexList.html?type_id=25" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#3BA3F8">
+                <img src="../img/法律.png" />
+
+            </div>
+            <p class="weui-grid__label">
+                法律
+            </p>
+        </a>
+        <a href="indexList.html?type_id=26" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#9FCB87">
+                <img src="../img/科技.png" />
+            </div>
+            <p class="weui-grid__label">
+                公告
+            </p>
+        </a>
+        <a href="indexList.html?type_id=27" class="weui-grid js_grid">
+            <div class="weui-grid__icon" style="background:#F2A04B">
+
+                <img src="../img/other.png" />
+            </div>
+            <p class="weui-grid__label">
+                其他
+            </p>
+        </a>
+
+    </div>
+
+    <div class="panel study">
+        <div class="panel-title index">
+            <span>习近平新时代中国特色社会主义</span>
+
+            <a href="indexList.html?type_name=习近平新时代中国特色社会主义&type_id=21" class="more">查看更多</a>
+        </div>
+
+        <div id="articleList" class="weui-cells" style="margin-top:0">
+
+        </div>
+    </div>
+
+
+
+    <!-- body 最后 -->
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>
+
+    <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
+    <script src="../scripts/swiper.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/js/swiper.min.js" type='text/javascript' charset='utf-8'></script>-->
+    <script src="../scripts/main.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+
+        var bgColor = ["#F1514B", "#71AAFA", "#54CED4", "#3BA3F8", "#9FCB87", "#F2A04B", "#54CED4", "#71AAFA", "#F1514B", "#3BA3F8"];
+
+
+
+        var html = '<div class="weui-flex list">{{inner}}</div>';
+        var innerHtml = '<div class="weui-flex__item">' +
+           ' <div class="item">' +
+               '<a class="cover" href="detail{{page}}.html?id={{id}}">' +
+                    '<img src="{{cover}}" />' +
+                '</a>' +
+                '<a class="title" href="detail{{page}}.html?id={{id}}">{{title}}</a>' +
+                '<div class="comments weui-flex">' +
+                   ' <div class="star weui-flex__item">' +
+                        '<img src="../img/star.png" />' +
+                        '<img src="../img/star.png" />' +
+                       ' <img src="../img/star.png" />' +
+                       ' <img src="../img/star.png" />' +
+                       ' <img src="../img/star0.png" />' +
+                   ' </div>' +
+                    '<div class="users weui-flex__item">' +
+                        '<img src="../img/users.png" />' +
+                       ' <span>57165</span>' +
+                   ' </div>' +
+               ' </div>' +
+           ' </div>' +
+      '  </div>';
+
+
+        var navItemHtml = '<a href="indexList.html?type_id={{type_id}}&type_name={{type_name}}" class="weui-grid js_grid">' +
+                            '<div class="weui-grid__icon" style="background:{{bgcolor}}">' +
+                               ' <img src="{{type_icon}}" />' +
+                           ' </div>' +
+                           ' <p class="weui-grid__label">' +
+                           '     {{type_name}}' +
+                         '   </p>' +
+                      '  </a>';
+
+        var innerHtml = ' <div class="weui-cell"><div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>'
+            + '<div class="weui-cell__bd">'
+               + '<a href="detail{{page}}.html?id={{id}}">{{title}}</a>'
+          + '</div>  </div>';
+
+        var bannerHtml = '<div class="swiper-slide" onclick="location.href=\'detail{{page}}.html?id={{id}}\'">' +
+                         '  <img src="{{cover}}"  />' +
+                         '  <span class="title">{{title}}</span>' +
+                         '</div>';
+        var userInfo = {};
+        var url = window.location.href;
+
+
+        function setUserInfo(info) {
+            userInfo = info;
+        }
+
+
+        function setUserGPS(gps) {
+
+          //  alert(JSON.stringify(gps));
+
+           
+
+            $.ajax({
+                url: "https://dangjain.ishoubei.com/cadre",
+                method: "Post",
+                data: {
+                    user_id: userInfo.emplId,
+                    longitude: gps.longitude,
+                    latitude: gps.latitude,
+                    address: gps.address
+                 
+                },
+                success: function (re) {
+                    // alert(JSON.stringify(re));
+                },
+                fail: function (re) {
+                    alert(JSON.stringify(re));
+                }
+            });
+
+        }
+
+
+
+
+
+
+
+        $(function () {
+
+            getUserInfo(url, setUserInfo, setUserGPS);
+
+
+            $.get("https://dangjain.ishoubei.com/article?type_id=62&limit=3", function (rel) {
+
+
+                var banners = [];
+
+                for (var i = 0; i < rel.rows.length; i++) {
+                    var page = "";
+
+                    if (rel.rows[i].urls.length > 0) {
+                        page = "";
+                    } else {
+                        page = "2";
+                    }
+
+                    banners.push(bannerHtml.replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
+
+                }
+
+                $("#banners").html(banners.join(""));
+
+
+                var swiper = new Swiper('.swiper-container', {
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                    paginationClickable: true,
+                    speed: 500,
+                    loop: true,
+                    observer: true,
+                    observeParents: true,
+                    autoplayDisableOnInteraction: false,
+                    autoplay: true,
+
+                });
+            });
+
+            //目录
+            $.get("https://dangjain.ishoubei.com/type?type_id=20&status=0&type_state=2", function (rel) {
+
+               
+                var strInner = [];
+
+                for (var i = 0; i < rel.data.length; i++) {                 
+
+                    strInner.push(navItemHtml
+                        .replace("{{type_id}}", rel.data[i].type_id)
+                        .myReplace("{{type_name}}", rel.data[i].type_name)
+                        .replace("{{type_icon}}", rel.data[i].type_icon)
+                        .replace("{{bgcolor}}", bgColor[i])
+                        );
+                    
+                }
+
+                $("#navs").html(strInner.join(""));
+            });
+
+            $.get("https://dangjain.ishoubei.com/article?type_id=21&limit=3", function (rel) {
+
+                var strHtml = [];
+                var strInner = [];
+
+                for (var i = 0; i < rel.rows.length; i++) {
+                    var page = "";
+
+                    if (rel.rows[i].urls.length > 0) {
+                        page = "";
+                    } else {
+                        page = "2";
+                    }
+
+                    strInner.push(innerHtml.replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
+
+                }
+
+                $("#articleList").html(strInner.join(""));
+            });
+        });
+
+
+
+    </script>
+</body>
+</html>
