@@ -1,4 +1,4 @@
-let user_id = '';
+var user_id = '';
 var userInfo = {};
 var url = location.href;
 function initConst(info) {

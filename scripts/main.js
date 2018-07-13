@@ -72,7 +72,7 @@ function GetQueryString(name) {
 
 function openLink(name) {
     getAppLinkList(function(appList){
-        const link = appList.find(function(app){
+        var link = appList.find(function(app){
             return app.name === name
         }).link
         console.log(link)
@@ -93,19 +93,19 @@ function openLink(name) {
     })
 };
 
-const appLinkList = []
+var appLinkList = []
 function getAppLinkList(cb) {
     console.log(appLinkList.length)
     if(appLinkList.length > 0) {
         return cb(appLinkList)
     }
     getDDAppList(function(list){
-        const constLink = 'dingtalk://dingtalkclient/action/switchtab?index=2&name=work&scene=1&corpid=ding377ef05619dd758735c2f4657eb6378f'
+        var constLink = 'dingtalk://dingtalkclient/action/switchtab?index=2&name=work&scene=1&corpid=ding377ef05619dd758735c2f4657eb6378f'
         //签到
-        let agentId = list.find(function(app){
+        var agentId = list.find(function(app){
             return app.name === '签到'
         }).agentId
-        let link = constLink  + '&agentid=' + agentId
+        var link = constLink  + '&agentid=' + agentId
         appLinkList.push({name: 'singIn', link: link})
         
         //信息上报 - 日志
@@ -139,7 +139,7 @@ function getAppLinkList(cb) {
 
 function getDDAppList(cb){
     $.get("https://dangjain.ishoubei.com/dding?key=get_microapp_list ", function (rel) {
-        const list = rel.appList
+        var list = rel.appList
         return cb(list)
     })
 }

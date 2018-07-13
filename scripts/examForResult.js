@@ -1,12 +1,12 @@
-﻿let counter = 0; //定时运行次数 == 消耗时间秒数
-let submitStatus = "未交卷"; //未交卷, 交卷中, 已交卷, 交卷失败
-let answer = [];
+﻿var counter = 0; //定时运行次数 == 消耗时间秒数
+var submitStatus = "未交卷"; //未交卷, 交卷中, 已交卷, 交卷失败
+var answer = [];
 const isForm = getQueryString('isFrom')
 const er_id = getQueryString('er_id')
 const user_id = getQueryString('user_id')
-let ep_id;
-let eq1_ids;
-let eq2_ids;
+var ep_id;
+var eq1_ids;
+var eq2_ids;
 
 
 var userInfo = {};
@@ -140,7 +140,7 @@ function getDetailQList(data, res, sortIds, type){
 }
 
 function getSelectItems(data, type, answer){
-    let items = []
+    var items = []
     if(type === '判断题'){
         items = [
             {
@@ -180,8 +180,8 @@ function getSelectItems(data, type, answer){
 }
 
 function getShowIndex(id, rIdList){
-    let returnId;
-    for(let i=0; i<rIdList.length; i++){
+    var returnId;
+    for(var i=0; i<rIdList.length; i++){
         if(Number(rIdList[i]) === id) {
             returnId = i + 1;
         }
@@ -194,7 +194,7 @@ function getShowIndex(id, rIdList){
 function getUAnswer(id, rIdList, rResList){
     console.log(rResList)
     const list = [];
-    for(let i=0; i<rIdList.length; i++){
+    for(var i=0; i<rIdList.length; i++){
         list.push({id: rIdList[i], res:rResList[i]})
     }
     console.log(list)
@@ -274,7 +274,7 @@ function initListBodyForExamed(exam) {
 }
 
 function initListFooter(exam) {
-    let text = '';
+    var text = '';
     // if(exam.status === '已考完'){
         text = "得分: " + exam.uScore + "分";
         submitStatus = "已交卷"
