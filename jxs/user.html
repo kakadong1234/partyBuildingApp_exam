@@ -52,7 +52,7 @@
 
             </div>
             <div class="weui-cell__bd">
-                <p><a id="qingjia" href="javascript:openLink('leave')">请假申请</a></p>
+                <p><a id="qingjia" onClick="goToDDApp('leave')">请假申请</a></p>
             </div>
             <div class="weui-cell__ft"></div>
         </div>
@@ -83,7 +83,7 @@
                 <img src="../img/user/招聘计划审批.png" />
             </div>
             <div class="weui-cell__bd">
-                <p><a href="javascript:openLink('shenpi')">工作审批</a></p>
+                <p><a onClick="goToDDApp('shenpi')">工作审批</a></p>
             </div>
             <div class="weui-cell__ft"></div>
         </div>
@@ -93,7 +93,7 @@
 
             </div>
             <div class="weui-cell__bd">
-                <p><a href="javascript:openLink('log')">信息上报</a></p>               
+                <p><a onClick="goToDDApp('log')">信息上报</a></p>               
             </div>
             <div class="weui-cell__ft"></div>
         </div>
@@ -194,6 +194,11 @@
 
            
         });
+
+        function goToDDApp(name) {
+            alert('goToDDApp:' + name)
+            openLink(name)
+        }
 
     </script>
 </body>

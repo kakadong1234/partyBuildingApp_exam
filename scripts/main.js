@@ -71,6 +71,7 @@ function GetQueryString(name) {
 }
 
 function openLink(name) {
+    alert('name:' + name)
     getAppLinkList(function(appList){
         var link = appList.find(function(app){
             return app.name === name

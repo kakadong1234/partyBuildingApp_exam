@@ -55,14 +55,14 @@
         <div class="weui-flex__item menu">
             <div class="weui-flex menus">
                 <div class="weui-flex__item">
-                    <a class="waiqin_item" href="javascript:openLink('singIn')">
+                    <a class="waiqin_item" onClick="goToDDApp('singIn')">
                         <img src="../img/waiqin.png" />
                         <span>外勤打卡</span>
                     </a>
                 </div>
                 <!--https://landray.dingtalkapps.com/alid/app/report/home.html?showmenu=false&dd_progress=false&dd_share=false&corpid=ding377ef05619dd758735c2f4657eb6378f-->
                 <div class="weui-flex__item">
-                    <a class="info_item" href="javascript:openLink('log')" style="background:#87BBED">
+                    <a class="info_item" onClick="goToDDApp('log')" style="background:#87BBED">
                         <img src="../img/上报信息.png" />
                         <span>信息上报</span>
                     </a>
@@ -70,13 +70,13 @@
             </div>
             <div class="weui-flex menus">
                 <div class="weui-flex__item">
-                    <a class="work_item" href="javascript:openLink('work')" style="background:#F2784B">
+                    <a class="work_item" onClick="goToDDApp('work')" style="background:#F2784B">
                         <img src="../img/diaodu.png" />
                         <span>工作调度</span>
                     </a>
                 </div>
                 <div class="weui-flex__item">
-                    <a class="xiezuo_item" href="javascript:openLink('work')" style="background:#54CED4">
+                    <a class="xiezuo_item" onClick="goToDDApp('work')" style="background:#54CED4">
                         <img src="../img/协作性.png" />
                         <span>协作指导</span>
                     </a>
@@ -268,6 +268,11 @@
             })
             initList(data)
         })
+
+        function goToDDApp(name) {
+            alert('goToDDApp:' + name)
+            openLink(name)
+        }
 
         function initList(data) {
             const list_template = [
