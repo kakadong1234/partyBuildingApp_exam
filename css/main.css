@@ -824,7 +824,7 @@ video {
     position:absolute;
     z-index:999;
     right:20px;
-    height:80px;
+    height: 80px;
 }
 .item_answer_div{
     font-size: 10px;
@@ -847,6 +847,10 @@ video {
 }
 .item_answer_div{
     font-size: 10px;
+    color: green;
+}
+.item_selected_div{
+    font-size: 10px;
     color: blue;
 }
 .item_div{
@@ -854,4 +858,7 @@ video {
 }
 .exam_div{
     margin-top: 20px;
+}
+.answer_p{
+    color: green;
 }
