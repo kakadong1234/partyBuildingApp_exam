@@ -307,15 +307,15 @@ function setUserAnswer(id, key) {
     // loopUserAnswer()
 };
 
-function backToList() {
-    if(isForm === 'myList') {
-        window.location = 'myTestList.html'
-    }
+// function backToList() {
+//     if(isForm === 'myList') {
+//         window.location = 'myTestList.html'
+//     }
 
-    if(isForm === 'center') {
-        window.location = 'center.html'
-    }
-}
+//     if(isForm === 'center') {
+//         window.location = 'center.html'
+//     }
+// }
 
 function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
