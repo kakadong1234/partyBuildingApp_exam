@@ -71,12 +71,8 @@ function GetQueryString(name) {
 }
 
 function openLink(name) {
-    alert('name:' + name)
     getAppLinkList(function(appList){
-        var link = appList.find(function(app){
-            return app.name === name
-        }).link
-        console.log(link)
+        var link = findItemInList(appList, 'name', name).link
         dd.ready(function () {
             dd.biz.util.openLink({
                 url: link,//要打开链接的地址
@@ -103,29 +99,19 @@ function getAppLinkList(cb) {
     getDDAppList(function(list){
         var constLink = 'dingtalk://dingtalkclient/action/switchtab?index=2&name=work&scene=1&corpid=ding377ef05619dd758735c2f4657eb6378f'
         //签到
-        var agentId = list.find(function(app){
-            return app.name === '签到'
-        }).agentId
+        var agentId = findItemInList(list, 'name', '签到').agentId
         var link = constLink  + '&agentid=' + agentId
         appLinkList.push({name: 'singIn', link: link})
-        
         //信息上报 - 日志
-        agentId = list.find(function(app){
-            return app.name === '日志'
-        }).agentId
+        agentId = findItemInList(list, 'name', '日志').agentId
         link = constLink  + '&agentid=' + agentId
         appLinkList.push({name: 'log', link: link})
-
         //工作调度 or 协作指导
         appLinkList.push({name: 'work', link: 'dingtalk://dingtalkclient/action/switchtab?index=3'})
-        
         //工作审批 - 审批
-        agentId = list.find(function(app){
-            return app.name === '审批'
-        }).agentId
+        agentId = findItemInList(list, 'name', '审批').agentId
         link = constLink  + '&agentid=' + agentId
         appLinkList.push({name: 'shenpi', link: link})
-
 
         //请假申请 - 审批下请假 - 直接拼接 url
         link = 'http://aflow.dingtalk.com/dingtalk/mobile/homepage.htm#custom?corpid=' +
@@ -393,4 +379,15 @@ function isMobile() {
         }
     }
      return mobile_flag;
+}
+
+function findItemInList(list, key, value) {
+    var item = {}
+    for(var i=0; i<list.length; i++){
+        var app = list[i]
+        if(app[key] === value) {
+            item = app
+        }
+    }
+    return item
 }
