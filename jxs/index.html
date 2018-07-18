@@ -145,27 +145,7 @@
 
 
         var html = '<div class="weui-flex list">{{inner}}</div>';
-        var innerHtml = '<div class="weui-flex__item">' +
-           ' <div class="item">' +
-               '<a class="cover" href="detail{{page}}.html?id={{id}}">' +
-                    '<img src="{{cover}}" />' +
-                '</a>' +
-                '<a class="title" href="detail{{page}}.html?id={{id}}">{{title}}</a>' +
-                '<div class="comments weui-flex">' +
-                   ' <div class="star weui-flex__item">' +
-                        '<img src="../img/star.png" />' +
-                        '<img src="../img/star.png" />' +
-                       ' <img src="../img/star.png" />' +
-                       ' <img src="../img/star.png" />' +
-                       ' <img src="../img/star0.png" />' +
-                   ' </div>' +
-                    '<div class="users weui-flex__item">' +
-                        '<img src="../img/users.png" />' +
-                       ' <span>57165</span>' +
-                   ' </div>' +
-               ' </div>' +
-           ' </div>' +
-      '  </div>';
+      
 
 
         var navItemHtml = '<a href="indexList.html?type_id={{type_id}}&type_name={{type_name}}" class="weui-grid js_grid">' +
@@ -177,10 +157,15 @@
                          '   </p>' +
                       '  </a>';
 
-        var innerHtml = ' <div class="weui-cell"><div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>'
-            + '<div class="weui-cell__bd">'
-               + '<a href="detail{{page}}.html?id={{id}}">{{title}}</a>'
-          + '</div>  </div>';
+        var innerHtml = '<div class="weui-cell">{{img}}'
+                            + '<div class="weui-cell__bd">'
+                               + '<a href="detail{{page}}.html?id={{id}}">{{title}}</a>'
+                               +'<span class="pub-time">{{pubTime}}</span>'
+                            + '</div>'
+                      + '</div>';
+
+        var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
+
 
         var bannerHtml = '<div class="swiper-slide" onclick="location.href=\'detail{{page}}.html?id={{id}}\'">' +
                          '  <img src="{{cover}}"  />' +
@@ -292,6 +277,7 @@
 
                 var strHtml = [];
                 var strInner = [];
+                var imgHtml = '';
 
                 for (var i = 0; i < rel.rows.length; i++) {
                     var page = "";
@@ -302,7 +288,11 @@
                         page = "2";
                     }
 
-                    strInner.push(innerHtml.replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
+                    if (rel.rows[i].cover != '') {
+                        imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
+                    }
+
+                    strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
 
                 }
 

@@ -83,6 +83,12 @@ body {
     bottom: -4px;
 }
 
+.weui-cell__bd .pub-time{
+        display: block;
+    font-size: 12px;
+    color: #888;
+}
+
 .weui-grid__icon {
     height: 58px;
     width: 58px;
@@ -464,7 +470,7 @@ body {
 }
 
 .panel-title.index span{
-     font-size:15px;
+     font-size:16px;
 }
 
 .panel-title a {
