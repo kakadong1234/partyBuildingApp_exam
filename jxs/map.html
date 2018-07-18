@@ -505,7 +505,10 @@
 
             $.get("https://dangjain.ishoubei.com/cadre?page=1&limit=100000", function (e) {
                 //   console.log(e);
-                var rows = e.rows;
+                var rows = e.rows.filter(function(row){
+                    return row.address !== null && row.address !== undefined &&  row.address !== ''
+                });
+
                 for (var i = 0; i < rows.length; i++) {
 
                     //添加点标记，并使用自己的icon
