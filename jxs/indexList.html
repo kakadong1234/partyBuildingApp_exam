@@ -41,15 +41,15 @@
         <form class="weui-search-bar__form" id="searhForm" action="#">
             <div class="weui-search-bar__box">
                 <i class="weui-icon-search"></i>
-                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="" >
-                <a href="javascript:void(0)" class="weui-icon-clear" id="searchClear"></a>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="" oninput="textChange()">
+                <a href="javascript:void(0)" class="weui-icon-clear" id="searchClear" onClick="OnSearchCancel()"></a>
             </div>
             <label class="weui-search-bar__label" id="searchText">
                 <i class="weui-icon-search"></i>
-                <span>搜索需要的课程</span>
+                <span>搜索需要的内容</span>
             </label>
         </form>
-        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel" onClick="OnSearchCancel()">取消</a>
     </div>
     <div id="articleList"></div>
     <!--<div class="weui-flex list">
@@ -334,6 +334,19 @@
            
         });
 
+        function OnSearchCancel(){
+            $("#searchInput").val('') 
+            textChange()
+        }
+
+        function textChange() {
+            var key = $("#searchInput").val();
+            console.log('text is ' + key)
+            if(key === ''){
+                // reset data
+                search()
+            }
+        }
 
         function search() {
             $.showLoading();
