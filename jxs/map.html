@@ -503,7 +503,7 @@
                 }
             })
 
-            $.get("https://dangjain.ishoubei.com/cadre", function (e) {
+            $.get("https://dangjain.ishoubei.com/cadre?page=1&limit=100000", function (e) {
                 //   console.log(e);
                 var rows = e.rows;
                 for (var i = 0; i < rows.length; i++) {
