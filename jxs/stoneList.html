@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>他山之石</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- head 中 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <link href="../css/swiper.min.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.6&key=614bae5e03f5e3b25e64612a681b01d6"></script>
+</head>
+<body>
+    <div class="nav">
+        <span onclick="history.go(-1)">
+            <img src="../img/arrow-left.png" />
+        </span>
+        <span>他山之石</span>
+        <span id="btn-nav">导航</span>
+    </div>
+    <div class="weui-skin_android" id="androidActionsheet" style="display:none">
+        <div class="weui-mask" style="visibility:visible; opacity:0.5"></div>
+        <div class="weui-actionsheet">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell" onclick="location.href='index.html'">网上讲习所</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
+                 
+                <div class="weui-actionsheet__cell" onclick="location.href='center.html'">云学习中心</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">驻村云监管</div>
+                
+                <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
+
+            </div>
+        </div>
+    </div>
+   
+    <!-- Swiper 
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="../img/banner2.png" onclick="location.href='detail.html'" />
+            </div>
+            <div class="swiper-slide">
+                <img src="../img/banner1.png" onclick="location.href='detail2.html'" />
+            </div>
+            <div class="swiper-slide">
+                <img src="../img/banner2.png" onclick="location.href='detail.html'" />
+            </div>
+
+        </div>-->
+        <!-- Add Pagination 
+        <div class="swiper-pagination"></div>
+    </div>-->
+    
+
+    <div class="panel stone">
+      
+
+        <div id="news-list1"></div>
+        <!--<div class="panel-body" onclick="location.href='detail4.html'">
+            <div class="title">余留芬</div>
+            <div class="desc">在工作岗位上创造经得起实践和历史检验的业绩；她牢记宗旨、心系群众，以服务群众、依靠群众造福群众的实际行动不断满足人...</div>
+        </div>
+          <div class="panel-body" onclick="location.href='detail4.html'">
+            <div class="title">赵留芬</div>
+            <div class="desc">一个党员一盏灯，在工作岗位上创造经得起实践和历史检验的业绩；她牢记宗旨、心系群众，以服务群众、依靠群众、造福群众的...</div>
+        </div>
+          <div class="panel-body" onclick="location.href='detail4.html'">
+            <div class="title">李留芬</div>
+            <div class="desc">盘州市淤泥乡岩博村党委书记余留芬的事迹传遍山里山外。她信念坚定、对党忠诚，把个人价值目标和理想追求融入到党和人民的...</div>
+        </div>
+          <div class="panel-body" onclick="location.href='detail4.html'">
+            <div class="title">余留芬</div>
+            <div class="desc">在工作岗位上创造经得起实践和历史检验的业绩；她牢记宗旨、心系群众，以服务群众、依靠群众造福群众的实际行动不断满足人...</div>
+        </div>
+          <div class="panel-body" onclick="location.href='detail4.html'">
+            <div class="title">赵留芬</div>
+            <div class="desc">一个党员一盏灯，在工作岗位上创造经得起实践和历史检验的业绩；她牢记宗旨、心系群众，以服务群众、依靠群众、造福群众的...</div>
+        </div>
+          <div class="panel-body" onclick="location.href='detail4.html'">
+            <div class="title">李留芬</div>
+            <div class="desc">盘州市淤泥乡岩博村党委书记余留芬的事迹传遍山里山外。她信念坚定、对党忠诚，把个人价值目标和理想追求融入到党和人民的...</div>
+        </div>
+          <div class="panel-body" onclick="location.href='detail4.html'">
+            <div class="title">余留芬</div>
+            <div class="desc">在工作岗位上创造经得起实践和历史检验的业绩；她牢记宗旨、心系群众，以服务群众、依靠群众造福群众的实际行动不断满足人...</div>
+        </div>
+          <div class="panel-body" onclick="location.href='detail4.html'">
+            <div class="title">赵留芬</div>
+            <div class="desc">一个党员一盏灯，在工作岗位上创造经得起实践和历史检验的业绩；她牢记宗旨、心系群众，以服务群众、依靠群众、造福群众的...</div>
+        </div>
+          <div class="panel-body" onclick="location.href='detail4.html'">
+            <div class="title">李留芬</div>
+            <div class="desc">盘州市淤泥乡岩博村党委书记余留芬的事迹传遍山里山外。她信念坚定、对党忠诚，把个人价值目标和理想追求融入到党和人民的...</div>
+        </div>-->
+    </div> 
+    
+    <!-- body 最后 -->
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
+    
+     <script src="../scripts/swiper.min.js"></script>
+    <script src="../scripts/main.js"></script>
+   
+    <!-- Initialize Swiper -->
+    <script>
+
+        //var swiper = new Swiper('.swiper-container', {
+        //    pagination: {
+        //        el: '.swiper-pagination',
+        //    },
+        //    paginationClickable: true,
+        //    speed: 500,
+        //    loop: true,
+        //    observer: true,
+        //    observeParents: true,
+        //    autoplayDisableOnInteraction: false,
+        //    autoplay:true,
+
+        //});
+
+        var html1 = '<div class="panel-body" onclick="location.href=\'detail4.html?id={{id}}\'">' +
+           '<div class="title">{{title}}</div>' +
+          ' <div class="desc">{{abstract}}</div> </div>';
+
+
+
+        var innerHtml = '<div class="weui-cell">{{img}}'
+                            + '<div class="weui-cell__bd">'
+                               + '<a href="detail{{page}}.html?id={{id}}">{{title}}</a>'
+                               + '<span class="pub-time">{{pubTime}}</span>'
+                            + '</div>'
+                      + '</div>';
+
+        var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
+
+        $(function () {
+
+            $.get("https://dangjain.ishoubei.com/article?type_id=44&page=1&limit=100", function (rel) {
+
+                var strHtml = [];
+
+                for (var i = 0; i < rel.rows.length; i++) {
+                   // strHtml.push(innerHtml.replace("{{page}}", 4).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
+                    //   strHtml.push(html1.replace("{{id}}", rel.rows[i].article_id).replace("{{abstract}}", rel.rows[i].abstract).replace("{{title}}", rel.rows[i].title));
+
+                    if (rel.rows[i].cover != '') {
+                        imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
+                    }
+
+                    strHtml.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", 4).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
+
+                }
+
+                $("#news-list1").html(strHtml.join(""));
+            });
+        });
+
+    </script>
+</body>
+</html>

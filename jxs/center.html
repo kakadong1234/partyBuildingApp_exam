@@ -45,16 +45,7 @@
                 </p>
 
             </div>
-            <div class="swiper-slide" onclick="location.href='detail4.html'">
-                <p>
-                    2王玉新学了如何保持先进行
-                </p>
-            </div>
-            <div class="swiper-slide" onclick="location.href='detail4.html'">
-                <p>
-                    3杨景连又学习了《参考消息》
-                </p>
-            </div>
+           
 
 
         </div>
@@ -141,6 +132,8 @@
     <script src="https://cdn.bootcss.com/mustache.js/2.3.0/mustache.min.js" type='text/javascript' charset='utf-8'></script>
 
     <script src="../scripts/main.js"></script>
+    <script src="../scripts/examList.js"></script>
+
     <!-- Initialize Swiper -->
     <script>
         var bgColor = ["#F1514B", "#71AAFA", "#54CED4", "#3BA3F8", "#9FCB87", "#F2A04B", "#54CED4", "#71AAFA", "#F1514B", "#3BA3F8"];
@@ -155,10 +148,15 @@
         var html = '<div class="weui-flex list">{{inner}}</div>';
       
 
-        var innerHtml = ' <div class="weui-cell"><div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>'
-          + '<div class="weui-cell__bd">'
-             + '<a href="detail{{page}}.html?id={{id}}">{{title}}</a>'
-        + '</div> </div>';
+
+        var innerHtml = '<div class="weui-cell">{{img}}'
+                            + '<div class="weui-cell__bd">'
+                               + '<a href="detail{{page}}.html?id={{id}}">{{title}}</a>'
+                               + '<span class="pub-time">{{pubTime}}</span>'
+                            + '</div>'
+                      + '</div>';
+
+        var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
 
         var mySwiper = new Swiper('.swiper-container', {
             autoplay: true,//可选选项，自动滑动
@@ -188,13 +186,22 @@
                     //    page = "2";
                     //}
 
-                    strInner.push(innerHtml.replace("{{page}}", page).replace("{{id}}", rel.rows[i].article.article_id).replace("{{id}}", rel.rows[i].article.article_id).replace("{{cover}}", rel.rows[i].article.cover).replace("{{title}}", rel.rows[i].article.title));
+
+                    if (rel.rows[i].cover != '') {
+                        imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].article.cover);
+                    }
+
+                  
+
+                    strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].article.pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article.article_id).replace("{{id}}", rel.rows[i].article.article_id).replace("{{cover}}", rel.rows[i].article.cover).replace("{{title}}", rel.rows[i].article.title));
 
                 }
 
                 $("#myStudy").html(strInner.join(""));
                 $.hideLoading();
             });
+
+            initConst(info);
         }
 
 
@@ -286,6 +293,5 @@
         });
 
     </script>
-    <script src="../scripts/examList.js"></script>
 </body>
 </html>

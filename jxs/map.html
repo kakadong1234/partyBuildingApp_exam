@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>党建大数据</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- head 中 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <link href="../css/swiper.min.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
+    <link href="../css/map.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <div class="nav">
+        <span onclick="history.go(-1)">
+            <img src="../img/arrow-left.png" />
+        </span>
+        <span>党建大数据</span>
+        <span id="btn-nav">导航</span>
+    </div>
+    <!--<div id="errormsg">sssssssssssssssbbbbbbbbbbbbbb</div>-->
+    <div class="weui-skin_android" id="androidActionsheet" style="display:none">
+        <div class="weui-mask" style="visibility:visible; opacity:0.5"></div>
+        <div class="weui-actionsheet">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell" onclick="location.href='index.html'">网上讲习所</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
+                 
+                <div class="weui-actionsheet__cell" onclick="location.href='center.html'">云学习中心</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">驻村云监管</div>
+                
+                <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper-container map">
+
+        <div class="swiper-wrapper" id="banners2">
+            <div class="swiper-slide" onclick="location.href='detail4.html'">
+                <p>
+                   &nbsp;
+                </p>
+
+            </div>
+    
+        </div>
+        <img src="../img/map/喇叭001_hover.png" />
+    </div>
+    <div id="map-box">
+
+
+        <div id="map-container">
+
+        </div>
+
+        <div  id="setCenter">
+            <img src="../img/map/定位.png" />
+
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="panel-title">
+            <span>他山之石</span>
+            <a href="stoneList.html" class="more">查看更多</a>
+        </div>
+        <div id="news-list1"></div>
+        <!--<div class="panel-body" onclick="location.href='detail4.html'">
+            <div class="title">余留芬</div>
+            <div class="desc">一个党员一盏灯，一个典型一面旗，盘州市淤泥乡岩博村党委书记余留芬的事迹传遍山里山外。她信念坚定、对党忠诚，把个人价值目标和理想追求融入到党和人民的事业中；她战天斗地、艰苦奋斗，对事业高度负责，为工作殚精竭虑；她攻坚克难、乐观向上，在工作岗位上创造经得起实践和历史检验的业绩；她牢记宗旨、心系群众，以服务群众、依靠群众、造福群众的实际行动不断满足人民日益增长的美好生活需要……大家发自内心地为岩博村喝彩，更为余留芬把初心和使命镌刻在大山深处的情怀、执着、担当所感动。</div>
+        </div>-->
+    </div>
+    <div class="panel news">
+        <div class="panel-title">
+            <span>党建新闻</span>
+            <a href="stoneList2.html" class="more">查看更多</a>
+        </div>
+
+        <div id="news-list">
+            <!--<div class="panel-body" onclick="location.href='detail3.html'">
+                <div class="title">党的的精神讲座</div>
+                <div class="desc">
+                    <div class="content">
+                        “中国共产党新闻网”于 2006年7月1日全新推出。成为互联网上最集中、最系统、最全面地宣传和介绍中国共产党的权威网站。中国共产党新闻网及时发布中央领导同志的重要活动、重要讲话和党的重要会议、重要文件等信息，大力传播党的路线、方针、政策和主张，全面报道党的各项工作动态
+                    </div>
+                    <div class="cover">
+                        <img src="../img/p116.jpg" />
+                    </div>
+                </div>
+                <div class="time">
+                    日期：2017-11-17 08:20
+                </div>
+            </div>
+
+            <div class="panel-body" onclick="location.href='detail3.html'">
+                <div class="title">党的的精神讲座</div>
+                <div class="desc">
+                    <div class="content">
+                        “中国共产党新闻网”于 2006年7月1日全新推出。成为互联网上最集中、最系统、最全面地宣传和介绍中国共产党的权威网站。中国共产党新闻网及时发布中央领导同志的重要活动、重要讲话和党的重要会议、重要文件等信息，大力传播党的路线、方针、政策和主张，全面报道党的各项工作动态
+                    </div>
+                    <div class="cover">
+                        <img src="../img/p116.jpg" />
+                    </div>
+                </div>
+                <div class="time">
+                    日期：2017-11-17 08:20
+                </div>
+            </div>-->
+        </div>
+      
+    </div>
+
+    <!--<div class="weui-flex  order">
+        <div class="weui-flex__item  ">
+            <div style="margin:15px auto">
+                <img src="../img/star.png" /><img src="../img/star.png" /><img src="../img/star.png" /> 排行榜<img src="../img/star.png" /><img src="../img/star.png" /><img src="../img/star.png" />
+            </div>
+        </div>
+    </div>-->
+
+    <!--<div class="order-list">
+
+        <div class="news order-item">
+
+            <div class="desc">
+                <div class="header">
+                    <img src="../img/p111.jpg" />
+                    <div class="flag">
+                        <img src="../img/star.png" />
+                        第一名
+                        <img src="../img/star.png" />
+                    </div>
+                </div>
+
+
+                <div class="name">
+                    <span>武青春</span>
+                    <span class="memo">六盘水一部</span>
+                </div>
+                <div class="score">分数 <span>95分</span></div>
+
+            </div>
+        </div>
+
+
+        <div class="news order-item">
+
+            <div class="desc">
+                <div class="header">
+                    <img src="../img/p103.jpg" />
+                    <div class="flag">
+
+                        第二名
+
+                    </div>
+                </div>
+
+
+                <div class="name">
+                    <span>武青春</span>
+                    <span class="memo">六盘水一部</span>
+                </div>
+                <div class="score">分数 <span>95分</span></div>
+
+            </div>
+        </div>
+        <div class="news order-item">
+
+            <div class="desc">
+                <div class="header">
+                    <img src="../img/p116.jpg" />
+                    <div class="flag">
+
+                        第三名
+
+                    </div>
+                </div>
+
+
+                <div class="name">
+                    <span>武青春</span>
+                    <span class="memo">六盘水一部</span>
+                </div>
+                <div class="score">分数 <span>95分</span></div>
+
+            </div>
+        </div>
+        <div class="news order-item">
+
+            <div class="desc">
+                <div class="header">
+                    <img src="../img/p107.jpg" />
+                    <div class="flag">
+
+                        第四名
+
+                    </div>
+                </div>
+
+
+                <div class="name">
+                    <span>武青春</span>
+                    <span class="memo">六盘水一部</span>
+                </div>
+                <div class="score">分数 <span>95分</span></div>
+
+            </div>
+        </div>
+
+    </div>-->
+
+
+
+    <!-- body 最后 -->
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
+    <script src="../scripts/swiper.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/js/swiper.min.js" type='text/javascript' charset='utf-8'></script>-->
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.6&key=614bae5e03f5e3b25e64612a681b01d6"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
+    <script src="../scripts/main.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var html = '<div class="panel-body" onclick="location.href=\'detail3.html?id={{id}}\'">'+
+               ' <div class="title">{{title}}</div>'+
+               ' <div class="desc">'+
+                   ' <div class="content">{{abstract}}</div>' +
+                   ' <div class="cover">'+
+                        '<img src="{{cover}}" />' +
+                    '</div>'+
+                '</div>'+
+               ' <div class="time"> 日期：{{created}}' +                   
+               ' </div>' +
+        '</div>';
+        var html1 = '<div class="panel-body" onclick="location.href=\'detail4.html?id={{id}}\'">' +
+            '<div class="title">{{title}}</div>' +
+           ' <div class="desc">{{abstract}}</div> </div>';
+
+
+        var innerHtml = '<div class="weui-cell">{{img}}'
+                            + '<div class="weui-cell__bd">'
+                               + '<a href="detail{{page}}.html?id={{id}}">{{title}}</a>'
+                               + '<span class="pub-time">{{pubTime}}</span>'
+                            + '</div>'
+                      + '</div>';
+
+        var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
+
+        var bannerHtml = '<div class="swiper-slide" onclick="location.href=\'detail3.html?id={{id}}\'">' +
+                      
+                      ' <p>{{title}} </p>' +
+                      '</div>';
+       
+        function reloadBanners(deptId) {
+            console.log("deptid:"+deptId);
+            
+            $.get("https://dangjain.ishoubei.com/article?dept_id=" + deptId + "&limit=3", function (rel) {
+                console.log(rel);
+
+                if (rel.rows.length == 0) {
+                    return;
+                }
+                var banners = [];
+
+                for (var i = 0; i < rel.rows.length; i++)
+                    banners.push(bannerHtml.replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
+
+                $("#banners2").html(banners.join(""));
+
+                var swiper = new Swiper('.swiper-container', {
+
+                    paginationClickable: true,
+                    speed: 500,
+                    loop: true,
+                    observer: true,
+                    observeParents: true,
+                    autoplayDisableOnInteraction: false,
+                    autoplay: true,
+
+                });
+
+            });
+        }
+
+      
+        $(function () {
+            // createdhttps://dangjain.ishoubei.com/article?limit=3&dept_id=69503466
+
+            $.get("https://dangjain.ishoubei.com/article?type_id=41&limit=3", function (rel) {
+
+
+                var banners = [];
+
+                for (var i = 0; i < rel.rows.length;i++)
+                    banners.push(bannerHtml.replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));          
+
+                    $("#banners2").html(banners.join(""));
+
+                    var swiper = new Swiper('.swiper-container', {
+                      
+                        paginationClickable: true,
+                        speed: 500,
+                        loop: true,
+                        observer: true,
+                        observeParents: true,
+                        autoplayDisableOnInteraction: false,
+                        autoplay: true,
+
+                    });
+               
+            });
+
+
+            $.get("https://dangjain.ishoubei.com/article?type_id=44&page=1&limit=3", function (rel) {
+
+                var strHtml = [];
+
+                for (var i = 0; i < rel.rows.length; i++) {
+                  //  strHtml.push(innerHtml.replace("{{page}}", 4).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
+
+
+                    if (rel.rows[i].cover != '') {
+                        imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
+                    }
+
+                    strHtml.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", 4).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
+
+                }
+
+
+
+                $("#news-list1").html(strHtml.join(""));
+            });
+
+            $.get("https://dangjain.ishoubei.com/article?type_id=41&page=1&limit=3", function (rel) {
+
+                var strHtml = [];            
+
+                for (var i = 0; i < rel.rows.length; i++) {
+                    // strHtml.push(innerHtml.replace("{{page}}", 3).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
+
+
+                    if (rel.rows[i].cover != '') {
+                        imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
+                    }
+
+                    strHtml.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", 3).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
+                }
+
+                $("#news-list").html(strHtml.join(""));
+            });
+
+            var mySwiper = new Swiper('.swiper-container', {
+                autoplay: true,//可选选项，自动滑动
+            })
+            //alert(mySwiper)
+            var map = new AMap.Map('map-container', {
+                resizeEnable: true,
+                zoom: 8,
+                center: [104.830863, 26.592095]
+            });
+
+            AMap.event.addDomListener(document.getElementById('setCenter'), 'click', function () {
+                // 设置缩放级别和中心点
+                map.setZoomAndCenter(8, [104.830863, 26.592095]);
+                // 在新中心点添加 marker 
+                //var marker = new AMap.Marker({
+                //    map: map,
+                //    position: [104.830863, 26.592095]
+                //});
+            });
+
+            
+
+
+            map.clearMap();
+
+            ////// var infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30) });
+            //$.get("https://dangjain.ishoubei.com/party?pb_pattern=0", function (e) {
+
+            //    $("#errormsg").text("bbbbbbbbbbb" + JSON.stringify(e));
+            //    //  alert(e);
+            //}).error(function (e) {
+
+            //    $("#errormsg").text(JSON.stringify(e));
+            //    // alert("not https error");
+            //    // alert(e);
+            //});
+
+
+            $.get("https://dangjain.ishoubei.com/party?pb_pattern=0", function (e) {
+                console.log(e);
+            
+                var rows0 = e.rows;
+                for (var i = 0; i < rows0.length; i++) {
+                    //添加点标记，并使用自己的icon
+                    var marker = new AMap.Marker({
+                        map: map,
+                        position: [rows0[i].longitude, rows0[i].latitude],
+                        icon: new AMap.Icon({
+                            size: new AMap.Size(18, 18),  //图标大小
+                            image: "https://91fanka.cn/lps/img/map/flag.png",
+                        })
+                    });
+                    marker.content = rows0[i].pb_name;
+                    //marker.on('click', markerClick);
+                    //marker.emit('click', { target: marker });
+                    marker.icon = "../img/dzb1.jpg";
+                    marker.detail = "dzbDetail";
+                    marker.pb_master = rows0[i].pb_master;
+                    marker.pb_phone = rows0[i].pb_phone;
+                    marker.pb_address = rows0[i].pb_address;
+                    marker.pb_desc = rows0[i].pb_desc;
+                    marker.pb_id = rows0[i].pb_id;
+                    
+
+
+
+
+                    AMap.event.addListener(marker, 'click', function (e) {
+                        console.log(this.content);
+                        console.log("pb_id:" + this.pb_id);
+
+                        reloadBanners(this.pb_id);
+                        var title = this.content;
+                        var cc = content.join("<br/>").replace("{{link}}", this.detail).replace("{imgsrc}", this.icon);
+
+                        cc = cc.replace("{{pb_master}}", this.pb_master)
+                        .replace("{{pb_phone}}", this.pb_phone)
+                        .replace("{{pb_address}}", this.pb_address)
+                        .replace("{{pb_desc}}", this.pb_desc)
+                        .replace("{{pb_id}}", this.pb_id);
+
+                        var infoWindow2 = new AMap.InfoWindow({
+                            isCustom: true,  //使用自定义窗体
+                            content: createInfoWindow(title, cc),
+                            offset: new AMap.Pixel(16, -45)
+                        });
+                        infoWindow2.open(map, e.target.getPosition());
+                    });
+                }
+
+
+                //function markerClick(e) {
+                //    infoWindow.setContent(e.target.content);
+                //    infoWindow.open(map, e.target.getPosition());
+                //}
+
+
+
+            })
+
+            $.get("https://dangjain.ishoubei.com/party?pb_pattern=1", function (e) {
+                var rows1 = e.rows;
+                for (var i = 0; i < rows1.length; i++) {
+                    //添加点标记，并使用自己的icon
+                    var marker = new AMap.Marker({
+                        map: map,
+                        position: [rows1[i].longitude, rows1[i].latitude],
+                        icon: new AMap.Icon({
+                            size: new AMap.Size(32, 32),  //图标大小
+                            image: "https://91fanka.cn/lps/img/map/flag2x.png",
+
+                        })
+                    });
+                    marker.content = rows1[i].pb_name;
+                    marker.icon = "../img/dzb2.jpg";
+                    marker.detail = "dzbDetail";
+                    //marker.on('click', markerClick);
+                    //marker.emit('click', { target: marker });
+                    marker.pb_master = rows1[i].pb_master;
+                    marker.pb_phone = rows1[i].pb_phone;
+                    marker.pb_address = rows1[i].pb_address;
+                    marker.pb_desc = rows1[i].pb_desc;
+                    marker.pb_id = rows1[i].pb_id;
+
+
+
+                    AMap.event.addListener(marker, 'click', function (e) {
+                        console.log("pb_id:"+ this.pb_id);
+                        var title = this.content;
+                        var cc = content.join("<br/>").replace("{{link}}", this.detail).replace("{imgsrc}", this.icon);
+                        cc = cc.replace("{{pb_master}}", this.pb_master)
+                      .replace("{{pb_phone}}", this.pb_phone)
+                      .replace("{{pb_address}}", this.pb_address)
+                      .replace("{{pb_desc}}", this.pb_desc)
+                      .replace("{{pb_id}}", this.pb_id);
+                        var infoWindow2 = new AMap.InfoWindow({
+                            isCustom: true,  //使用自定义窗体
+                            content: createInfoWindow(title, cc),
+                            offset: new AMap.Pixel(16, -45)
+                        });
+                        infoWindow2.open(map, e.target.getPosition());
+
+                    });
+                }
+            })
+
+            $.get("https://dangjain.ishoubei.com/cadre", function (e) {
+                //   console.log(e);
+                var rows = e.rows;
+                for (var i = 0; i < rows.length; i++) {
+
+                    //添加点标记，并使用自己的icon
+                    var marker = new AMap.Marker({
+                        map: map,
+                        position: [rows[i].longitude, rows[i].latitude],
+                        icon: new AMap.Icon({
+                            size: new AMap.Size(20, 20),  //图标大小
+                            image: "https://91fanka.cn/lps/img/map/star.png",
+
+                        })
+                    });
+                    marker.content = rows[i].user_name + "&nbsp;&nbsp;&nbsp;&nbsp;" + rows[i].updated;
+                    marker.icon = "../img/p0001.png";
+                    marker.link = "cadreDetail.html?id=" + rows[i].user_id;
+                    marker.userid = rows[i].user_id;
+                    marker.address = rows[i].address == null ? "" : rows[i].address;
+                    // marker.link = "https://attend.dingtalk.com/attend/index.html?corpId=ding377ef05619dd758735c2f4657eb6378f&showmenu=true&dd_share=false&dd_progress=false";
+                    //marker.on('click', markerClick);
+                    //marker.emit('click', { target: marker });
+                    //鼠标点击marker弹出自定义的信息窗体
+
+                    AMap.event.addListener(marker, 'click', function (e) {
+                        console.log(this.content);
+                        var that = this;
+
+                        $.get("https://dangjain.ishoubei.com/dding?key=user_info&user_id=" + that.userid, function (user) {
+
+                            var title = that.content;
+
+                            if (user.avatar == "" || user.avatar=="undefined") {
+                                user.avatar = that.icon;
+                            }
+
+                            var infoWindow2 = new AMap.InfoWindow({
+                                isCustom: true,  //使用自定义窗体
+                                content: createInfoWindow(title, content2.join("<br/>").replace("{imgsrc}", user.avatar).replace("{phone}", user.mobile).replace("{link}", that.link).replace("{address}", that.address)),
+                                offset: new AMap.Pixel(16, -45)
+                            });
+
+                            infoWindow2.open(map, e.target.getPosition());
+                        });
+
+                    });
+                }
+            });
+
+            var title, content = [], content2 = [];
+
+            content.push("地址：{{pb_address}}");
+            content.push("电话：{{pb_phone}}");
+            content.push("简介：{{pb_desc}}");
+            content.push("<a href='{{link}}.html?id={{pb_id}}'>图文详情</a>");
+
+
+            content2.push("<img src='{imgsrc}'>地址：{address}");
+            content2.push("联系方式：{phone}");
+            content2.push("<a href='{link}'>党员介绍</a>");
+
+
+            //构建自定义信息窗体
+            function createInfoWindow(title, content) {
+                var info = document.createElement("div");
+                info.className = "info";
+
+                //可以通过下面的方式修改自定义窗体的宽高
+                //info.style.width = "400px";
+                // 定义顶部标题
+                var top = document.createElement("div");
+                var titleD = document.createElement("div");
+                var closeX = document.createElement("img");
+                top.className = "info-top";
+                titleD.innerHTML = title;
+                closeX.src = "http://webapi.amap.com/images/close2.gif";
+                closeX.onclick = closeInfoWindow;
+
+                top.appendChild(titleD);
+                top.appendChild(closeX);
+                info.appendChild(top);
+
+                // 定义中部内容
+                var middle = document.createElement("div");
+                middle.className = "info-middle";
+                middle.style.backgroundColor = 'white';
+                middle.style.minWidth = '268px';
+                middle.innerHTML = content;
+                info.appendChild(middle);
+
+                // 定义底部内容
+                var bottom = document.createElement("div");
+                bottom.className = "info-bottom";
+                bottom.style.position = 'relative';
+                bottom.style.top = '0px';
+                bottom.style.margin = '0 auto';
+                var sharp = document.createElement("img");
+                sharp.src = "http://webapi.amap.com/images/sharp.png";
+                bottom.appendChild(sharp);
+                info.appendChild(bottom);
+                return info;
+            }
+
+            //关闭信息窗体
+            function closeInfoWindow() {
+                map.clearInfoWindow();
+            }
+
+
+        });
+
+
+    </script>
+</body>
+</html>
