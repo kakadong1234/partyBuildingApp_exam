@@ -913,3 +913,10 @@ video {
 .answer_p{
     color: green;
 }
+
+.pb_desc_div{
+    width: 268px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
