@@ -189,6 +189,7 @@
                          '           </div>' +
                           '      </label>' +
                            ' </div>' +
+                           '<p class="answer_p" id="answer_{{id}}" style="display:none" >  答案 {{result}}}</p>' + 
                   '      </div>' +
                    ' </span>' +
                ' </div>' +
@@ -203,7 +204,7 @@
                            '  <div class="weui-cells weui-cells_radio">' +
                             '     <label class="weui-cell weui-check__label" for="y{{id}}">' +
                              '        <div class="weui-cell__bd">' +
-                              '           <p>A. 对</p>' +
+                              '           <p>A. V</p>' +
                                '      </div>' +
                             '     <div class="weui-cell__ft">' +
          '                                <input type="radio" class="weui-check" name="radio_{{id}}" value="V"  id="y{{id}}">' +
@@ -212,7 +213,7 @@
             '                     </label>' +
              '                    <label class="weui-cell weui-check__label" for="y2{{id}}">' +
         '                            <div class="weui-cell__bd">' +
-         '                                <p>B. 错</p>' +
+         '                                <p>B. X</p>' +
           '                           </div>' +
         '                          <div class="weui-cell__ft">' +
          '                                <input type="radio" name="radio_{{id}}" class="weui-check" value="X" id="y2{{id}}">' +
@@ -220,6 +221,7 @@
            '                          </div>' +
             '                     </label>' +
              '                </div>' +
+             '<p class="answer_p" id="answer_{{id}}" style="display:none" >  答案 {{result}}}</p>' +
               '           </div>' +
                '      </span>' +
                ' </div>' + 
@@ -260,9 +262,10 @@
                 var answer = $("input[type=radio][name=radio_" + questions[i].eq_id + "]:checked").val();
                 if (answer !== undefined) {
                     console.log(answer)
-                    console.log(questions[i].answer)
+                    console.log("答案" + questions[i].answer)
+                    $("p#answer_" + questions[i].eq_id).text("答案 " + questions[i].answer).show();
                     if (answer == questions[i].answer) {
-                        $("img#img_" + questions[i].eq_id).attr("src", "../img/right.png").show();
+                        $("img#img_" + questions[i].eq_id).attr("src", "../img/dui.png").show();
                     } else {
                         $("img#img_" + questions[i].eq_id).attr("src", "../img/wrong.png").show();
                     }
