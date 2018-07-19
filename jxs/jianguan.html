@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>驻村云监管</title>
     <meta charset="utf-8">
@@ -12,6 +13,7 @@
     <link href="../css/main.css" rel="stylesheet" />
 
 </head>
+
 <body>
     <div class="nav">
         <span onclick="history.go(-1)">
@@ -26,23 +28,23 @@
             <div class="weui-actionsheet__menu">
                 <div class="weui-actionsheet__cell" onclick="location.href='index.html'">网上讲习所</div>
                 <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
-                 
+
                 <div class="weui-actionsheet__cell" onclick="location.href='center.html'">云学习中心</div>
                 <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">驻村云监管</div>
-                
+
                 <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
 
             </div>
         </div>
     </div>
-    
+
     <!-- Swiper -->
     <div class="swiper-container">
         <div class="swiper-wrapper" id="banners">
             <div class="swiper-slide">
                 <img src="../img/banner2.png" />
             </div>
-        
+
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
@@ -82,13 +84,18 @@
                     </a>
                 </div>
             </div>
-           
+
         </div>
     </div>
-    <div class="weui-flex  order" >
-        <div class="weui-flex__item  " >
+    <div class="weui-flex  order">
+        <div class="weui-flex__item  ">
             <div style="margin:15px auto">
-                <img src="../img/star.png" /><img src="../img/star.png" /><img src="../img/star.png" /> 信息上报排行榜<img src="../img/star.png" /><img src="../img/star.png" /><img src="../img/star.png" />
+                <img src="../img/star.png" />
+                <img src="../img/star.png" />
+                <img src="../img/star.png" /> 信息上报排行榜
+                <img src="../img/star.png" />
+                <img src="../img/star.png" />
+                <img src="../img/star.png" />
             </div>
         </div>
     </div>
@@ -207,19 +214,19 @@
     <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
     <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>
     <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
-     <script src="../scripts/swiper.min.js"></script>
+    <script src="../scripts/swiper.min.js"></script>
     <script src="../scripts/main.js"></script>
-      <!-- mustache.js -->
-      <script src="https://cdn.bootcss.com/mustache.js/2.3.0/mustache.min.js" type='text/javascript' charset='utf-8'></script>
+    <!-- mustache.js -->
+    <script src="https://cdn.bootcss.com/mustache.js/2.3.0/mustache.min.js" type='text/javascript' charset='utf-8'></script>
     <!-- Initialize Swiper -->
     <script>
         var bannerHtml = '<div class="swiper-slide" onclick="location.href=\'detail{{page}}.html?id={{id}}\'">' +
-                          '  <img src="{{cover}}"  />' +
-                          '  <span class="title">{{title}}</span>' +
-                          '</div>';
+            '  <img src="{{cover}}"  />' +
+            '  <span class="title">{{title}}</span>' +
+            '</div>';
 
         $(function () {
-            $.get("https://dangjain.ishoubei.com/article?type_id=54&limit=3", function (rel) {
+            $.get("https://dangjain.ishoubei.com/article?type_id=63&limit=3", function (rel) {
 
 
                 var banners = [];
@@ -256,16 +263,23 @@
             });
         });
 
-        $.get('https://dangjain.ishoubei.com/report/dding', function(data){
+        $.get('https://dangjain.ishoubei.com/report/dding', function (data) {
             console.log(data);
-            data = data.map(function(item, index){
+            data = data.map(function (item, index) {
                 console.log(index)
                 item.number = index + 1
-                if(item.avatar === '') {
+                if (item.avatar === '') {
                     item.avatar = 'http://7xrsfo.com1.z0.glb.clouddn.com/tx123.png'
                 }
                 return item
             })
+            for (var i = 0; i < data.length; i++) {
+                var item = data[i];
+                $.get("https://dangjain.ishoubei.com/dding?key=user_info&user_id=" + item.creator_id, function (user) {
+                    console.log(user);
+                    $('#avtar_img_' + user.userid).attr("src", user.avatar);
+                });
+            }
             initList(data)
         })
 
@@ -275,22 +289,23 @@
 
         function initList(data) {
             const list_template = [
-            '{{#data}}<div class="order-item">', 
-            '<div class="no">{{number}}</div>',
-            '<div class="desc">',
-                '<img src={{avatar}} />',
+                '{{#data}}<div class="order-item">',
+                '<div class="no">{{number}}</div>',
+                '<div class="desc">',
+                '<img id="avtar_img_{{creator_id}}" src={{avatar}} />',
                 '<div class="name">',
-                    '<span>{{creator_name}}</span>',
-                    // '<span class="memo">六盘水一部</span>',
+                '<span>{{creator_name}}</span>',
+                // '<span class="memo">六盘水一部</span>',
                 '</div>',
                 '<div class="score">{{count}}条</div>',
-            '</div>',
-        '</div>{{/data}}',
+                '</div>',
+                '</div>{{/data}}',
             ].join('')
-        //初始化这个模板
-        Mustache.parse(list_template);
-        $("#order_list").html(Mustache.render(list_template, { data: data }))
-};
+            //初始化这个模板
+            Mustache.parse(list_template);
+            $("#order_list").html(Mustache.render(list_template, { data: data }))
+        };
     </script>
 </body>
+
 </html>
