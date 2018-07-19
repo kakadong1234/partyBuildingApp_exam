@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>云学习中心</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- head 中 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <link href="../css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="nav">
+        <span onclick="history.go(-1)">
+            <img src="../img/arrow-left.png" />
+        </span>
+        <span>我的课程</span>
+        <span id="btn-nav">导航</span>
+    </div>
+    <div class="weui-skin_android" id="androidActionsheet" style="display:none">
+        <div class="weui-mask" style="visibility:visible; opacity:0.5"></div>
+        <div class="weui-actionsheet">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell" onclick="location.href='index.html'">网上讲习所</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
+                 
+                <div class="weui-actionsheet__cell" onclick="location.href='center.html'">云学习中心</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">驻村云监管</div>
+                
+                <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Swiper -->    
+
+
+    <div id="articleList" class="weui-cells" style="margin-top:0">
+
+        <!--<div class="weui-cell">
+            <div class="weui-cell__hd"><img class="item-cover" src="https://dangjain.ishoubei.com/static/files/20180606141513_屏幕快照 2018-06-06 13.55.21.png"></div>
+            <div class="weui-cell__bd"><a href="detail.html?id=4">视频测试02</a></div>
+        </div>-->       
+      
+    </div>
+
+    <!-- body 最后 -->
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
+  
+    <script src="../scripts/main.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var innerHtml = '<div class="weui-cell" onClick="goToDetailPage({{id}})">'
+                           + '<div class="weui-cell__bd">'
+                              + '<a>{{title}}</a>'
+                              + '<span class="pub-time">{{pubTime}}</span>'
+                           + '</div>'
+                           + '{{img}}'
+                     + '</div>';
+
+        var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
+
+
+        var userInfo = {};
+        var userId = "manager1603";
+        var url = window.location.href;
+
+     
+
+        function setUserInfo(info) {
+            userInfo = info;
+            //   alert(JSON.stringify(info));
+            $.showLoading();
+            $.get("https://dangjain.ishoubei.com/study?user_id=" + userInfo.emplId + "&limit=50", function (rel) {
+
+               // alert(JSON.stringify(rel));
+                var strInner = [];
+
+                for (var i = 0; i < rel.rows.length; i++) {
+                    var page = "";
+
+                    //if (rel.rows[i].article.urls.length > 0) {
+                    //    page = "";
+                    //} else {
+                        page = "2";
+                 //   }
+                //
+
+                        if (rel.rows[i].article.cover != '' && rel.rows[i].article.cover != 'https://dangjain.ishoubei.com/static/files/20180628103815_cover.jpg') {
+                            imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].article.cover);
+                        }
+
+
+
+                        strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].article.pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article.article_id).replace("{{id}}", rel.rows[i].article.article_id).replace("{{cover}}", rel.rows[i].article.cover).replace("{{title}}", rel.rows[i].article.title));
+                        imgHtml = ''
+                }
+
+                $("#articleList").html(strInner.join(""));
+                $.hideLoading();
+            });
+        }
+
+
+
+        $(function () {
+
+            getUserInfo(url, setUserInfo);
+
+        });
+
+        function goToDetailPage(id) {
+            window.location = "detail2.html?id=" + id
+        }
+
+    </script>
+</body>
+</html>
