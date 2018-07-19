@@ -195,7 +195,7 @@
                ' </div>';
 
         var jHtml = '<div class="weui-panel weui-panel_access test">' + 
-                    '<div class="weui-panel__hd">二、判断题</div>' + 
+                    '<div class="weui-panel__hd">{{panduanQuestionTypeIndex}}、判断题</div>' + 
                     '<div class="weui-panel__bd">' +
                      '<span href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">' +
                          '<div class="weui-media-box__bd" ><img id="img_{{id}}" src="../img/wrong.png" class="right" style="display:none" />' +
@@ -384,11 +384,13 @@
                     var html = [];
                     var jcount = 0;
                     var cCount = 0;
+                    var panduanQuestionTypeIndex = getPanduanQuestionTypeIndex(rel.rows)
                     for (var i = 0; i < rel.rows.length; i++) {
 
                         if (rel.rows[i].eqt_id == 1) {
                             html.push(
                          jHtml.replace("{{question}}", rel.rows[i].question)
+                         .replace("{{panduanQuestionTypeIndex}}", panduanQuestionTypeIndex)
                          .replace("{{no}}", ++jcount)
                          .myReplace("{{id}}", rel.rows[i].eq_id)
                            .replace("{{answer}}", rel.rows[i].answer)
@@ -416,6 +418,17 @@
             });
         });
 
+        function getPanduanQuestionTypeIndex(list){
+            var index = "一"
+            for (var i = 0; i < list.length; i++) {
+                console.log(list[i])
+                if(list[i].eqt_id === 2){ //只要有一个选择题, 那么就是一
+                    index = "二"
+                }
+            }
+            console.log(index)
+            return index
+        }
     </script>
 
 </body>
