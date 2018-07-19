@@ -920,3 +920,13 @@ video {
     text-overflow:ellipsis;
     white-space: nowrap;
 }
+
+.winTitle{
+    line-height:26px;
+    width: 60%;
+    text-align:center;
+    display:inline-block;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
