@@ -157,11 +157,12 @@
                          '   </p>' +
                       '  </a>';
 
-        var innerHtml = '<div class="weui-cell">{{img}}'
+        var innerHtml = '<div class="weui-cell" onClick="goToDetailPage({{id}})">'
                             + '<div class="weui-cell__bd">'
                                + '<a href="detail{{page}}.html?id={{id}}">{{title}}</a>'
                                +'<span class="pub-time">{{pubTime}}</span>'
                             + '</div>'
+                            + '{{img}}'
                       + '</div>';
 
         var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
@@ -287,19 +288,22 @@
                     } else {
                         page = "2";
                     }
-
-                    if (rel.rows[i].cover != '') {
+                    console.log()
+                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'https://dangjain.ishoubei.com/static/files/20180628103815_cover.jpg') {
                         imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
                     }
 
                     strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
-
+                    imgHtml = ''
                 }
 
                 $("#articleList").html(strInner.join(""));
             });
         });
 
+        function goToDetailPage(id) {
+            window.location = "detail2.html?id=" + id
+        }
 
 
     </script>
