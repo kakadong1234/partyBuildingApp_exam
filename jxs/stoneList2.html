@@ -202,7 +202,7 @@
             $.get("https://dangjain.ishoubei.com/article?type_id=41&page=1&limit=200", function (rel) {
 
                 var strHtml = [];            
-
+                var imgHtml = '';
                 for (var i = 0; i < rel.rows.length; i++) {
                     //strHtml.push(innerHtml.replace("{{page}}", 3).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
                //     strHtml.push(html.replace("{{cover}}", rel.rows[i].cover).replace("{{created}}", rel.rows[i].created).replace("{{id}}", rel.rows[i].article_id).replace("{{abstract}}", rel.rows[i].abstract).replace("{{title}}", rel.rows[i].title));

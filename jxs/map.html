@@ -322,7 +322,7 @@
             $.get("https://dangjain.ishoubei.com/article?type_id=44&page=1&limit=3", function (rel) {
 
                 var strHtml = [];
-
+                var imgHtml = '';
                 for (var i = 0; i < rel.rows.length; i++) {
                   //  strHtml.push(innerHtml.replace("{{page}}", 4).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
 
@@ -343,7 +343,7 @@
             $.get("https://dangjain.ishoubei.com/article?type_id=41&page=1&limit=3", function (rel) {
 
                 var strHtml = [];            
-
+                var imgHtml = '';
                 for (var i = 0; i < rel.rows.length; i++) {
                     // strHtml.push(innerHtml.replace("{{page}}", 3).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
 
