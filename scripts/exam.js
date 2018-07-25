@@ -36,7 +36,7 @@ function initExamList() {
 
 function getExamData() {
     //TODO
-    $.post('http://api.lpszzb.gov.cnexam/result?ep_id=' + ep_id + '&user_id=' + user_id, function(data){
+    $.post('http://api.lpszzb.gov.cn/exam/result?ep_id=' + ep_id + '&user_id=' + user_id, function(data){
         console.log(data);
         er_id = data.er_id;
         eq1_ids = data.eq1_ids ;
@@ -357,7 +357,7 @@ function finishExam(){
         console.log(submitStatus)
         $.ajax({  
             type: "post",  
-            url: "http://api.lpszzb.gov.cnexam/test",  
+            url: "http://api.lpszzb.gov.cn/exam/test",  
             contentType : "application/x-www-form-urlencoded; charset=UTF-8",  
             data: $.param(postData),  
             success: function (res) {  
@@ -389,7 +389,7 @@ function loopExamTime(){
     }
     $.ajax({  
        type: "put",  
-       url: "http://api.lpszzb.gov.cnexam/test",  
+       url: "http://api.lpszzb.gov.cn/exam/test",  
        contentType : "application/x-www-form-urlencoded; charset=UTF-8",  
        data: $.param(postData),  
        success: function (res) {  
@@ -412,7 +412,7 @@ function loopUserAnswer(){
      }
      $.ajax({  
         type: "post",  
-        url: "http://api.lpszzb.gov.cnexam/test",  
+        url: "http://api.lpszzb.gov.cn/exam/test",  
         contentType : "application/x-www-form-urlencoded; charset=UTF-8",  
         data: $.param(postData),  
         success: function (res) {  
@@ -448,7 +448,7 @@ function sendUserAnswer(data) {
     console.log('---sendUserAnswer')
     $.ajax({  
         type: "post",  
-        url: "http://api.lpszzb.gov.cnexam/plan",  
+        url: "http://api.lpszzb.gov.cn/exam/plan",  
         contentType : "application/x-www-form-urlencoded; charset=UTF-8",  
         data: $.param({
             user_id: user_id,

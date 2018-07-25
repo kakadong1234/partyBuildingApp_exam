@@ -67,7 +67,7 @@
         var id = GetQueryString("id");
         $(function () {
 
-            $.get("http://api.lpszzb.gov.cncadre/" + id, function (rel) {
+            $.get("http://api.lpszzb.gov.cn/cadre/" + id, function (rel) {
 
                 document.title = rel.user_name;
                 $("#dzbname").html(rel.user_name);
