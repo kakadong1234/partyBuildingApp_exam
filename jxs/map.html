@@ -262,7 +262,7 @@
         function reloadBanners(deptId) {
             console.log("deptid:"+deptId);
             
-            $.get("https://dangjain.ishoubei.com/article?dept_id=" + deptId + "&limit=3", function (rel) {
+            $.get("http://api.lpszzb.gov.cn/article?dept_id=" + deptId + "&limit=3", function (rel) {
                 console.log(rel);
 
                 if (rel.rows.length == 0) {
@@ -292,9 +292,9 @@
 
       
         $(function () {
-            // createdhttps://dangjain.ishoubei.com/article?limit=3&dept_id=69503466
+            // createdhttp://api.lpszzb.gov.cn/article?limit=3&dept_id=69503466
 
-            $.get("https://dangjain.ishoubei.com/article?type_id=41&limit=3", function (rel) {
+            $.get("http://api.lpszzb.gov.cn/article?type_id=41&limit=3", function (rel) {
 
 
                 var banners = [];
@@ -319,7 +319,7 @@
             });
 
 
-            $.get("https://dangjain.ishoubei.com/article?type_id=44&page=1&limit=3", function (rel) {
+            $.get("http://api.lpszzb.gov.cn/article?type_id=44&page=1&limit=3", function (rel) {
 
                 var strHtml = [];
                 var imgHtml = '';
@@ -327,7 +327,7 @@
                   //  strHtml.push(innerHtml.replace("{{page}}", 4).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
 
 
-                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'https://dangjain.ishoubei.com/static/files/20180628103815_cover.jpg') {
+                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
                         imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
                     }
 
@@ -340,7 +340,7 @@
                 $("#news-list1").html(strHtml.join(""));
             });
 
-            $.get("https://dangjain.ishoubei.com/article?type_id=41&page=1&limit=3", function (rel) {
+            $.get("http://api.lpszzb.gov.cn/article?type_id=41&page=1&limit=3", function (rel) {
 
                 var strHtml = [];            
                 var imgHtml = '';
@@ -348,7 +348,7 @@
                     // strHtml.push(innerHtml.replace("{{page}}", 3).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
 
 
-                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'https://dangjain.ishoubei.com/static/files/20180628103815_cover.jpg') {
+                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
                         imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
                     }
 
@@ -385,7 +385,7 @@
             map.clearMap();
 
             ////// var infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30) });
-            //$.get("https://dangjain.ishoubei.com/party?pb_pattern=0", function (e) {
+            //$.get("http://api.lpszzb.gov.cn/party?pb_pattern=0", function (e) {
 
             //    $("#errormsg").text("bbbbbbbbbbb" + JSON.stringify(e));
             //    //  alert(e);
@@ -397,7 +397,7 @@
             //});
 
 
-            $.get("https://dangjain.ishoubei.com/party?pb_pattern=0", function (e) {
+            $.get("http://api.lpszzb.gov.cn/party?pb_pattern=0", function (e) {
                 console.log(e);
             
                 var rows0 = e.rows;
@@ -459,7 +459,7 @@
 
             })
 
-            $.get("https://dangjain.ishoubei.com/party?pb_pattern=1", function (e) {
+            $.get("http://api.lpszzb.gov.cn/party?pb_pattern=1", function (e) {
                 var rows1 = e.rows;
                 for (var i = 0; i < rows1.length; i++) {
                     //添加点标记，并使用自己的icon
@@ -505,7 +505,7 @@
                 }
             })
 
-            $.get("https://dangjain.ishoubei.com/cadre?page=1&limit=100000", function (e) {
+            $.get("http://api.lpszzb.gov.cn/cadre?page=1&limit=100000", function (e) {
                 //   console.log(e);
                 var rows = e.rows.filter(function(row){
                     return row.address !== null && row.address !== undefined &&  row.address !== ''
@@ -537,7 +537,7 @@
                         console.log(this.content);
                         var that = this;
 
-                        $.get("https://dangjain.ishoubei.com/dding?key=user_info&user_id=" + that.userid, function (user) {
+                        $.get("http://api.lpszzb.gov.cn/dding?key=user_info&user_id=" + that.userid, function (user) {
 
                             var title = that.content;
 

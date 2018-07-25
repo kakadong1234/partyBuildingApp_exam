@@ -226,7 +226,7 @@
             '</div>';
 
         $(function () {
-            $.get("https://dangjain.ishoubei.com/article?type_id=63&limit=3", function (rel) {
+            $.get("http://api.lpszzb.gov.cn/article?type_id=63&limit=3", function (rel) {
 
 
                 var banners = [];
@@ -263,7 +263,7 @@
             });
         });
 
-        $.get('https://dangjain.ishoubei.com/report/dding', function (data) {
+        $.get('http://api.lpszzb.gov.cn/report/dding', function (data) {
             console.log(data);
             data = data.map(function (item, index) {
                 console.log(index)
@@ -275,7 +275,7 @@
             })
             for (var i = 0; i < data.length; i++) {
                 var item = data[i];
-                $.get("https://dangjain.ishoubei.com/dding?key=user_info&user_id=" + item.creator_id, function (user) {
+                $.get("http://api.lpszzb.gov.cn/dding?key=user_info&user_id=" + item.creator_id, function (user) {
                     console.log(user);
                     $('#avtar_img_' + user.userid).attr("src", user.avatar);
                 });

@@ -188,7 +188,7 @@
            
 
             $.ajax({
-                url: "https://dangjain.ishoubei.com/cadre",
+                url: "http://api.lpszzb.gov.cn/cadre",
                 method: "Post",
                 data: {
                     user_id: userInfo.emplId,
@@ -218,7 +218,7 @@
             getUserInfo(url, setUserInfo, setUserGPS);
 
 
-            $.get("https://dangjain.ishoubei.com/article?type_id=62&limit=3", function (rel) {
+            $.get("http://api.lpszzb.gov.cn/article?type_id=62&limit=3", function (rel) {
 
 
                 var banners = [];
@@ -255,7 +255,7 @@
             });
 
             //目录
-            $.get("https://dangjain.ishoubei.com/type?type_id=20&status=0&type_state=2", function (rel) {
+            $.get("http://api.lpszzb.gov.cn/type?type_id=20&status=0&type_state=2", function (rel) {
 
                
                 var strInner = [];
@@ -274,7 +274,7 @@
                 $("#navs").html(strInner.join(""));
             });
 
-            $.get("https://dangjain.ishoubei.com/article?type_id=21&limit=3", function (rel) {
+            $.get("http://api.lpszzb.gov.cn/article?type_id=21&limit=3", function (rel) {
 
                 var strHtml = [];
                 var strInner = [];
@@ -289,7 +289,7 @@
                         page = "2";
                     }
                     console.log()
-                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'https://dangjain.ishoubei.com/static/files/20180628103815_cover.jpg') {
+                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
                         imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
                     }
 

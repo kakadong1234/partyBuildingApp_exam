@@ -62,7 +62,7 @@
         <div id="myStudy" class="weui-cells" style="margin-top:0">
 
             <!--<div class="weui-cell">
-                <div class="weui-cell__hd"><img class="item-cover" src="https://dangjain.ishoubei.com/static/files/20180606141513_屏幕快照 2018-06-06 13.55.21.png"></div>
+                <div class="weui-cell__hd"><img class="item-cover" src="http://api.lpszzb.gov.cn/static/files/20180606141513_屏幕快照 2018-06-06 13.55.21.png"></div>
                 <div class="weui-cell__bd"><a href="detail.html?id=4">视频测试02</a></div>
             </div>-->
            
@@ -171,7 +171,7 @@
         function setUserInfo(info) {
             userInfo = info;
            
-            $.get("https://dangjain.ishoubei.com/study?user_id=" + userInfo.emplId + "&limit=3", function (rel) {
+            $.get("http://api.lpszzb.gov.cn/study?user_id=" + userInfo.emplId + "&limit=3", function (rel) {
                 $.showLoading();
 
                 console.log(rel);
@@ -188,7 +188,7 @@
                     //}
 
 
-                    if (rel.rows[i].article.cover != '' && rel.rows[i].article.cover != 'https://dangjain.ishoubei.com/static/files/20180628103815_cover.jpg') {
+                    if (rel.rows[i].article.cover != '' && rel.rows[i].article.cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
                         imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].article.cover);
                     }
 
@@ -220,7 +220,7 @@
 
 
             //目录
-            $.get("https://dangjain.ishoubei.com/type?type_id=30&status=0&type_state=2", function (rel) {
+            $.get("http://api.lpszzb.gov.cn/type?type_id=30&status=0&type_state=2", function (rel) {
 
 
                 var strInner = [];
@@ -242,7 +242,7 @@
 
             //banners
 
-            $.get("https://dangjain.ishoubei.com/study?user_id=&limit=3", function (rel) {
+            $.get("http://api.lpszzb.gov.cn/study?user_id=&limit=3", function (rel) {
                 console.log(rel);
 
                
@@ -252,7 +252,7 @@
                 for (var i = 0; i < rel.rows.length; i++) {
 
                     (function(i){
-                        $.get("https://dangjain.ishoubei.com/dding?key=user_info&user_id=" + rel.rows[i].user_id, function (user) {
+                        $.get("http://api.lpszzb.gov.cn/dding?key=user_info&user_id=" + rel.rows[i].user_id, function (user) {
 
                             console.log(user);
                             

@@ -123,7 +123,7 @@
             $("#nickname").text(info.nickName);
 
             $.ajax({
-                url: "https://dangjain.ishoubei.com/study",
+                url: "http://api.lpszzb.gov.cn/study",
                 method: "Post",
                 data: {
                     user_id: userInfo.emplId,
@@ -245,7 +245,7 @@
             }
             $.ajax({  
                 type: "post",  
-                url: "https://dangjain.ishoubei.com/article/" + aritcleId + "/aq", 
+                url: "http://api.lpszzb.gov.cn/article/" + aritcleId + "/aq", 
                 contentType : "application/x-www-form-urlencoded; charset=UTF-8",  
                 data: $.param(postData),  
                 success: function (res) {  
@@ -333,7 +333,7 @@
                             ' </div>' +
                           ' </div>';
 
-            $.get("https://dangjain.ishoubei.com/article/" + id, function (rel) {
+            $.get("http://api.lpszzb.gov.cn/article/" + id, function (rel) {
                 articleTitle = rel.title;
                 $("#title").html(rel.title);
                 $("#period").html(rel.period);
@@ -349,7 +349,7 @@
                     var arr = []
                     arr.push(addCommentHtml)
                     $("#addCommentList").html(arr.join(""));
-                    $.get("https://dangjain.ishoubei.com/article/" + id + "/aq?status=0", function (rel) {
+                    $.get("http://api.lpszzb.gov.cn/article/" + id + "/aq?status=0", function (rel) {
                     var html = [];
                     console.log(id)
                     console.log(rel.aq) 
@@ -370,7 +370,7 @@
                         
                 }
 
-                $.get("https://dangjain.ishoubei.com/article/" + id + "/question", function (rel) {
+                $.get("http://api.lpszzb.gov.cn/article/" + id + "/question", function (rel) {
 
                     questions = rel.rows;
                     console.log('------------------')

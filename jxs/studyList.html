@@ -153,7 +153,7 @@
 
             var key = $("#searchInput").val();
 
-            var url = "https://dangjain.ishoubei.com/article?limit=50&type_id=" + typeId;
+            var url = "http://api.lpszzb.gov.cn/article?limit=50&type_id=" + typeId;
 
             if (key != "") {
                 url += "&title=" + key;
@@ -194,7 +194,7 @@
                         page = "2";
                     }
 
-                    if (rel.rows[i].cover != ''&& rel.rows[i].cover != 'https://dangjain.ishoubei.com/static/files/20180628103815_cover.jpg') {
+                    if (rel.rows[i].cover != ''&& rel.rows[i].cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
                         imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
                     }
 
