@@ -29,7 +29,7 @@ function initExamList() {
 
 function getExamData() {
     //TODO
-    $.get('https://dangjain.ishoubei.com/exam/test?er_id=' + er_id, function(data){
+    $.get('http://api.lpszzb.gov.cnexam/test?er_id=' + er_id, function(data){
         console.log(data);
         eq1_ids = data.eq1_ids ;
         eq2_ids = data.eq2_ids ;

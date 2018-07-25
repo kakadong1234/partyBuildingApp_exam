@@ -20,7 +20,7 @@ function initExamList() {
 
 function getExamList() {
     //TODO
-    $.get('https://dangjain.ishoubei.com/exam/result?user_id=' + user_id, function(data){
+    $.get('http://api.lpszzb.gov.cnexam/result?user_id=' + user_id, function(data){
         console.log(data);
         data = data.rows.map(function(examPlan){
             console.log(examPlan.plan)
