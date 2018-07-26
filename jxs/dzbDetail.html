@@ -99,7 +99,7 @@
         var id = GetQueryString("id");
         $(function () {
 
-            $.get("http://api.lpszzb.gov.cn/party/" + id, function (rel) {
+            $.get("https://api.lpszzb.gov.cn/party/" + id, function (rel) {
 
                 document.title = rel.pb_name;
                 $("#dzbname").html(rel.pb_name);

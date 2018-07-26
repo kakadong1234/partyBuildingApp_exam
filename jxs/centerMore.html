@@ -39,7 +39,7 @@
     <div id="articleList" class="weui-cells" style="margin-top:0">
 
         <!--<div class="weui-cell">
-            <div class="weui-cell__hd"><img class="item-cover" src="http://api.lpszzb.gov.cn/static/files/20180606141513_屏幕快照 2018-06-06 13.55.21.png"></div>
+            <div class="weui-cell__hd"><img class="item-cover" src="https://api.lpszzb.gov.cn/static/files/20180606141513_屏幕快照 2018-06-06 13.55.21.png"></div>
             <div class="weui-cell__bd"><a href="detail.html?id=4">视频测试02</a></div>
         </div>-->       
       
@@ -74,7 +74,7 @@
             userInfo = info;
             //   alert(JSON.stringify(info));
             $.showLoading();
-            $.get("http://api.lpszzb.gov.cn/study?user_id=" + userInfo.emplId + "&limit=50", function (rel) {
+            $.get("https://api.lpszzb.gov.cn/study?user_id=" + userInfo.emplId + "&limit=50", function (rel) {
 
                // alert(JSON.stringify(rel));
                 var strInner = [];
@@ -89,7 +89,7 @@
                  //   }
                 //
 
-                        if (rel.rows[i].article.cover != '' && rel.rows[i].article.cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
+                        if (rel.rows[i].article.cover != '' && rel.rows[i].article.cover != 'https://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
                             imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].article.cover);
                         }
 

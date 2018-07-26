@@ -125,7 +125,7 @@ function getAppLinkList(cb) {
 } 
 
 function getDDAppList(cb){
-    $.get("http://api.lpszzb.gov.cn/dding?key=get_microapp_list ", function (rel) {
+    $.get("https://api.lpszzb.gov.cn/dding?key=get_microapp_list ", function (rel) {
         var list = rel.appList
         return cb(list)
     })
@@ -184,7 +184,7 @@ $(function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://api.lpszzb.gov.cn/article/" + aritcleId + "/aq",
+            "url": "https://api.lpszzb.gov.cn/article/" + aritcleId + "/aq",
             "method": "POST",
             "headers": {},
             "data": {
@@ -221,7 +221,7 @@ $(function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://api.lpszzb.gov.cn/report/feedback",
+            "url": "https://api.lpszzb.gov.cn/report/feedback",
             "method": "POST",
             "headers": {},
             "data": {
@@ -250,7 +250,7 @@ function getUserInfo(url, callback, callbackGps) {
             nickName: '晓伟'
         });
     }
-    $.get("http://api.lpszzb.gov.cn/jsapi-oauth?pwd=sddkhhyy&url=" + url, function (e) {
+    $.get("https://api.lpszzb.gov.cn/jsapi-oauth?pwd=sddkhhyy&url=" + url, function (e) {
         var _config = {};
         _config = e;
         //  alert(JSON.stringify(_config));
