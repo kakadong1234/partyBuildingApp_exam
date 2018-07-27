@@ -1,5 +1,5 @@
 var user_id = ''
-
+var url = location.href;
 
 $(function () {
     getUserInfo(url, initConst);
