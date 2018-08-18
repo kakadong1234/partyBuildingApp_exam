@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>意见反馈</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- head 中 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+
+    <link href="../css/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="nav">
+        <span onclick="history.go(-1)">
+            <img src="../img/arrow-left.png" />
+        </span>
+        <span>意见反馈</span>
+        <span id="btn-nav">导航</span>
+    </div>
+
+    <div class="weui-skin_android" id="androidActionsheet" style="display:none">
+        <div class="weui-mask" style="visibility:visible; opacity:0.5"></div>
+        <div class="weui-actionsheet">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell" onclick="location.href='index.html'">网上讲习所</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
+                 
+                <div class="weui-actionsheet__cell" onclick="location.href='center.html'">云学习中心</div>
+                <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">驻村云监管</div>
+                
+                <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="panel detail comments">
+
+        <div class="panel-body">
+            <div class="card-alert">
+               
+                <div class="alert-body">
+                    <div class="item">
+                      <div class="user"><div><img src="../img/p111.jpg" id="avatar" />&nbsp; <span id="nickname">王小李</span></div>   <span id="time"></span></div>                   
+                       <p>
+                           <textarea id="xd-content" maxlength="200" rows="10" placeholder="请输入您的宝贵意见"></textarea>
+                           <button id="btn-feedback" class="weui-btn weui-btn_default" >提交意见</button>
+                       </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--<a href="test.html" class="weui-btn weui-btn_primary btn-bottom-fixed">去考试</a>-->
+   
+    <!-- body 最后 -->
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>  
+    <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
+    <script src="../scripts/main.js?22234234234"></script>
+    <!-- Initialize Swiper -->
+
+    <script>
+
+        var userInfo = {};
+        var url = window.location.href;
+        var id = GetQueryString("id");
+
+        
+
+
+        function setUserInfo(info) {
+          //  alert(info);
+         
+            userInfo = info;
+
+        
+            if (info.avatar != "") {
+                $("#avatar").attr("src", info.avatar);
+            }
+            $("#nickname").text(info.nickName);
+        }
+
+
+
+        $(function () {
+        //    alert(url);
+       //   alert(new Date());
+            getUserInfo(url, setUserInfo);
+         
+
+          //  $("#time").html(new Date().Format("yyyy-MM-dd HH:mm:ss"))
+          
+
+
+        });
+
+    </script>
+ 
+</body>
+</html>
