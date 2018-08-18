@@ -102,7 +102,7 @@ function getAppLinkList(cb) {
         var agentId = findItemInList(list, 'name', '签到').agentId
         var link = constLink  + '&agentid=' + agentId
         appLinkList.push({name: 'singIn', link: link})
-        //信息上报 - 日志
+        //驻村日志 - 日志
         agentId = findItemInList(list, 'name', '日志').agentId
         link = constLink  + '&agentid=' + agentId
         appLinkList.push({name: 'log', link: link})
