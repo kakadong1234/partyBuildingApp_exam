@@ -115,7 +115,7 @@
 
     </div>
 
-    <div class="panel study">
+    <!-- <div class="panel study">
         <div class="panel-title index">
             <span>习近平新时代中国特色社会主义</span>
 
@@ -125,7 +125,7 @@
         <div id="articleList" class="weui-cells" style="margin-top:0">
 
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -280,31 +280,31 @@
                 $("#navs").html(strInner.join(""));
             });
 
-            $.get("https://api.lpszzb.gov.cn/article?type_id=21&limit=3", function (rel) {
+            // $.get("https://api.lpszzb.gov.cn/article?type_id=21&limit=3", function (rel) {
 
-                var strHtml = [];
-                var strInner = [];
-                var imgHtml = '';
+            //     var strHtml = [];
+            //     var strInner = [];
+            //     var imgHtml = '';
 
-                for (var i = 0; i < rel.rows.length; i++) {
-                    var page = "";
+            //     for (var i = 0; i < rel.rows.length; i++) {
+            //         var page = "";
 
-                    if (rel.rows[i].urls.length > 0) {
-                        page = "";
-                    } else {
-                        page = "2";
-                    }
-                    console.log()
-                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'https://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
-                        imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
-                    }
+            //         if (rel.rows[i].urls.length > 0) {
+            //             page = "";
+            //         } else {
+            //             page = "2";
+            //         }
+            //         console.log()
+            //         if (rel.rows[i].cover != '' && rel.rows[i].cover != 'https://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
+            //             imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
+            //         }
 
-                    strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
-                    imgHtml = ''
-                }
+            //         strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
+            //         imgHtml = ''
+            //     }
 
-                $("#articleList").html(strInner.join(""));
-            });
+            //     $("#articleList").html(strInner.join(""));
+            // });
         });
 
         function goToDetailPage(id) {

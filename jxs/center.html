@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <title>云学习中心</title>
     <meta charset="utf-8">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
     <link href="../css/main.css" rel="stylesheet" />
 </head>
+
 <body>
     <div class="nav">
         <span onclick="history.go(-1)">
@@ -45,14 +47,36 @@
                 </p>
 
             </div>
-           
+
 
 
         </div>
         <img src="../img/map/喇叭001_hover.png" />
     </div>
 
+    <div class="panel study">
+        <div class="panel-title index">
+            <span>习近平新时代中国特色社会主义</span>
 
+            <a href="indexList.html?type_name=习近平新时代中国特色社会主义&type_id=21" class="more">查看更多</a>
+        </div>
+
+        <div id="articleList" class="weui-cells" style="margin-top:0">
+
+        </div>
+    </div>
+
+    <div class="panel study">
+        <div class="panel-title index">
+            <span>新时代学习大讲堂</span>
+
+            <a href="indexList.html?type_name=新时代学习大讲堂&type_id=21" class="more">查看更多</a>
+        </div>
+
+        <div id="newArticleList" class="weui-cells" style="margin-top:0">
+
+        </div>
+    </div>
 
     <div class="panel study">
         <div class="panel-title">
@@ -65,7 +89,7 @@
                 <div class="weui-cell__hd"><img class="item-cover" src="https://api.lpszzb.gov.cn/static/files/20180606141513_屏幕快照 2018-06-06 13.55.21.png"></div>
                 <div class="weui-cell__bd"><a href="detail.html?id=4">视频测试02</a></div>
             </div>-->
-           
+
         </div>
     </div>
 
@@ -110,10 +134,10 @@
 
     <div class="weui-grids" id="navs">
 
-        
+
     </div>
 
-    
+
 
     <div class="panel testing ">
         <div class="panel-title">
@@ -138,24 +162,24 @@
     <script>
         var bgColor = ["#F1514B", "#71AAFA", "#54CED4", "#3BA3F8", "#9FCB87", "#F2A04B", "#54CED4", "#71AAFA", "#F1514B", "#3BA3F8"];
         var navItemHtml = '<a href="studyList.html?type_id={{type_id}}&type_name={{type_name}}" class="weui-grid js_grid">' +
-                                  '<div class="weui-grid__icon" style="background:{{bgcolor}}">' +
-                                     ' <img src="{{type_icon}}" />' +
-                                 ' </div>' +
-                                 ' <p class="weui-grid__label">' +
-                                 '     {{type_name}}' +
-                               '   </p>' +
-                            '  </a>';
+            '<div class="weui-grid__icon" style="background:{{bgcolor}}">' +
+            ' <img src="{{type_icon}}" />' +
+            ' </div>' +
+            ' <p class="weui-grid__label">' +
+            '     {{type_name}}' +
+            '   </p>' +
+            '  </a>';
         var html = '<div class="weui-flex list">{{inner}}</div>';
-      
+
 
 
         var innerHtml = '<div class="weui-cell" onClick="goToDetailPage({{id}})">'
-                            + '<div class="weui-cell__bd">'
-                               + '<a>{{title}}</a>'
-                               + '<span class="pub-time">{{pubTime}}</span>'
-                            + '</div>'
-                            + '{{img}}'
-                      + '</div>';
+            + '<div class="weui-cell__bd">'
+            + '<a>{{title}}</a>'
+            + '<span class="pub-time">{{pubTime}}</span>'
+            + '</div>'
+            + '{{img}}'
+            + '</div>';
 
         var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
 
@@ -170,7 +194,7 @@
 
         function setUserInfo(info) {
             userInfo = info;
-           
+
             $.get("https://api.lpszzb.gov.cn/study?user_id=" + userInfo.emplId + "&limit=3", function (rel) {
                 $.showLoading();
 
@@ -192,7 +216,7 @@
                         imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].article.cover);
                     }
 
-                  
+
 
                     strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].article.pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article.article_id).replace("{{id}}", rel.rows[i].article.article_id).replace("{{cover}}", rel.rows[i].article.cover).replace("{{title}}", rel.rows[i].article.title));
                     imgHtml = ''
@@ -208,14 +232,64 @@
 
         var bannerHtml = '<div class="swiper-slide" onclick="location.href=\'detail2.html?id={{id}}\'">' +
 
-                      ' <p>{{user}} 最近学习了 {{title}} </p>' +
-                      '</div>';
+            ' <p>{{user}} 最近学习了 {{title}} </p>' +
+            '</div>';
 
         $(function () {
-         
+
             getUserInfo(url, setUserInfo);
+            //习近平
+            $.get("https://api.lpszzb.gov.cn/article?type_id=21&limit=3", function (rel) {
 
+                var strHtml = [];
+                var strInner = [];
+                var imgHtml = '';
 
+                for (var i = 0; i < rel.rows.length; i++) {
+                    var page = "";
+
+                    if (rel.rows[i].urls.length > 0) {
+                        page = "";
+                    } else {
+                        page = "2";
+                    }
+                    console.log()
+                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'https://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
+                        imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
+                    }
+
+                    strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
+                    imgHtml = ''
+                }
+
+                $("#articleList").html(strInner.join(""));
+            });
+
+            $.get("https://api.lpszzb.gov.cn/article?type_id=21&limit=3", function (rel) {
+
+                var strHtml = [];
+                var strInner = [];
+                var imgHtml = '';
+
+                for (var i = 0; i < rel.rows.length; i++) {
+                    var page = "";
+
+                    if (rel.rows[i].urls.length > 0) {
+                        page = "";
+                    } else {
+                        page = "2";
+                    }
+                    console.log()
+                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'https://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
+                        imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
+                    }
+
+                    strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
+                    imgHtml = ''
+                }
+
+                $("#newArticleList").html(strInner.join(""));
+            });
 
 
 
@@ -232,7 +306,7 @@
                         .myReplace("{{type_name}}", rel.data[i].type_name)
                         .replace("{{type_icon}}", rel.data[i].type_icon)
                         .replace("{{bgcolor}}", bgColor[i])
-                        );
+                    );
 
                 }
 
@@ -245,21 +319,21 @@
             $.get("https://api.lpszzb.gov.cn/study?user_id=&limit=3", function (rel) {
                 console.log(rel);
 
-               
+
                 var banners = [];
                 var count = rel.rows.length;
 
                 for (var i = 0; i < rel.rows.length; i++) {
 
-                    (function(i){
+                    (function (i) {
                         $.get("https://api.lpszzb.gov.cn/dding?key=user_info&user_id=" + rel.rows[i].user_id, function (user) {
 
                             console.log(user);
-                            
-                      
+
+
                             banners.push(bannerHtml.replace("{{id}}", rel.rows[i].article_id).replace("{{user}}", user.name).replace("{{title}}", rel.rows[i].article.title));
 
-                            if (banners.length == count ) {
+                            if (banners.length == count) {
                                 $("#banners2").html(banners.join(""));
                                 var swiper = new Swiper('.swiper-container', {
 
@@ -273,24 +347,24 @@
 
                                 });
                             }
-                      
+
                         });
 
                     })(i);
 
-                   
 
 
-                    
+
+
                 }
-                  
 
-              
 
-               
+
+
+
 
             });
-          
+
         });
 
         function goToDetailPage(id) {
@@ -299,4 +373,5 @@
 
     </script>
 </body>
+
 </html>
