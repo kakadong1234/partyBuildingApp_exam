@@ -97,7 +97,7 @@ function getAppLinkList(cb) {
         return cb(appLinkList)
     }
     getDDAppList(function(list){
-        var constLink = 'dingtalk://dingtalkclient/action/switchtab?index=2&name=work&scene=1&corpid=ding377ef05619dd758735c2f4657eb6378f'
+        var constLink = 'dingtalk://dingtalkclient/action/switchtab?index=2&name=work&scene=1&corpid=ding1148af8a150e83ef35c2f4657eb6378f'
         //签到
         var agentId = findItemInList(list, 'name', '签到').agentId
         var link = constLink  + '&agentid=' + agentId
@@ -115,7 +115,7 @@ function getAppLinkList(cb) {
 
         //请假申请 - 审批下请假 - 直接拼接 url
         link = 'http://aflow.dingtalk.com/dingtalk/mobile/homepage.htm#custom?corpid=' +
-        'ding377ef05619dd758735c2f4657eb6378f' + 
+        'ding1148af8a150e83ef35c2f4657eb6378f' + 
         '&showmenu=true&dd_progress=false&dd_share=false&swfrom=chat&TemplateManager=activate&processCode=PROC-0266829C-E296-4FA1-9436-86D68FED388C&formUuid=FORM-1412C89A-224A-4CE8-A4A9-1F6E4DCCF502'
         appLinkList.push({name: 'leave', link: link})
         console.log(appLinkList)
@@ -277,7 +277,7 @@ function getUserInfo(url, callback, callbackGps) {
 
         dd.ready(function () {
             dd.biz.user.get({
-                corpId: 'ding377ef05619dd758735c2f4657eb6378f', // 可选参数，如果不传则使用用户当前企业的corpId。 
+                corpId: 'ding1148af8a150e83ef35c2f4657eb6378f', // 可选参数，如果不传则使用用户当前企业的corpId。 
                 onSuccess: function (info) {
                     //  alert('userGet success: ' + JSON.stringify(info));
                     typeof callback == "function" && callback(info);
