@@ -71,18 +71,23 @@ function GetQueryString(name) {
 }
 
 function openLink(name) {
+    console.log('openLink: ' + name)
     getAppLinkList(function(appList){
+        
+        console.log(JSON.stringify(appLinkList))
         var link = findItemInList(appList, 'name', name).link
         dd.ready(function () {
+            console.log('success dd ready')
             dd.biz.util.openLink({
                 url: link,//要打开链接的地址
                 onSuccess: function (result) {
                     /**/
-                   // alert(JSON.stringify(result));
+                    console.log('openLink success')
+                   console.log(JSON.stringify(result));
                 },
                 onFail: function (err) {
-    
-                  //  alert(JSON.stringify(err));
+                  console.log('openLink error: ' + err)
+                  console.log(JSON.stringify(err));
                 }
             })
     
@@ -114,9 +119,7 @@ function getAppLinkList(cb) {
         appLinkList.push({name: 'shenpi', link: link})
 
         //请假申请 - 审批下请假 - 直接拼接 url
-        link = 'http://aflow.dingtalk.com/dingtalk/mobile/homepage.htm#custom?corpid=' +
-        'ding1148af8a150e83ef35c2f4657eb6378f' + 
-        '&showmenu=true&dd_progress=false&dd_share=false&swfrom=chat&TemplateManager=activate&processCode=PROC-0266829C-E296-4FA1-9436-86D68FED388C&formUuid=FORM-1412C89A-224A-4CE8-A4A9-1F6E4DCCF502'
+        link = 'https://aflow.dingtalk.com/dingtalk/mobile/homepage.htm?dd_share=false&showmenu=true&back=native&swfrom=corp&corpid=ding1148af8a150e83ef35c2f4657eb6378f&processCode=PROC-620972CD-FD23-43D2-96E2-E3D3790BA34B#/custom'
         appLinkList.push({name: 'leave', link: link})
         console.log(appLinkList)
         return cb(appLinkList)
@@ -253,7 +256,6 @@ function getUserInfo(url, callback, callbackGps) {
     $.get("https://api.lpszzb.gov.cn/jsapi-oauth?pwd=sddkhhyy&url=" + url, function (e) {
         var _config = {};
         _config = e;
-        //  alert(JSON.stringify(_config));
         dd.config({
             agentId: _config.agentId,
             corpId: _config.corpId,
@@ -270,7 +272,7 @@ function getUserInfo(url, callback, callbackGps) {
              }
             **/
             console.log('1')
-            alert('dd error: ' + JSON.stringify(error));
+            console.log('dd error: ' + JSON.stringify(error));
         });
         console.log('2')
         //    alert(JSON.stringify(_config));
@@ -283,7 +285,7 @@ function getUserInfo(url, callback, callbackGps) {
                     typeof callback == "function" && callback(info);
                 },
                 onFail: function (err) {
-                    alert('userGet fail: ' + JSON.stringify(err));
+                    console.log('userGet fail: ' + JSON.stringify(err));
                 }
             });
 
@@ -354,7 +356,7 @@ function getUserInfo(url, callback, callbackGps) {
 
                 },
                 onFail: function (err) {
-                    alert('userGet fail: ' + JSON.stringify(err));
+                    console.log('userGet fail: ' + JSON.stringify(err));
                 }
             });
 
