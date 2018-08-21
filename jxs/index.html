@@ -29,13 +29,13 @@
         <div class="weui-mask" style="visibility:visible; opacity:0.5"></div>
         <div class="weui-actionsheet">
             <div class="weui-actionsheet__menu">
-                <div class="weui-actionsheet__cell" onclick="location.href='index.html'">信息资讯</div>
-                <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('index.html')">信息资讯</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('map.html')">党建大数据</div>
 
-                <div class="weui-actionsheet__cell" onclick="location.href='center.html'">网上讲习所</div>
-                <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">轮战监管</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('center.html')">网上讲习所</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('jianguan.html')">轮战监管</div>
 
-                <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('user.html')">个人信息</div>
             </div>
         </div>
     </div>
@@ -139,16 +139,15 @@
     <script src="../scripts/main.js"></script>
     <!-- Initialize Swiper -->
     <script>
-
         var bgColor = ["#F1514B", "#71AAFA", "#54CED4", "#3BA3F8", "#9FCB87", "#F2A04B", "#54CED4", "#71AAFA", "#F1514B", "#3BA3F8"];
-
+        var version = GetQueryString("version");
 
 
         var html = '<div class="weui-flex list">{{inner}}</div>';
       
 
-
-        var navItemHtml = '<a href="indexList.html?type_id={{type_id}}&type_name={{type_name}}" class="weui-grid js_grid">' +
+        var listURL = 'indexList.html?type_id={{type_id}}&type_name={{type_name}}&version=' + version;
+        var navItemHtml = '<a href="' + listURL +'" class="weui-grid js_grid">' +
                             '<div class="weui-grid__icon" style="background:{{bgcolor}}">' +
                                ' <img src="{{type_icon}}" />' +
                            ' </div>' +
@@ -168,7 +167,7 @@
         var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
 
 
-        var bannerHtml = '<div class="swiper-slide" onclick="location.href=\'detail{{page}}.html?id={{id}}\'">' +
+        var bannerHtml = '<div class="swiper-slide" onclick="goToDetailPage({{id}})">' +
                          '  <img src="{{cover}}"  />' +
                          '  <span class="title">{{title}}</span>' +
                          '</div>';
@@ -308,9 +307,8 @@
         });
 
         function goToDetailPage(id) {
-            window.location = "detail2.html?id=" + id
+            window.location = "detail2.html?id=" + id + "&version=" + version
         }
-
 
     </script>
 </body>

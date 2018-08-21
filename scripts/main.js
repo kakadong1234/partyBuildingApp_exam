@@ -70,6 +70,10 @@ function GetQueryString(name) {
     if (r != null) return unescape(r[2]); return null;
 }
 
+function navClick(html) {
+    window.location = html + "?version=" + version
+}
+
 function openLink(name) {
     console.log('openLink: ' + name)
     getAppLinkList(function(appList){
