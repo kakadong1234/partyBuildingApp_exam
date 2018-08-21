@@ -26,13 +26,13 @@
         <div class="weui-mask" style="visibility:visible; opacity:0.5"></div>
         <div class="weui-actionsheet">
             <div class="weui-actionsheet__menu">
-                <div class="weui-actionsheet__cell" onclick="location.href='index.html'">信息资讯</div>
-                <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('index.html')">信息资讯</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('map.html')">党建大数据</div>
                  
-                <div class="weui-actionsheet__cell" onclick="location.href='center.html'">网上讲习所</div>
-                <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">轮战监管</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('center.html')">网上讲习所</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('jianguan.html')">轮战监管</div>
                 
-                <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('user.html')">个人信息</div>
 
             </div>
         </div>
@@ -68,7 +68,7 @@
     <div class="panel">
         <div class="panel-title">
             <span>他山之石</span>
-            <a href="stoneList.html" class="more">查看更多</a>
+            <a onclick="navClick('stoneList.html')" class="more">查看更多</a>
         </div>
         <div id="news-list1"></div>
         <!--<div class="panel-body" onclick="location.href='detail4.html'">
@@ -79,7 +79,7 @@
     <div class="panel news">
         <div class="panel-title">
             <span>党建新闻</span>
-            <a href="stoneList2.html" class="more">查看更多</a>
+            <a onclick="navClick('stoneList2.html')" class="more">查看更多</a>
         </div>
 
         <div id="news-list">
@@ -254,7 +254,7 @@
 
         var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
 
-        var bannerHtml = '<div class="swiper-slide" onclick="location.href=\'detail2.html?id={{id}}\'">' +
+        var bannerHtml = '<div class="swiper-slide" onclick="goToDetailPage({{id}})">' +
                       
                       ' <p>{{title}} </p>' +
                       '</div>';
@@ -564,12 +564,12 @@
             content.push("电话：{{pb_phone}}");
             // content.push("简介：{{pb_desc}}");
             content.push("<div class='pb_desc_div'>简介：{{pb_desc}}</div>");
-            content.push("<a href='{{link}}.html?id={{pb_id}}'>图文详情</a>");
+            content.push("<a href='{{link}}.html?id={{pb_id}}&version=" + version +"'>图文详情</a>");
 
 
             content2.push("<img src='{imgsrc}'>地址：{address}");
             content2.push("联系方式：{phone}");
-            content2.push("<a href='{link}'>党员介绍</a>");
+            content2.push("<a href='{link}&version=" + version +"'>党员介绍</a>");
 
 
             //构建自定义信息窗体
@@ -621,9 +621,9 @@
 
         });
 
-        function goToDetailPage(id) {
-            window.location = "detail2.html?id=" + id
-        }
+        // function goToDetailPage(id) {
+        //     window.location = "detail2.html?id=" + id
+        // }
 
 
     </script>

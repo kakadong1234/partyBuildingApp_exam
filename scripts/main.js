@@ -70,8 +70,18 @@ function GetQueryString(name) {
     if (r != null) return unescape(r[2]); return null;
 }
 
+var version = GetQueryString("version");
 function navClick(html) {
-    window.location = html + "?version=" + version
+    if(html.indexOf("?") === -1) {
+        window.location = html + "?version=" + version
+    }
+    else {
+        window.location = html + "&version=" + version
+    }
+}
+
+function goToDetailPage(id) {
+    window.location = "detail2.html?id=" + id + "&version=" + version
 }
 
 function openLink(name) {

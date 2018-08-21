@@ -24,13 +24,13 @@
         <div class="weui-mask" style="visibility:visible; opacity:0.5"></div>
         <div class="weui-actionsheet">
             <div class="weui-actionsheet__menu">
-                <div class="weui-actionsheet__cell" onclick="location.href='index.html'">信息资讯</div>
-                <div class="weui-actionsheet__cell" onclick="location.href='map.html'">党建大数据</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('index.html')">信息资讯</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('map.html')">党建大数据</div>
 
-                <div class="weui-actionsheet__cell" onclick="location.href='center.html'">网上讲习所</div>
-                <div class="weui-actionsheet__cell" onclick="location.href='jianguan.html'">轮战监管</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('center.html')">网上讲习所</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('jianguan.html')">轮战监管</div>
 
-                <div class="weui-actionsheet__cell" onclick="location.href='user.html'">个人信息</div>
+                <div class="weui-actionsheet__cell" onclick="navClick('user.html')">个人信息</div>
 
             </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="panel-title index">
             <span>习近平新时代中国特色社会主义</span>
 
-            <a href="indexList.html?type_name=习近平新时代中国特色社会主义&type_id=21" class="more">查看更多</a>
+            <a onclick="navClick('indexList.html?type_name=习近平新时代中国特色社会主义&type_id=21')" class="more">查看更多</a>
         </div>
 
         <div id="articleList" class="weui-cells" style="margin-top:0">
@@ -70,7 +70,7 @@
         <div class="panel-title index">
             <span>新时代学习大讲堂</span>
 
-            <a href="indexList.html?type_name=新时代学习大讲堂&type_id=21" class="more">查看更多</a>
+            <a onclick="navClick('indexList.html?type_name=新时代学习大讲堂&type_id=21')" class="more">查看更多</a>
         </div>
 
         <div id="newArticleList" class="weui-cells" style="margin-top:0">
@@ -81,7 +81,7 @@
     <div class="panel study">
         <div class="panel-title">
             <span>我的课程</span>
-            <a href="centerMore.html" class="more">查看更多</a>
+            <a onclick="navClick('centerMore.html')" class="more">查看更多</a>
         </div>
         <div id="myStudy" class="weui-cells" style="margin-top:0">
 
@@ -161,7 +161,8 @@
     <!-- Initialize Swiper -->
     <script>
         var bgColor = ["#F1514B", "#71AAFA", "#54CED4", "#3BA3F8", "#9FCB87", "#F2A04B", "#54CED4", "#71AAFA", "#F1514B", "#3BA3F8"];
-        var navItemHtml = '<a href="studyList.html?type_id={{type_id}}&type_name={{type_name}}" class="weui-grid js_grid">' +
+        var listURL = 'studyList.html?type_id={{type_id}}&type_name={{type_name}}&version=' + version;
+        var navItemHtml = '<a href="' + listURL +  '" class="weui-grid js_grid">' +
             '<div class="weui-grid__icon" style="background:{{bgcolor}}">' +
             ' <img src="{{type_icon}}" />' +
             ' </div>' +
@@ -230,7 +231,7 @@
         }
 
 
-        var bannerHtml = '<div class="swiper-slide" onclick="location.href=\'detail2.html?id={{id}}\'">' +
+        var bannerHtml = '<div class="swiper-slide" onclick="goToDetailPage({{id}})">' +
 
             ' <p>{{user}} 最近学习了 {{title}} </p>' +
             '</div>';
@@ -367,9 +368,9 @@
 
         });
 
-        function goToDetailPage(id) {
-            window.location = "detail2.html?id=" + id
-        }
+        // function goToDetailPage(id) {
+        //     window.location = "detail2.html?id=" + id
+        // }
 
     </script>
 </body>
