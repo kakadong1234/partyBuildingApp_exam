@@ -54,7 +54,7 @@ function initListBody(data) {
                     '</div>',
                     '<div class="item btn">',    
                         '<span>状态: {{show_status}}</span>',                   
-                        '{{#is_show_exam_btn}}<a href="test.html?ep_id={{ep_id}}&user_id={{user_id}}&isFrom=center">{{exam_btn_txt}}</a>{{/is_show_exam_btn}}',                    
+                        '{{#is_show_exam_btn}}<a href="test.html?ep_id={{ep_id}}&user_id={{user_id}}&isFrom=center&version='+ version +'">{{exam_btn_txt}}</a>{{/is_show_exam_btn}}',                    
                     '</div>',
                 '</div>',
             '</div>',

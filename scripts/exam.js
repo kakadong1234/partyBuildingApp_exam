@@ -59,7 +59,7 @@ function getExamData() {
         if(!exam.uScore && exam.remainingSecond <= 0){ //0分 --> 未答 或 未提交
             console.log('已过答题时间 将 status 设置为已考完')
             exam.status = '已考完'
-            window.location.replace('examForResult.html?er_id=' + er_id + '&user_id=' + user_id + '&isFrom=' + isFrom)
+            window.location.replace('examForResult.html?er_id=' + er_id + '&user_id=' + user_id + '&isFrom=' + isFrom + '&version=' + version)
         }
         console.log(exam.status)
         initListHeader(exam);
@@ -365,7 +365,7 @@ function finishExam(){
                 submitStatus = "已交卷"
                 $("#btn-submit").html(submitStatus); 
                 console.log(submitStatus)
-                window.location.replace('examForResult.html?er_id=' + er_id + '&user_id=' + user_id + '&isFrom=' + isFrom)
+                window.location.replace('examForResult.html?er_id=' + er_id + '&user_id=' + user_id + '&isFrom=' + isFrom + '&version=' + version)
             },
             error: function () {
                 /*错误信息处理*/
