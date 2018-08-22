@@ -38,115 +38,23 @@
         </div>
     </div>
    
-    <!-- Swiper 
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="../img/banner2.png" onclick="location.href='detail.html'" />
+    <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form" id="searhForm" action="#">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="" oninput="textChange()">
+                <a href="javascript:void(0)" class="weui-icon-clear" id="searchClear" onClick="OnSearchCancel()"></a>
             </div>
-            <div class="swiper-slide">
-                <img src="../img/banner1.png" onclick="location.href='detail2.html'" />
-            </div>
-            <div class="swiper-slide">
-                <img src="../img/banner2.png" onclick="location.href='detail.html'" />
-            </div>
-
-        </div>-->
-        <!-- Add Pagination 
-        <div class="swiper-pagination"></div>
+            <label class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>搜索需要的内容</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel" onClick="OnSearchCancel()">取消</a>
     </div>
-    -->
 
-    
     <div class="panel news">
-      
-
         <div id="news-list"></div>
-        <!--<div class="panel-body" onclick="location.href='detail3.html'">
-            <div class="title">党的的精神讲座</div>
-            <div class="desc">
-                <div class="content">
-                    “中国共产党新闻网”于 2006年7月1日全新推出。成为互联网上最集中、最系统、最全面地宣传和介绍中国共产党的权威网站。中国共产党新闻网及时发布中央领导同志的重要活动、重要讲话和党的重要会议、重要文件等信息，大力传播党的路线、方针...
-                </div>
-                <div class="cover">
-                    <img src="../img/p116.jpg" />
-                </div>
-            </div>
-            <div class="time">
-                日期：2017-11-17 08:20
-            </div>
-        </div>
-
-        <div class="panel-body" onclick="location.href='detail3.html'">
-            <div class="title">党的的精神讲座</div>
-            <div class="desc">
-                <div class="content">
-                    “中国共产党新闻网”于 2006年7月1日全新推出。成为互联网上最集中、最系统、最全面地宣传和介绍中国共产党的权威网站。中国共产党新闻网及时发布中央领导同志的重要活动、重要讲话和党的重要会议、重要文件等信息，大力传播党的路线、方针...
-                </div>
-                <div class="cover">
-                    <img src="../img/p116.jpg" />
-                </div>
-            </div>
-            <div class="time">
-                日期：2017-11-17 08:20
-            </div>
-        </div>
-        <div class="panel-body" onclick="location.href='detail3.html'">
-            <div class="title">党的的精神讲座</div>
-            <div class="desc">
-                <div class="content">
-                    “中国共产党新闻网”于 2006年7月1日全新推出。成为互联网上最集中、最系统、最全面地宣传和介绍中国共产党的权威网站。中国共产党新闻网及时发布中央领导同志的重要活动、重要讲话和党的重要会议、重要文件等信息，大力传播党的路线、方针...
-                </div>
-                <div class="cover">
-                    <img src="../img/p116.jpg" />
-                </div>
-            </div>
-            <div class="time">
-                日期：2017-11-17 08:20
-            </div>
-        </div>
-        <div class="panel-body" onclick="location.href='detail3.html'">
-            <div class="title">党的的精神讲座</div>
-            <div class="desc">
-                <div class="content">
-                    “中国共产党新闻网”于 2006年7月1日全新推出。成为互联网上最集中、最系统、最全面地宣传和介绍中国共产党的权威网站。中国共产党新闻网及时发布中央领导同志的重要活动、重要讲话和党的重要会议、重要文件等信息，大力传播党的路线、方针...
-                </div>
-                <div class="cover">
-                    <img src="../img/p116.jpg" />
-                </div>
-            </div>
-            <div class="time">
-                日期：2017-11-17 08:20
-            </div>
-        </div>
-        <div class="panel-body" onclick="location.href='detail3.html'">
-            <div class="title">党的的精神讲座</div>
-            <div class="desc">
-                <div class="content">
-                    “中国共产党新闻网”于 2006年7月1日全新推出。成为互联网上最集中、最系统、最全面地宣传和介绍中国共产党的权威网站。中国共产党新闻网及时发布中央领导同志的重要活动、重要讲话和党的重要会议、重要文件等信息，大力传播党的路线、方针...
-                </div>
-                <div class="cover">
-                    <img src="../img/p116.jpg" />
-                </div>
-            </div>
-            <div class="time">
-                日期：2017-11-17 08:20
-            </div>
-        </div>
-        <div class="panel-body" onclick="location.href='detail3.html'">
-            <div class="title">党的的精神讲座</div>
-            <div class="desc">
-                <div class="content">
-                    “中国共产党新闻网”于 2006年7月1日全新推出。成为互联网上最集中、最系统、最全面地宣传和介绍中国共产党的权威网站。中国共产党新闻网及时发布中央领导同志的重要活动、重要讲话和党的重要会议、重要文件等信息，大力传播党的路线、方针...
-                </div>
-                <div class="cover">
-                    <img src="../img/p116.jpg" />
-                </div>
-            </div>
-            <div class="time">
-                日期：2017-11-17 08:20
-            </div>
-        </div>-->
     </div>
 
     <!-- body 最后 -->
@@ -158,70 +66,44 @@
   
     <!-- Initialize Swiper -->
     <script>
-
-        //var swiper = new Swiper('.swiper-container', {
-        //    pagination: {
-        //        el: '.swiper-pagination',
-        //    },
-        //    paginationClickable: true,
-        //    speed: 500,
-        //    loop: true,
-        //    observer: true,
-        //    observeParents: true,
-        //    autoplayDisableOnInteraction: false,
-        //    autoplay:true,
-
-        //});
-
-        var html = '<div class="panel-body" onclick="location.href=\'detail3.html?id={{id}}\'">' +
-              ' <div class="title">{{title}}</div>' +
-              ' <div class="desc">' +
-                  ' <div class="content">{{abstract}}</div>' +
-                  ' <div class="cover">' +
-                       '<img src="{{cover}}" />' +
-                   '</div>' +
-               '</div>' +
-              ' <div class="time"> 日期：{{created}}' +
-              ' </div>' +
-       '</div>';
-
-        var innerHtml = '<div class="weui-cell" onClick="goToDetailPage({{id}})">'
-                            + '<div class="weui-cell__bd">'
-                               + '<a>{{title}}</a>'
-                               + '<span class="pub-time">{{pubTime}}</span>'
-                            + '</div>'
-                            + '{{img}}'
-                      + '</div>';
-
-        var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
         $(function () {
-            // created
-
-
-
-            $.get("https://api.lpszzb.gov.cn/article?type_id=41&page=1&limit=200", function (rel) {
-
-                var strHtml = [];            
-                var imgHtml = '';
-                for (var i = 0; i < rel.rows.length; i++) {
-                    //strHtml.push(innerHtml.replace("{{page}}", 3).replace("{{id}}", rel.rows[i].article_id).replace("{{cover}}", rel.rows[i].cover).replace("{{title}}", rel.rows[i].title));
-               //     strHtml.push(html.replace("{{cover}}", rel.rows[i].cover).replace("{{created}}", rel.rows[i].created).replace("{{id}}", rel.rows[i].article_id).replace("{{abstract}}", rel.rows[i].abstract).replace("{{title}}", rel.rows[i].title));
-
-                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
-                        imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
-                    }
-
-                    strHtml.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", 4).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
-                    imgHtml = ''
-                }
-
-                $("#news-list").html(strHtml.join(""));
+            $(".weui-search-bar__form#searhForm").on("submit", function () {
+                search();
+                return false;
             });
+            search();
         });
-        
-        // function goToDetailPage(id) {
-        //     window.location = "detail2.html?id=" + id
-        // }
+
+
+        function OnSearchCancel() {
+            $("#searchInput").val('')
+            textChange()
+        }
+
+        function textChange() {
+            var key = $("#searchInput").val();
+            console.log('text is ' + key)
+            if (key === '') {
+                // reset data
+                search()
+            }
+        }
+
+        function search() {
+            $.showLoading();
+
+            var key = $("#searchInput").val();
+            var url = "https://api.lpszzb.gov.cn/article?type_id=41&page=1&limit=500"
+
+            if (key != "") {
+                url += "&title=" + key;
+            }
+            $.get(url, function (rel) {
+                genArticleHtml(rel, 'news-list')
+                $.hideLoading();
+            });
+        }
+
     </script>
    
 </body>

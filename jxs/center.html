@@ -137,8 +137,6 @@
 
     </div>
 
-
-
     <div class="panel testing ">
         <div class="panel-title">
             <span>考试中心</span>
@@ -172,62 +170,20 @@
             '  </a>';
         var html = '<div class="weui-flex list">{{inner}}</div>';
 
-
-
-        var innerHtml = '<div class="weui-cell" onClick="goToDetailPage({{id}})">'
-            + '<div class="weui-cell__bd">'
-            + '<a>{{title}}</a>'
-            + '<span class="pub-time">{{pubTime}}</span>'
-            + '</div>'
-            + '{{img}}'
-            + '</div>';
-
-        var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
-
         var mySwiper = new Swiper('.swiper-container', {
             autoplay: true,//可选选项，自动滑动
         })
 
         var userInfo = {};
-        var userId = "manager1603";
         var url = window.location.href;
-
 
         function setUserInfo(info) {
             userInfo = info;
-
-            $.get("https://api.lpszzb.gov.cn/study?user_id=" + userInfo.emplId + "&limit=3", function (rel) {
-                $.showLoading();
-
-                console.log(rel);
-
-                var strInner = [];
-                var imgHtml = '';
-                for (var i = 0; i < rel.rows.length; i++) {
-                    var page = "2";
-
-                    //if (rel.rows[i].article.urls.length > 0) {
-                    //    page = "";
-                    //} else {
-                    //    page = "2";
-                    //}
-
-
-                    if (rel.rows[i].article.cover != '' && rel.rows[i].article.cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
-                        imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].article.cover);
-                    }
-
-
-
-                    strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].article.pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article.article_id).replace("{{id}}", rel.rows[i].article.article_id).replace("{{cover}}", rel.rows[i].article.cover).replace("{{title}}", rel.rows[i].article.title));
-                    imgHtml = ''
-                }
-
-                $("#myStudy").html(strInner.join(""));
-                $.hideLoading();
+            //我的课程
+            var url = "https://api.lpszzb.gov.cn/study?user_id=" + userInfo.emplId + "&limit=3";
+            $.get(url, function (rel) {
+                genStudyListHtml(rel, 'myStudy')
             });
-
-            initConst(info);
         }
 
 
@@ -237,64 +193,18 @@
             '</div>';
 
         $(function () {
-
             getUserInfo(url, setUserInfo);
-            //习近平
-            $.get("https://api.lpszzb.gov.cn/article?type_id=21&limit=3", function (rel) {
-
-                var strHtml = [];
-                var strInner = [];
-                var imgHtml = '';
-
-                for (var i = 0; i < rel.rows.length; i++) {
-                    var page = "";
-
-                    if (rel.rows[i].urls.length > 0) {
-                        page = "";
-                    } else {
-                        page = "2";
-                    }
-                    console.log()
-                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
-                        imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
-                    }
-
-                    strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
-                    imgHtml = ''
-                }
-
-                $("#articleList").html(strInner.join(""));
+            //习近平新时代
+            var articleListUrl = "https://api.lpszzb.gov.cn/article?type_id=21&limit=3";
+            $.get(articleListUrl, function (rel) {
+                genArticleHtml(rel, 'articleList')
             });
-
-            $.get("https://api.lpszzb.gov.cn/article?type_id=21&limit=3", function (rel) {
-
-                var strHtml = [];
-                var strInner = [];
-                var imgHtml = '';
-
-                for (var i = 0; i < rel.rows.length; i++) {
-                    var page = "";
-
-                    if (rel.rows[i].urls.length > 0) {
-                        page = "";
-                    } else {
-                        page = "2";
-                    }
-                    console.log()
-                    if (rel.rows[i].cover != '' && rel.rows[i].cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
-                        imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
-                    }
-
-                    strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
-                    imgHtml = ''
-                }
-
-                $("#newArticleList").html(strInner.join(""));
+            //新时代大讲堂
+            var newArticleListUrl = "https://api.lpszzb.gov.cn/article?type_id=21&limit=3";
+            $.get(newArticleListUrl, function (rel) {
+                genArticleHtml(rel, 'newArticleList')
             });
-
-
-
-            //目录
+            //教学中心 - 目录
             $.get("https://api.lpszzb.gov.cn/type?type_id=30&status=0&type_state=2", function (rel) {
 
 
@@ -314,12 +224,9 @@
                 $("#navs").html(strInner.join(""));
             });
 
-
             //banners
-
             $.get("https://api.lpszzb.gov.cn/study?user_id=&limit=3", function (rel) {
                 console.log(rel);
-
 
                 var banners = [];
                 var count = rel.rows.length;
@@ -352,25 +259,10 @@
                         });
 
                     })(i);
-
-
-
-
-
                 }
-
-
-
-
-
-
             });
 
         });
-
-        // function goToDetailPage(id) {
-        //     window.location = "detail2.html?id=" + id
-        // }
 
     </script>
 </body>

@@ -19,51 +19,6 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
-//dd.ready(function () {
-
-//    //dd.device.notification.confirm({
-//    //    message: "你爱我吗",
-//    //    title: "提示",
-//    //    buttonLabels: ['爱', '不爱'],
-//    //    onSuccess: function (result) {
-//    //        //onSuccess将在点击button之后回调
-//    //        /*
-//    //        {
-//    //            buttonIndex: 0 //被点击按钮的索引值，Number类型，从0开始
-//    //        }
-//    //        */
-//    //    },
-//    //    onFail: function (err) { }
-//    //});
-
-
-
-//    dd.biz.navigation.setRight({
-//        show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
-//        control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
-//        text: '导航',//控制显示文本，空字符串表示显示默认文本
-//        onSuccess: function (result) {
-//            var $androidActionSheet = $('#androidActionsheet');
-//            var $androidMask = $androidActionSheet.find('.weui-mask');
-//            $androidMask.on('click', function () {
-//                $androidActionSheet.hide();
-//            });
-//            if (!showMenu) {
-//                showMenu = true;
-//                $androidActionSheet.show();
-//            } else {
-//                showMenu = false;
-//                $androidActionSheet.hide();
-//            }
-//            //如果control为true，则onSuccess将在发生按钮点击事件被回调
-//            /*
-//            {}
-//            */
-//        },
-//        onFail: function (err) { }
-//    });
-//});
-
 function GetQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = decodeURI(window.location.search).substr(1).match(reg);
@@ -93,6 +48,66 @@ function getReadListInCache() {
 
 function goToDetailPage(id) {
     window.location = "detail2.html?id=" + id + "&version=" + version
+}
+
+function genArticleHtml(rel, htmlIdValue) {
+    var innerHtml = '<div class="weui-cell" onClick="goToDetailPage({{id}})">'
+    + '<div class="weui-cell__bd">'
+    + '<a class="{{titleClass}}">{{title}}</a>'
+    + '<span class="pub-time">{{pubTime}}</span>'
+    + '</div>'
+    + '{{img}}'
+    + '</div>';
+    var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
+    var strHtml = [];
+    var strInner = [];
+    var imgHtml = '';
+    for (var i = 0; i < rel.rows.length; i++) {
+        if (rel.rows[i].cover != '' && rel.rows[i].cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
+            imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
+        }
+        var titleClass = ''
+        if (getReadListInCache().indexOf(rel.rows[i].article_id + '') === -1) {
+            //该文章未读
+            titleClass = 'title_a_no_read'
+        }
+        else {
+            titleClass = 'title_a_have_read'
+        }
+        strInner.push(innerHtml.replace("{{titleClass}}", titleClass).replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
+        imgHtml = ''
+    }
+    $("#" + htmlIdValue ).html(strInner.join(""));
+}
+
+function genStudyListHtml(rel, htmlIdValue) {
+    var innerHtml = '<div class="weui-cell" onClick="goToDetailPage({{id}})">'
+    + '<div class="weui-cell__bd">'
+    + '<a class="{{titleClass}}">{{title}}</a>'
+    + '<span class="pub-time">{{pubTime}}</span>'
+    + '</div>'
+    + '{{img}}'
+    + '</div>';
+    var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
+    var strHtml = [];
+    var strInner = [];
+    var imgHtml = '';
+    for (var i = 0; i < rel.rows.length; i++) {
+        if (rel.rows[i].article.cover != '' && rel.rows[i].article.cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
+            imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].article.cover);
+        }
+        var titleClass = ''
+        if (getReadListInCache().indexOf(rel.rows[i].article.article_id + '') === -1) {
+            //该文章未读
+            titleClass = 'title_a_no_read'
+        }
+        else {
+            titleClass = 'title_a_have_read'
+        }
+        strInner.push(innerHtml.replace("{{titleClass}}", titleClass).replace("{{pubTime}}", rel.rows[i].article.pubtime).replace("{{img}}", imgHtml).replace("{{id}}", rel.rows[i].article.article_id).replace("{{id}}", rel.rows[i].article.article_id).replace("{{title}}", rel.rows[i].article.title));
+        imgHtml = ''
+    }
+    $("#" + htmlIdValue ).html(strInner.join(""));
 }
 
 function openLink(name) {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>网上讲习所</title>
     <meta charset="utf-8">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
     <link href="../css/main.css" rel="stylesheet" />
 </head>
+
 <body>
     <div class="nav">
         <span onclick="history.go(-1)">
@@ -24,98 +26,51 @@
             <div class="weui-actionsheet__menu">
                 <div class="weui-actionsheet__cell" onclick="navClick('index.html')">信息资讯</div>
                 <div class="weui-actionsheet__cell" onclick="navClick('map.html')">党建大数据</div>
-                 
+
                 <div class="weui-actionsheet__cell" onclick="navClick('center.html')">网上讲习所</div>
                 <div class="weui-actionsheet__cell" onclick="navClick('jianguan.html')">轮战监管</div>
-                
+
                 <div class="weui-actionsheet__cell" onclick="navClick('user.html')">个人信息</div>
 
             </div>
         </div>
     </div>
-    <!-- Swiper -->    
-
-
-    <div id="articleList" class="weui-cells" style="margin-top:0">
-
-        <!--<div class="weui-cell">
-            <div class="weui-cell__hd"><img class="item-cover" src="https://api.lpszzb.gov.cn/static/files/20180606141513_屏幕快照 2018-06-06 13.55.21.png"></div>
-            <div class="weui-cell__bd"><a href="detail.html?id=4">视频测试02</a></div>
-        </div>-->       
-      
-    </div>
+    <div id="articleList" class="weui-cells" style="margin-top:0"></div>
 
     <!-- body 最后 -->
     <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type='text/javascript' charset='utf-8'></script>
     <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js" type='text/javascript' charset='utf-8'></script>
     <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js" type='text/javascript' charset='utf-8'></script>
-  
+
     <script src="../scripts/main.js"></script>
     <!-- Initialize Swiper -->
     <script>
-        var innerHtml = '<div class="weui-cell" onClick="goToDetailPage({{id}})">'
-                           + '<div class="weui-cell__bd">'
-                              + '<a>{{title}}</a>'
-                              + '<span class="pub-time">{{pubTime}}</span>'
-                           + '</div>'
-                           + '{{img}}'
-                     + '</div>';
-
-        var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
-
-
         var userInfo = {};
-        var userId = "manager1603";
         var url = window.location.href;
-
-     
 
         function setUserInfo(info) {
             userInfo = info;
-            //   alert(JSON.stringify(info));
+            getInfo();
+        }
+
+        function getInfo() {
             $.showLoading();
-            $.get("https://api.lpszzb.gov.cn/study?user_id=" + userInfo.emplId + "&limit=50", function (rel) {
 
-               // alert(JSON.stringify(rel));
-                var strInner = [];
-                var imgHtml = '';
-                for (var i = 0; i < rel.rows.length; i++) {
-                    var page = "";
+            var key = $("#searchInput").val();
 
-                    //if (rel.rows[i].article.urls.length > 0) {
-                    //    page = "";
-                    //} else {
-                        page = "2";
-                 //   }
-                //
-
-                        if (rel.rows[i].article.cover != '' && rel.rows[i].article.cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
-                            imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].article.cover);
-                        }
-
-
-
-                        strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].article.pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article.article_id).replace("{{id}}", rel.rows[i].article.article_id).replace("{{cover}}", rel.rows[i].article.cover).replace("{{title}}", rel.rows[i].article.title));
-                        imgHtml = ''
-                }
-
-                $("#articleList").html(strInner.join(""));
+            var url = "https://api.lpszzb.gov.cn/study?user_id=" + userInfo.emplId + "&limit=500";
+            $.get(url, function (rel) {
+                console.log(rel)
+                genStudyListHtml(rel, 'articleList')
                 $.hideLoading();
             });
         }
 
-
-
         $(function () {
-
             getUserInfo(url, setUserInfo);
-
         });
-
-        // function goToDetailPage(id) {
-        //     window.location = "detail2.html?id=" + id
-        // }
 
     </script>
 </body>
+
 </html>
