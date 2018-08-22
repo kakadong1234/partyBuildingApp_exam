@@ -153,8 +153,10 @@ function getAppLinkList(cb) {
         agentId = findItemInList(list, 'name', '日志').agentId
         link = constLink  + '&agentid=' + agentId
         appLinkList.push({name: 'log', link: link})
-        //工作调度 or 协作指导
-        appLinkList.push({name: 'work', link: 'dingtalk://dingtalkclient/action/switchtab?index=3'})
+        //任务调度
+        appLinkList.push({name: 'work', link: 'dingtalk://dingtalkclient/action/switchtab?index=1'})
+        //共享交流
+        appLinkList.push({name: 'concat', link: 'dingtalk://dingtalkclient/action/switchtab?index=3'})
         //工作审批 - 审批
         agentId = findItemInList(list, 'name', '审批').agentId
         link = constLink  + '&agentid=' + agentId
