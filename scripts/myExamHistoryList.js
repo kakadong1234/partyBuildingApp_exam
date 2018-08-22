@@ -1,6 +1,6 @@
 var user_id = '';
 var userInfo = {};
-var url = location.href;
+var url = encodeURIComponent(location.href);
 function initConst(info) {
     userInfo = info;
     user_id = userInfo.emplId

@@ -171,7 +171,7 @@
                          '  <span class="title">{{title}}</span>' +
                          '</div>';
         var userInfo = {};
-        var url = window.location.href;
+        var url = encodeURIComponent(window.location.href);
 
 
         function setUserInfo(info) {

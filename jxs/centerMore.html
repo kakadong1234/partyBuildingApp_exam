@@ -46,7 +46,7 @@
     <!-- Initialize Swiper -->
     <script>
         var userInfo = {};
-        var url = window.location.href;
+        var url = encodeURIComponent(window.location.href);
 
         function setUserInfo(info) {
             userInfo = info;

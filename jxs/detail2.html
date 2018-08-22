@@ -113,7 +113,7 @@
 
         var userInfo = {};
         var articleTitle = "文章标题";
-        var url = window.location.href;
+        var url = encodeURIComponent(window.location.href);
         var id = GetQueryString("id");
 
         var aritcleId = id;

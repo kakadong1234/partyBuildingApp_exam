@@ -11,7 +11,7 @@ const LOOP_TIME_INTERVAL_MINUTE = 1
 
 
 var userInfo = {};
-var url = location.href;
+var url = encodeURIComponent(location.href);
 
 //  alert(location.href);
 function initConst(info) {
