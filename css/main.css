@@ -282,6 +282,12 @@ body {
         height: 14px;
         margin: 0 5px;
     }
+    .order .rules_a{
+        position: absolute;
+        right: 10px;
+        /* top: 15px;   */
+        color: white
+    }
 
 .order-list {
     display: flex;
@@ -908,6 +914,11 @@ video {
 }
 
 /* 新增 */
+.rule_div{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .rel_img{
     position:absolute;
     z-index:999;
