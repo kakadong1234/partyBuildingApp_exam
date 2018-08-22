@@ -80,6 +80,17 @@ function navClick(html) {
     }
 }
 
+function getReadListInCache() {
+    var key = 'have_read_id_list'
+    var listString = window.localStorage.getItem(key)
+    console.log('read listString:' + listString)
+    var list = [];
+    if(listString){
+        list = listString.split(",")
+    }
+    return list
+}
+
 function goToDetailPage(id) {
     window.location = "detail2.html?id=" + id + "&version=" + version
 }

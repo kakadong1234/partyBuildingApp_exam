@@ -121,7 +121,8 @@
                 $("#avatar").attr("src", info.avatar);
             }
             $("#nickname").text(info.nickName);
-
+            //已读 - 记录缓存
+            updateReadListInCache()
             $.ajax({
                 url: "https://api.lpszzb.gov.cn/study",
                 method: "Post",
@@ -431,6 +432,30 @@
             }
             console.log(index)
             return index
+        }
+
+        function updateReadListInCache() {
+            var key = 'have_read_id_list'
+            var listString = window.localStorage.getItem(key)
+            console.log('before read listString:' + listString)
+            var list = [];
+            if(listString){
+                list = listString.split(",")
+            }
+            if(list.indexOf(id) === -1) { //去重
+                list.push(id)
+            }
+            var setListString = ''
+            for(var i=0; i<list.length; i++){
+                if(i===0){
+                    setListString = list[i]
+                }
+                else {
+                    setListString = setListString + ',' + list[i]
+                }
+            }
+            console.log('after read listString:' + setListString)
+            window.localStorage.setItem(key, setListString)
         }
     </script>
 

@@ -300,12 +300,12 @@
 
         var innerHtml = '<div class="weui-cell" onClick="goToDetailPage({{id}})">'
                             + '<div class="weui-cell__bd">'
-                               + '<a>{{title}}</a>'
+                               + '<a class="{{titleClass}}">{{title}}</a>'
                                + '<span class="pub-time">{{pubTime}}</span>'
                             + '</div>'
                             + '{{img}}'
                       + '</div>';
-
+                      
         var innerImgHtml = '<div class="weui-cell__hd"><img class="item-cover" src="{{cover}}"></div>';
 
         var typeId = GetQueryString("type_id");
@@ -399,8 +399,18 @@
                     if (rel.rows[i].cover != ''&& rel.rows[i].cover != 'http://api.lpszzb.gov.cn/static/files/20180628103815_cover.jpg') {
                         imgHtml = innerImgHtml.replace("{{cover}}", rel.rows[i].cover);
                     }
-
-                    strInner.push(innerHtml.replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
+                    var titleClass = ''
+                    console.log(getReadListInCache())
+                    console.log(rel.rows[i].article_id + '')
+                    console.log(getReadListInCache().indexOf(rel.rows[i].article_id + ''))
+                    if(getReadListInCache().indexOf(rel.rows[i].article_id + '') === -1){
+                        //该文章未读
+                        titleClass = 'title_a_no_read'
+                    }
+                    else{
+                        titleClass = 'title_a_have_read'
+                    }
+                    strInner.push(innerHtml.replace("{{titleClass}}", titleClass).replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{page}}", page).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
                     imgHtml = ''
                 }
 

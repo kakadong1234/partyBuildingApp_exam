@@ -84,9 +84,22 @@ body {
 }
 
 .weui-cell__bd .pub-time{
-        display: block;
+    display: block;
     font-size: 12px;
-    color: #888;
+    color: gray;
+}
+
+
+.weui-cell__bd .title_a_no_read{
+    display: block;
+    font-size: 16px;
+    color: black;
+}
+
+.weui-cell__bd .title_a_have_read{
+    display: block;
+    font-size: 16px;
+    color: gray;
 }
 
 .weui-grid__icon {
