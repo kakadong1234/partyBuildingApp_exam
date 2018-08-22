@@ -55,6 +55,7 @@ function genArticleHtml(rel, htmlIdValue) {
     + '<div class="weui-cell__bd">'
     + '<a class="{{titleClass}}">{{title}}</a>'
     + '<span class="pub-time">{{pubTime}}</span>'
+    + '<span class="pv">{{pv}}次阅读</span>'
     + '</div>'
     + '{{img}}'
     + '</div>';
@@ -74,7 +75,7 @@ function genArticleHtml(rel, htmlIdValue) {
         else {
             titleClass = 'title_a_have_read'
         }
-        strInner.push(innerHtml.replace("{{titleClass}}", titleClass).replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{img}}", imgHtml).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
+        strInner.push(innerHtml.replace("{{titleClass}}", titleClass).replace("{{pubTime}}", rel.rows[i].pubtime).replace("{{pv}}", rel.rows[i].pv).replace("{{img}}", imgHtml).replace("{{id}}", rel.rows[i].article_id).replace("{{id}}", rel.rows[i].article_id).replace("{{title}}", rel.rows[i].title));
         imgHtml = ''
     }
     $("#" + htmlIdValue ).html(strInner.join(""));
@@ -85,6 +86,7 @@ function genStudyListHtml(rel, htmlIdValue) {
     + '<div class="weui-cell__bd">'
     + '<a class="{{titleClass}}">{{title}}</a>'
     + '<span class="pub-time">{{pubTime}}</span>'
+    + '<span class="pv">{{pv}}次阅读</span>'
     + '</div>'
     + '{{img}}'
     + '</div>';
@@ -104,7 +106,7 @@ function genStudyListHtml(rel, htmlIdValue) {
         else {
             titleClass = 'title_a_have_read'
         }
-        strInner.push(innerHtml.replace("{{titleClass}}", titleClass).replace("{{pubTime}}", rel.rows[i].article.pubtime).replace("{{img}}", imgHtml).replace("{{id}}", rel.rows[i].article.article_id).replace("{{id}}", rel.rows[i].article.article_id).replace("{{title}}", rel.rows[i].article.title));
+        strInner.push(innerHtml.replace("{{titleClass}}", titleClass).replace("{{pubTime}}", rel.rows[i].article.pubtime).replace("{{pv}}", rel.rows[i].article.pv).replace("{{img}}", imgHtml).replace("{{id}}", rel.rows[i].article.article_id).replace("{{id}}", rel.rows[i].article.article_id).replace("{{title}}", rel.rows[i].article.title));
         imgHtml = ''
     }
     $("#" + htmlIdValue ).html(strInner.join(""));
