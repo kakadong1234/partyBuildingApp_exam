@@ -397,7 +397,7 @@
             //});
 
 
-            $.get("https://api.lpszzb.gov.cn/party?pb_pattern=0&limit=100000", function (e) {
+            $.get("https://api.lpszzb.gov.cn/party?pb_pattern=0&platform=app&limit=100000", function (e) {
                 console.log(e);
             
                 var rows0 = e.rows;
@@ -459,7 +459,7 @@
 
             })
 
-            $.get("https://api.lpszzb.gov.cn/party?pb_pattern=1&limit=100000", function (e) {
+            $.get("https://api.lpszzb.gov.cn/party?pb_pattern=1&platform=app&limit=100000", function (e) {
                 var rows1 = e.rows;
                 for (var i = 0; i < rows1.length; i++) {
                     //添加点标记，并使用自己的icon
@@ -505,7 +505,7 @@
                 }
             })
 
-            $.get("https://api.lpszzb.gov.cn/cadre?page=1&limit=100000", function (e) {
+            $.get("https://api.lpszzb.gov.cn/cadre?page=1&platform=app&limit=100000", function (e) {
                 //   console.log(e);
                 var rows = e.rows.filter(function(row){
                     return row.address !== null && row.address !== undefined &&  row.address !== ''
