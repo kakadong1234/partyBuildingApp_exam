@@ -24,6 +24,11 @@ function getExamList() {
         console.log(data);
         data = data.rows.map(function(examPlan){
             console.log(examPlan.plan)
+            const endTimeStamp = newDate(examPlan.plan.epe_time).getTime()
+            if(endTimeStamp - Date.now() < 0){
+                 console.log('考试已经截止')
+                 examPlan.er_state = 5
+            }
             const isDeletePlan = examPlan.plan === undefined || examPlan.plan === null
             if(!isDeletePlan){
                 examPlan.isDeleteOrOverTimePlan = newDate(examPlan.plan.epe_time).getTime() -  Date.now() < 0
