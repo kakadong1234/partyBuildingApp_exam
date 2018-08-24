@@ -261,7 +261,7 @@ function initListBody(exam) {
         '<div class="weui-panel__bd">',
         '{{#qList}}<span href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">',
         '<div class="weui-media-box__bd">',
-        '<p class="weui-media-box__desc">{{showIndex}}. {{title}}</p>',
+        '<div class="title-p">{{showIndex}}. {{title}}</div>',
         '<div class="weui-cells weui-cells_radio">',
         '{{#items}}<label class="weui-cell weui-check__label" for="radio{{id}}{{key}}">',
         '<div class="weui-cell__bd">',

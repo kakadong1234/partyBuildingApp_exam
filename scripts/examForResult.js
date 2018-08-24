@@ -248,7 +248,7 @@ function initListBodyForExamed(exam) {
         '<div class="weui-media-box__bd">',
         '{{^isRight}}<img class="rel_img" src="../img/cuo.png"/>{{/isRight}}',
         '{{#isRight}}<img class="rel_img" src="../img/dui.png"/>{{/isRight}}',
-        '<p class="weui-media-box__desc">{{showIndex}}. {{title}}</p>',
+        '<div class="title-p">{{showIndex}}. {{title}}</div>',
         '<div class="weui-cells weui-cells_radio">',
         '{{#items}}<label class="weui-cell weui-check__label" for="radio{{id}}{{key}}">',
         '<div class="weui-cell__bd">',

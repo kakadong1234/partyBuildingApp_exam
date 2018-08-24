@@ -863,9 +863,15 @@ video {
     border-top:0;
 }
 
-.test .weui-media-box__desc {
-    -webkit-line-clamp: 4;
-    line-height:1.5;
+.title-p {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
 }
 
 .nav{
