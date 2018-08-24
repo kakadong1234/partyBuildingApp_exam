@@ -368,7 +368,13 @@
                 zoom: 8,
                 center: [104.830863, 26.592095]
             });
-
+            console.log(map.getBounds());
+            console.log(map.getZoom())
+            var bounds = map.getBounds();
+            var southWest = {lng: bounds.southwest.lng, lat: bounds.southwest.lat}
+            var northEast = {lng: bounds.northeast.lng, lat: bounds.northeast.lat};
+            console.log(southWest)
+            console.log(northEast)
             AMap.event.addDomListener(document.getElementById('setCenter'), 'click', function () {
                 // 设置缩放级别和中心点
                 map.setZoomAndCenter(8, [104.830863, 26.592095]);

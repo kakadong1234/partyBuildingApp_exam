@@ -275,6 +275,9 @@
                 var item = data[i];
                 $.get("https://api.lpszzb.gov.cn/dding?key=user_info&user_id=" + item.creator_id, function (user) {
                     console.log(user);
+                    if(user.avatar === ''){
+                        user.avatar = 'http://7xrsfo.com1.z0.glb.clouddn.com/tx123.png'
+                    }
                     $('#avtar_img_' + user.userid).attr("src", user.avatar);
                 });
             }
