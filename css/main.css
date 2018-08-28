@@ -494,7 +494,7 @@ body {
 }
 
 .panel-title.index span{
-     font-size:14px;
+     font-size:12px;
 }
 
 .panel-title a {
@@ -506,8 +506,8 @@ body {
    
 }
 .panel-title.index a{
-     padding-top:20px;
-    font-size:12px;
+    padding-top:20px;
+    font-size:10px;
 }
 
 .panel-body {
