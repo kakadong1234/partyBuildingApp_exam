@@ -834,6 +834,13 @@ video {
 .detail .content > p,.detail .content > div{
     width:100%!important;
 }
+.detail .content a{
+    word-break: break-all
+}
+.detail .content p{
+    word-break: break-all
+}
+
 .detail .content img{
     max-width:100%;
     margin:10px auto;
