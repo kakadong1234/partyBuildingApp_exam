@@ -178,6 +178,36 @@ function getDDAppList(cb){
     })
 }
 
+function upload(cb){
+    alert('2323232')
+    var form = document.getElementById("form_file");
+    var formData = new FormData(form);
+    console.log(formData)
+    $.ajax({
+        url:"http://api.lpszzb.gov.cn/upload",
+        type:"post",
+        data:formData,
+        processData:false,
+        contentType:false,
+        success:function(res){
+            if(res){
+                alert(JSON.stringify(res))
+                var httpurl="http://api.lpszzb.gov.cn" + res.url
+                alert(httpurl)
+                cb(httpurl)
+            }else {
+                alert("文件上传错误")
+            }
+
+
+        },
+        error:function(err){
+            alert("网络连接失败,稍后重试",err);
+        }
+    })
+}
+
+
 var showMenu = false;
 
 $(function () {
@@ -255,11 +285,10 @@ $(function () {
     $("#btn-feedback").click(function () {
 
         var user = userInfo || {};
-
-        //    alert(JSON.stringify(user.emplId));
-
-        var content = $("#xd-content").val();
-
+        upload(function(url){
+            alert(JSON.stringify(user.emplId));
+            alert(url)
+            var content = $("#xd-content").val();
         if (content == "") {
             alert("请输入宝贵意见！");
             return false;
@@ -276,7 +305,8 @@ $(function () {
                 "content": content,
                 "user_id": user.emplId,
                 "cover": user.avatar,
-                "author": user.nickName
+                "author": user.nickName,
+                "urls": url
             }
         }
 
@@ -286,6 +316,7 @@ $(function () {
         });
     });
 
+        })
 })
 
 

@@ -44,7 +44,15 @@
                
                 <div class="alert-body">
                     <div class="item">
-                      <div class="user"><div><img src="../img/p111.jpg" id="avatar" />&nbsp; <span id="nickname">王小李</span></div>   <span id="time"></span></div>                   
+                      <div class="user">
+                          <div>
+                              <img src="../img/p111.jpg" id="avatar" />&nbsp; <span id="nickname">王小李</span></div>   
+                              <span id="time"></span>
+                              <form id="form_file" enctype="multipart/form-data" method="post" >
+                                <input type="file" id="file" name="file" style="display: none"/>
+                                <img src="../img/add_big.png" width="40px" height="40px" onclick="chooseImage()"/>
+                             </form>
+                            </div>                   
                        <p>
                            <textarea id="xd-content" maxlength="200" rows="10" placeholder="请输入您的宝贵意见"></textarea>
                            <button id="btn-feedback" class="weui-btn weui-btn_default" >提交意见</button>
@@ -87,6 +95,9 @@
         }
 
 
+        function chooseImage(){
+            $("#file").click();
+        }
 
         $(function () {
         //    alert(url);
