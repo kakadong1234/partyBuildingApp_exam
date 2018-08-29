@@ -256,12 +256,12 @@
             $.get("https://api.lpszzb.gov.cn/type?type_id=20&status=0&type_state=2", function (rel) {
                //添加他山之石
                //TODO: 现在是写死的
-               rel.data.push({
-                    type_id: 46,
-                    type_name: '他山之石',
-                    type_icon: 'http://api.lpszzb.gov.cn/static/files/20180823162316_先进典型.png',
-                    bgcolor: '#F1514B'
-               })
+            //    rel.data.push({
+            //         type_id: 46,
+            //         type_name: '他山之石',
+            //         type_icon: 'http://api.lpszzb.gov.cn/static/files/20180823162316_先进典型.png',
+            //         bgcolor: '#F1514B'
+            //    })
                 var strInner = [];
 
                 for (var i = 0; i < rel.data.length; i++) {                 
