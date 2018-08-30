@@ -156,7 +156,8 @@ function getAppLinkList(cb) {
         //任务调度
         appLinkList.push({name: 'work', link: 'dingtalk://dingtalkclient/action/switchtab?index=1'})
         //共享交流
-        appLinkList.push({name: 'concat', link: 'https://h5.m.taobao.com/alicare/meebot.html?corpId=ding1148af8a150e83ef35c2f4657eb6378f&type=dingding_inner&appKey=Z3NmjVBIva&auth_vendor=dd'})
+        // appLinkList.push({name: 'concat', link: 'https://h5.m.taobao.com/alicare/meebot.html?corpId=ding1148af8a150e83ef35c2f4657eb6378f&type=dingding_inner&appKey=Z3NmjVBIva&auth_vendor=dd'})
+        appLinkList.push({name: 'concat', link: 'dingtalk://dingtalkclient/action/switchtab?index=3'})
         //工作审批 - 审批
         agentId = findItemInList(list, 'name', '审批').agentId
         link = constLink  + '&agentid=' + agentId
