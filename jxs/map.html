@@ -59,6 +59,16 @@
 
         </div>
 
+        <div  id="areaSelect">
+            <select onchange="selectValueChange(this.value)">
+                <option value="不限">不限</option>
+                <option value="钟山区">钟山区</option>
+                <option value="六枝特区">六枝特区</option>
+                <option value="盘州市">盘州市</option>
+                <option value="水城县">水城县</option>
+            </select>        
+        </div>
+
         <div  id="setCenter">
             <img src="../img/map/定位.png" />
 
@@ -228,6 +238,7 @@
     <script src="../scripts/main.js"></script>
     <!-- Initialize Swiper -->
     <script>
+        var map;
         var html = '<div class="panel-body" onclick="location.href=\'detail3.html?id={{id}}\'">'+
                ' <div class="title">{{title}}</div>'+
                ' <div class="desc">'+
@@ -363,7 +374,7 @@
                 autoplay: true,//可选选项，自动滑动
             })
             //alert(mySwiper)
-            var map = new AMap.Map('map-container', {
+            map = new AMap.Map('map-container', {
                 resizeEnable: true,
                 zoom: 8,
                 center: [104.830863, 26.592095]
@@ -623,14 +634,39 @@
             function closeInfoWindow() {
                 map.clearInfoWindow();
             }
-
-
         });
 
         // function goToDetailPage(id) {
         //     window.location = "detail2.html?id=" + id
         // }
-
+        function selectValueChange(value){
+                console.log(value)
+                const data = [
+                    {
+                        key: '不限',
+                        location: [104.830863, 26.592095]
+                    },
+                    {
+                        key: '钟山区',
+                        location: [104.843555, 26.574979]
+                    },
+                    {
+                        key: '六枝特区',
+                        location: [105.476608, 26.213108]
+                    },
+                    {
+                        key: '盘州市',
+                        location: [104.471375, 25.709852]
+                    },  
+                    {
+                        key: '水城县',
+                        location: [104.95783, 26.547904]
+                    },  
+                ]
+                map.setZoomAndCenter(12, data.find(function(item){
+                    return item.key === value
+                }).location);                
+            }
 
     </script>
 </body>
