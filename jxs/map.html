@@ -663,9 +663,7 @@
                         location: [104.95783, 26.547904]
                     },  
                 ]
-                map.setZoomAndCenter(12, data.find(function(item){
-                    return item.key === value
-                }).location);                
+                map.setZoomAndCenter(12, findItemInList(data, 'key', value).location);                
             }
 
     </script>
