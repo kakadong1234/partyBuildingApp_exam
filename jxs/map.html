@@ -436,7 +436,9 @@
                     });
                     // 将海量点添加至地图实例
                     massMarks.setMap(map);
-                    AMap.event.addListener(massMarks, 'mousedown', function (e) {
+                    AMap.event.addListener(massMarks, 'mousedown', setWindowsForPb0)
+                    AMap.event.addListener(massMarks, 'touchend', setWindowsForPb0)
+                    function setWindowsForPb0(e) {
                         console.log("pb_id:" + e.data.id);
                         console.log("lnglat:" + e.data.lnglat);
                         reloadBanners(e.data.id);
@@ -457,7 +459,7 @@
                         });
                         infoWindow2.open(map, e.data.lnglat);
                         })
-                    });
+                    }
             })
 
             $.get("https://api.lpszzb.gov.cn/partyBranch?pb_pattern=1&limit=100000", function (e) {
@@ -481,7 +483,9 @@
                     });
                     // 将海量点添加至地图实例
                     massMarks.setMap(map);
-                    AMap.event.addListener(massMarks, 'mousedown', function (e) {
+                    AMap.event.addListener(massMarks, 'mousedown', setWindowsForPb1)
+                    AMap.event.addListener(massMarks, 'touchend', setWindowsForPb1)
+                    function setWindowsForPb1(e) {
                         console.log("pb_id:" + e.data.id);
                         console.log("lnglat:" + e.data.lnglat);
                         reloadBanners(e.data.id);
@@ -502,7 +506,7 @@
                         });
                         infoWindow2.open(map, e.data.lnglat);
                         })
-                    });
+                    }
             })
 
             $.get("https://api.lpszzb.gov.cn/cadreList?page=1&limit=100000", function (e) {
@@ -534,7 +538,9 @@
                     });
                     // 将海量点添加至地图实例
                     massMarks.setMap(map);
-                    AMap.event.addListener(massMarks, 'mousedown', function (e) {
+                    AMap.event.addListener(massMarks, 'mousedown', setWindowsCarde) 
+                    AMap.event.addListener(massMarks, 'touchend', setWindowsCarde) 
+                    function setWindowsCarde(e) {
                         console.log("user_id: " + e.data.id);
                         console.log("lnglat:" + e.data.lnglat);
                         $.get("https://api.lpszzb.gov.cn/cadre/" + e.data.id, function (cadre) {
@@ -556,7 +562,7 @@
                                 infoWindow2.open(map, e.data.lnglat);
                             });
                         });
-                    })
+                    }
             });
 
             var title, content = [], content2 = [];
