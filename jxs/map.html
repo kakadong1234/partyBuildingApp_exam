@@ -376,19 +376,19 @@
             //alert(mySwiper)
             map = new AMap.Map('map-container', {
                 resizeEnable: true,
-                zoom: 8,
+                zoom: 12,
                 center: [104.830863, 26.592095]
             });
-            console.log(map.getBounds());
-            console.log(map.getZoom())
-            var bounds = map.getBounds();
-            var southWest = {lng: bounds.southwest.lng, lat: bounds.southwest.lat}
-            var northEast = {lng: bounds.northeast.lng, lat: bounds.northeast.lat};
-            console.log(southWest)
-            console.log(northEast)
+            // console.log(map.getBounds());
+            // console.log(map.getZoom())
+            // var bounds = map.getBounds();
+            // var southWest = {lng: bounds.southwest.lng, lat: bounds.southwest.lat}
+            // var northEast = {lng: bounds.northeast.lng, lat: bounds.northeast.lat};
+            // console.log(southWest)
+            // console.log(northEast)
             AMap.event.addDomListener(document.getElementById('setCenter'), 'click', function () {
                 // 设置缩放级别和中心点
-                map.setZoomAndCenter(8, [104.830863, 26.592095]);
+                map.setZoomAndCenter(12, [104.830863, 26.592095]);
                 // 在新中心点添加 marker 
                 //var marker = new AMap.Marker({
                 //    map: map,
@@ -414,165 +414,149 @@
             //});
 
 
-            $.get("https://api.lpszzb.gov.cn/party?pb_pattern=0&platform=app&limit=100000", function (e) {
-                console.log(e);
-            
-                var rows0 = e.rows;
-                for (var i = 0; i < rows0.length; i++) {
-                    //添加点标记，并使用自己的icon
-                    var marker = new AMap.Marker({
-                        map: map,
-                        position: [rows0[i].longitude, rows0[i].latitude],
-                        icon: new AMap.Icon({
-                            size: new AMap.Size(18, 18),  //图标大小
-                            image: "https://91fanka.cn/lps/img/map/flag.png",
-                        })
+            $.get("https://api.lpszzb.gov.cn/partyBranch?pb_pattern=0&limit=100000", function (e) {
+                    console.log(e);
+                    var rows0 = e.rows.map(function(item){
+                    //[{"latitude": 0.0, "pb_id": 70390237, "longitude": 0.0}]
+                    return {
+                        lnglat: [item.longitude, item.latitude], //点标记位置
+                        name: 'beijing',
+                        id: item.pb_id
+                    };
                     });
-                    marker.content = rows0[i].pb_name;
-                    //marker.on('click', markerClick);
-                    //marker.emit('click', { target: marker });
-                    marker.icon = "../img/dzb1.jpg";
-                    marker.detail = "dzbDetail";
-                    marker.pb_master = rows0[i].pb_master;
-                    marker.pb_phone = rows0[i].pb_phone;
-                    marker.pb_address = rows0[i].pb_address;
-                    marker.pb_desc = rows0[i].pb_desc;
-                    marker.pb_id = rows0[i].pb_id;
-                    
+                    var styleObject = {
+                        url: 'https://91fanka.cn/lps/img/map/flag.png',  // 图标地址
+                        size: new AMap.Size(18,18),      // 图标大小
+                        anchor: new AMap.Pixel(5,5) // 图标显示位置偏移量，基准点为图标左上角
+                    };
+                    var massMarks = new AMap.MassMarks(rows0, {
+                        zIndex: 5,  // 海量点图层叠加的顺序
+                        zooms: [3, 19],  // 在指定地图缩放级别范围内展示海量点图层
+                        style: styleObject  // 设置样式对象
+                    });
+                    // 将海量点添加至地图实例
+                    massMarks.setMap(map);
+                    AMap.event.addListener(massMarks, 'mousedown', function (e) {
+                        console.log("pb_id:" + e.data.id);
+                        console.log("lnglat:" + e.data.lnglat);
+                        reloadBanners(e.data.id);
+                        $.get("https://api.lpszzb.gov.cn/party/" + e.data.id, function (mockData) {
+                        var title = mockData.pb_name;
+                        var cc = content.join("<br/>").replace("{{link}}", "dzbDetail").replace("{imgsrc}", mockData.icon);
 
-
-
-
-                    AMap.event.addListener(marker, 'click', function (e) {
-                        console.log(this.content);
-                        console.log("pb_id:" + this.pb_id);
-
-                        reloadBanners(this.pb_id);
-                        var title = this.content;
-                        var cc = content.join("<br/>").replace("{{link}}", this.detail).replace("{imgsrc}", this.icon);
-
-                        cc = cc.replace("{{pb_master}}", this.pb_master)
-                        .replace("{{pb_phone}}", this.pb_phone)
-                        .replace("{{pb_address}}", this.pb_address)
-                        .replace("{{pb_desc}}", this.pb_desc)
-                        .replace("{{pb_id}}", this.pb_id);
+                        cc = cc.replace("{{pb_master}}", mockData.pb_master)
+                        .replace("{{pb_phone}}", mockData.pb_phone)
+                        .replace("{{pb_address}}", mockData.pb_address)
+                        .replace("{{pb_desc}}", mockData.pb_desc)
+                        .replace("{{pb_id}}", mockData.pb_id);
 
                         var infoWindow2 = new AMap.InfoWindow({
                             isCustom: true,  //使用自定义窗体
                             content: createInfoWindow(title, cc),
                             offset: new AMap.Pixel(16, -45)
                         });
-                        infoWindow2.open(map, e.target.getPosition());
-                    });
-                }
-
-
-                //function markerClick(e) {
-                //    infoWindow.setContent(e.target.content);
-                //    infoWindow.open(map, e.target.getPosition());
-                //}
-
-
-
-            })
-
-            $.get("https://api.lpszzb.gov.cn/party?pb_pattern=1&platform=app&limit=100000", function (e) {
-                var rows1 = e.rows;
-                for (var i = 0; i < rows1.length; i++) {
-                    //添加点标记，并使用自己的icon
-                    var marker = new AMap.Marker({
-                        map: map,
-                        position: [rows1[i].longitude, rows1[i].latitude],
-                        icon: new AMap.Icon({
-                            size: new AMap.Size(32, 32),  //图标大小
-                            image: "https://91fanka.cn/lps/img/map/flag2x.png",
-
+                        infoWindow2.open(map, e.data.lnglat);
                         })
                     });
-                    marker.content = rows1[i].pb_name;
-                    marker.icon = "../img/dzb2.jpg";
-                    marker.detail = "dzbDetail";
-                    //marker.on('click', markerClick);
-                    //marker.emit('click', { target: marker });
-                    marker.pb_master = rows1[i].pb_master;
-                    marker.pb_phone = rows1[i].pb_phone;
-                    marker.pb_address = rows1[i].pb_address;
-                    marker.pb_desc = rows1[i].pb_desc;
-                    marker.pb_id = rows1[i].pb_id;
+            })
 
+            $.get("https://api.lpszzb.gov.cn/partyBranch?pb_pattern=1&limit=100000", function (e) {
+                    var rows0 = e.rows.map(function(item){
+                    //[{"latitude": 0.0, "pb_id": 70390237, "longitude": 0.0}]
+                    return {
+                        lnglat: [item.longitude, item.latitude], //点标记位置
+                        name: 'beijing',
+                        id: item.pb_id
+                    };
+                    });
+                    var styleObject = {
+                        url: 'https://91fanka.cn/lps/img/map/flag2x.png',  // 图标地址
+                        size: new AMap.Size(32,32),      // 图标大小
+                        anchor: new AMap.Pixel(5,5) // 图标显示位置偏移量，基准点为图标左上角
+                    };
+                    var massMarks = new AMap.MassMarks(rows0, {
+                        zIndex: 5,  // 海量点图层叠加的顺序
+                        zooms: [3, 19],  // 在指定地图缩放级别范围内展示海量点图层
+                        style: styleObject  // 设置样式对象
+                    });
+                    // 将海量点添加至地图实例
+                    massMarks.setMap(map);
+                    AMap.event.addListener(massMarks, 'mousedown', function (e) {
+                        console.log("pb_id:" + e.data.id);
+                        console.log("lnglat:" + e.data.lnglat);
+                        reloadBanners(e.data.id);
+                        $.get("https://api.lpszzb.gov.cn/party/" + e.data.id, function (mockData) {
+                        var title = mockData.pb_name;
+                        var cc = content.join("<br/>").replace("{{link}}", "dzbDetail").replace("{imgsrc}", mockData.icon);
 
+                        cc = cc.replace("{{pb_master}}", mockData.pb_master)
+                        .replace("{{pb_phone}}", mockData.pb_phone)
+                        .replace("{{pb_address}}", mockData.pb_address)
+                        .replace("{{pb_desc}}", mockData.pb_desc)
+                        .replace("{{pb_id}}", mockData.pb_id);
 
-                    AMap.event.addListener(marker, 'click', function (e) {
-                        console.log("pb_id:"+ this.pb_id);
-                        var title = this.content;
-                        var cc = content.join("<br/>").replace("{{link}}", this.detail).replace("{imgsrc}", this.icon);
-                        cc = cc.replace("{{pb_master}}", this.pb_master)
-                      .replace("{{pb_phone}}", this.pb_phone)
-                      .replace("{{pb_address}}", this.pb_address)
-                      .replace("{{pb_desc}}", this.pb_desc)
-                      .replace("{{pb_id}}", this.pb_id);
                         var infoWindow2 = new AMap.InfoWindow({
                             isCustom: true,  //使用自定义窗体
                             content: createInfoWindow(title, cc),
                             offset: new AMap.Pixel(16, -45)
                         });
-                        infoWindow2.open(map, e.target.getPosition());
-
+                        infoWindow2.open(map, e.data.lnglat);
+                        })
                     });
-                }
             })
 
-            $.get("https://api.lpszzb.gov.cn/cadre?page=1&platform=app&limit=100000", function (e) {
+            $.get("https://api.lpszzb.gov.cn/cadreList?page=1&limit=100000", function (e) {
                 //   console.log(e);
-                var rows = e.rows.filter(function(row){
-                    return row.address !== null && row.address !== undefined &&  row.address !== ''
-                });
-
-                for (var i = 0; i < rows.length; i++) {
-
-                    //添加点标记，并使用自己的icon
-                    var marker = new AMap.Marker({
-                        map: map,
-                        position: [rows[i].longitude, rows[i].latitude],
-                        icon: new AMap.Icon({
-                            size: new AMap.Size(20, 20),  //图标大小
-                            image: "https://91fanka.cn/lps/img/map/star.png",
-
-                        })
+                var rows0 = e.rows.map(function(item){
+                    //[{"latitude": 0.0, "user_id": 70390237, "longitude": 0.0}]
+                    // if(item.longitude == 0){
+                    //     item.longitude = 104 + Math.random() * 1
+                    //     item.latitude = 26 + Math.random() * 1
+                    // }
+                    return {
+                        lnglat: [item.longitude, item.latitude], //点标记位置
+                        name: 'beijing',
+                        id: item.user_id
+                    };
+                })
+                // .filter(function(row){
+                //     return row.address !== null && row.address !== undefined &&  row.address !== ''
+                // });
+                var styleObject = {
+                        url: 'https://91fanka.cn/lps/img/map/star.png',  // 图标地址
+                        size: new AMap.Size(20,20),      // 图标大小
+                        anchor: new AMap.Pixel(5,5) // 图标显示位置偏移量，基准点为图标左上角
+                    };
+                var massMarks = new AMap.MassMarks(rows0, {
+                        zIndex: 5,  // 海量点图层叠加的顺序
+                        zooms: [3, 19],  // 在指定地图缩放级别范围内展示海量点图层
+                        style: styleObject  // 设置样式对象
                     });
-                    marker.content = rows[i].user_name + "&nbsp;&nbsp;&nbsp;&nbsp;" + rows[i].updated;
-                    marker.icon = "../img/p0001.png";
-                    marker.link = "cadreDetail.html?id=" + rows[i].user_id;
-                    marker.userid = rows[i].user_id;
-                    marker.address = rows[i].address == null ? "" : rows[i].address;
-                    // marker.link = "https://attend.dingtalk.com/attend/index.html?corpId=ding1148af8a150e83ef35c2f4657eb6378f&showmenu=true&dd_share=false&dd_progress=false";
-                    //marker.on('click', markerClick);
-                    //marker.emit('click', { target: marker });
-                    //鼠标点击marker弹出自定义的信息窗体
-
-                    AMap.event.addListener(marker, 'click', function (e) {
-                        console.log(this.content);
-                        var that = this;
-
-                        $.get("https://api.lpszzb.gov.cn/dding?key=user_info&user_id=" + that.userid, function (user) {
-
-                            var title = that.content;
-
-                            if (user.avatar == "" || user.avatar=="undefined") {
-                                user.avatar = that.icon;
-                            }
-
-                            var infoWindow2 = new AMap.InfoWindow({
-                                isCustom: true,  //使用自定义窗体
-                                content: createInfoWindow(title, content2.join("<br/>").replace("{imgsrc}", user.avatar).replace("{phone}", user.mobile).replace("{link}", that.link).replace("{address}", that.address)),
-                                offset: new AMap.Pixel(16, -45)
+                    // 将海量点添加至地图实例
+                    massMarks.setMap(map);
+                    AMap.event.addListener(massMarks, 'mousedown', function (e) {
+                        console.log("user_id: " + e.data.id);
+                        console.log("lnglat:" + e.data.lnglat);
+                        $.get("https://api.lpszzb.gov.cn/cadre/" + e.data.id, function (cadre) {
+                            var showCarde = {}
+                            showCarde.content = cadre.user_name + "&nbsp;&nbsp;&nbsp;&nbsp;" + cadre.updated;
+                            showCarde.icon = "../img/p0001.png";
+                            showCarde.link = "cadreDetail.html?id=" + e.data.id;
+                            showCarde.address = cadre.address == null ? "" : cadre.address;
+                            $.get("https://api.lpszzb.gov.cn/dding?key=user_info&user_id=" + e.data.id, function (user) {
+                                var title = showCarde.content;
+                                if (user.avatar == "" || user.avatar=="undefined") {
+                                    user.avatar = showCarde.icon;
+                                }
+                                var infoWindow2 = new AMap.InfoWindow({
+                                    isCustom: true,  //使用自定义窗体
+                                    content: createInfoWindow(title, content2.join("<br/>").replace("{imgsrc}", user.avatar).replace("{phone}", user.mobile).replace("{link}", showCarde.link).replace("{address}", showCarde.address)),
+                                    offset: new AMap.Pixel(16, -45)
+                                });
+                                infoWindow2.open(map, e.data.lnglat);
                             });
-
-                            infoWindow2.open(map, e.target.getPosition());
                         });
-
-                    });
-                }
+                    })
             });
 
             var title, content = [], content2 = [];
