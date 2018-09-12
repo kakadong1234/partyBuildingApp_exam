@@ -146,7 +146,7 @@ function getAppLinkList(cb) {
     getDDAppList(function(list){
         var constLink = 'dingtalk://dingtalkclient/action/switchtab?index=2&name=work&scene=1&corpid=ding1148af8a150e83ef35c2f4657eb6378f'
         //签到
-        var agentId = findItemInList(list, 'name', '签到').agentId
+        var agentId = findItemInList(list, 'name', '考勤打卡').agentId
         var link = constLink  + '&agentid=' + agentId
         appLinkList.push({name: 'singIn', link: link})
         //驻村日志 - 日志

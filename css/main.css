@@ -978,3 +978,7 @@ video {
     text-overflow:ellipsis;
     white-space: nowrap;
 }
+.amap-logo{
+    bottom: -100px;
+    display: none
+}
