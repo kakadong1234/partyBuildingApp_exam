@@ -325,7 +325,8 @@ function getUserInfo(url, callback, callbackGps) {
     if(!isMobile()) { //pc上调试
         return typeof callback == "function" && callback({
             emplId: '065506030123353335',
-            avatar: 'http://7xrsfo.com1.z0.glb.clouddn.com/tx123.png',
+            //avatar: 'http://7xrsfo.com1.z0.glb.clouddn.com/tx123.png',
+            avatar: '../img/p0001.png',
             nickName: '晓伟'
         });
     }

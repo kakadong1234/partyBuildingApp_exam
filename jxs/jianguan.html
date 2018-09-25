@@ -267,7 +267,8 @@
                 console.log(index)
                 item.number = index + 1
                 if (item.avatar === '') {
-                    item.avatar = 'http://7xrsfo.com1.z0.glb.clouddn.com/tx123.png'
+                    // item.avatar = 'http://7xrsfo.com1.z0.glb.clouddn.com/tx123.png'
+                    item.avatar = '../img/p0001.png'
                 }
                 return item
             })
@@ -276,7 +277,8 @@
                 $.get("https://api.lpszzb.gov.cn/dding?key=user_info&user_id=" + item.creator_id, function (user) {
                     console.log(user);
                     if(user.avatar === ''){
-                        user.avatar = 'http://7xrsfo.com1.z0.glb.clouddn.com/tx123.png'
+                        // user.avatar = 'http://7xrsfo.com1.z0.glb.clouddn.com/tx123.png'
+                        user.avatar = '../img/p0001.png'
                     }
                     $('#avtar_img_' + user.userid).attr("src", user.avatar);
                 });
